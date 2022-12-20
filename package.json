@@ -1,5 +1,6 @@
 {
   "name": "onix-react-project",
+  "homepage": "https://akvigi.github.io/onix-react-project/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
