@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/onix-react-project/static/css/main.1ccf7765.css",
+    "main.js": "/onix-react-project/static/js/main.162ffb7f.js",
+    "static/media/img-hero.png": "/onix-react-project/static/media/img-hero.cd85ac82a098e0e13044.png",
+    "static/media/aboutus.png": "/onix-react-project/static/media/aboutus.209fcd3cf435726abff9.png",
+    "static/media/vanillalatte.png": "/onix-react-project/static/media/vanillalatte.8e32a5ff3f6276415273.png",
+    "static/media/hazelnut-latte.png": "/onix-react-project/static/media/hazelnut-latte.ded91b8b40d43d76c385.png",
+    "static/media/espresso.png": "/onix-react-project/static/media/espresso.e010775efac449784caa.png",
+    "static/media/background-about.png": "/onix-react-project/static/media/background-about.69684e74590396d65d0d.png",
+    "index.html": "/onix-react-project/index.html",
+    "main.1ccf7765.css.map": "/onix-react-project/static/css/main.1ccf7765.css.map",
+    "main.162ffb7f.js.map": "/onix-react-project/static/js/main.162ffb7f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1ccf7765.css",
+    "static/js/main.162ffb7f.js"
+  ]
+}
