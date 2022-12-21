@@ -1,9 +1,9 @@
 import sandw from './images/sandwich.png'
 import hotmilk from './images/hotmilk.png'
 import coficecreem from './images/coffee-icecream.png'
-import cappuch from './images/sandwich.png'
-import moccach from './images/sandwich.png'
-import waflicecream from './images/sandwich.png'
+import cappuch from './images/cappucino.png'
+import moccach from './images/moccacino.png'
+import waflicecream from './images/waffle.png'
 
 const data = [{
     name: "Sandwich",
