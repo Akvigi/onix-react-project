@@ -10,7 +10,7 @@ const Header = () => {
             <nav className={style.Nav }>
             <HeaderLink href='' textL="About us"/>
             <HeaderLink href='' textL="Our product"/>
-            <HeaderLink href='' textL="Delivery"/>
+            {/* <HeaderLink href='' textL="Delivery"/> */}
           </nav>
         </div>
       </header>
