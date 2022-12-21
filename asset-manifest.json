@@ -1,22 +1,25 @@
 {
   "files": {
     "main.css": "/onix-react-project/static/css/main.1fe4863e.css",
-    "main.js": "/onix-react-project/static/js/main.a559c8b9.js",
+    "main.js": "/onix-react-project/static/js/main.c5415c7b.js",
     "static/media/img-hero.png": "/onix-react-project/static/media/img-hero.cd85ac82a098e0e13044.png",
     "static/media/aboutus.png": "/onix-react-project/static/media/aboutus.209fcd3cf435726abff9.png",
+    "static/media/moccacino.png": "/onix-react-project/static/media/moccacino.171d72e362b461f22080.png",
     "static/media/sandwich.png": "/onix-react-project/static/media/sandwich.615b13584576f9e93b75.png",
     "static/media/coffee-icecream.png": "/onix-react-project/static/media/coffee-icecream.b0b34df6371fde2852ee.png",
     "static/media/vanillalatte.png": "/onix-react-project/static/media/vanillalatte.8e32a5ff3f6276415273.png",
+    "static/media/waffle.png": "/onix-react-project/static/media/waffle.42292da50563fad486d8.png",
     "static/media/hazelnut-latte.png": "/onix-react-project/static/media/hazelnut-latte.ded91b8b40d43d76c385.png",
     "static/media/hotmilk.png": "/onix-react-project/static/media/hotmilk.0fce4db443fba157b7e5.png",
+    "static/media/cappucino.png": "/onix-react-project/static/media/cappucino.3eb78782ad58cf643a1a.png",
     "static/media/espresso.png": "/onix-react-project/static/media/espresso.e010775efac449784caa.png",
     "static/media/background-about.png": "/onix-react-project/static/media/background-about.69684e74590396d65d0d.png",
     "index.html": "/onix-react-project/index.html",
     "main.1fe4863e.css.map": "/onix-react-project/static/css/main.1fe4863e.css.map",
-    "main.a559c8b9.js.map": "/onix-react-project/static/js/main.a559c8b9.js.map"
+    "main.c5415c7b.js.map": "/onix-react-project/static/js/main.c5415c7b.js.map"
   },
   "entrypoints": [
     "static/css/main.1fe4863e.css",
-    "static/js/main.a559c8b9.js"
+    "static/js/main.c5415c7b.js"
   ]
 }
