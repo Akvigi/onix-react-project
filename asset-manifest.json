@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/onix-react-project/static/css/main.491059c3.css",
-    "main.js": "/onix-react-project/static/js/main.19cc6a85.js",
+    "main.css": "/onix-react-project/static/css/main.1fe4863e.css",
+    "main.js": "/onix-react-project/static/js/main.5c47b5e6.js",
     "static/media/img-hero.png": "/onix-react-project/static/media/img-hero.cd85ac82a098e0e13044.png",
     "static/media/aboutus.png": "/onix-react-project/static/media/aboutus.209fcd3cf435726abff9.png",
     "static/media/vanillalatte.png": "/onix-react-project/static/media/vanillalatte.8e32a5ff3f6276415273.png",
@@ -9,11 +9,11 @@
     "static/media/espresso.png": "/onix-react-project/static/media/espresso.e010775efac449784caa.png",
     "static/media/background-about.png": "/onix-react-project/static/media/background-about.69684e74590396d65d0d.png",
     "index.html": "/onix-react-project/index.html",
-    "main.491059c3.css.map": "/onix-react-project/static/css/main.491059c3.css.map",
-    "main.19cc6a85.js.map": "/onix-react-project/static/js/main.19cc6a85.js.map"
+    "main.1fe4863e.css.map": "/onix-react-project/static/css/main.1fe4863e.css.map",
+    "main.5c47b5e6.js.map": "/onix-react-project/static/js/main.5c47b5e6.js.map"
   },
   "entrypoints": [
-    "static/css/main.491059c3.css",
-    "static/js/main.19cc6a85.js"
+    "static/css/main.1fe4863e.css",
+    "static/js/main.5c47b5e6.js"
   ]
 }
