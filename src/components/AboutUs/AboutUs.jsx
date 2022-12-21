@@ -10,7 +10,7 @@ const AboutUs = () => {
                     <Media queries={{ small: '(max-width: 767px)' }}>
                         {matches =>
                             !matches.small && (
-                                <img className={style.Pic} src={imgus} alt="coffee picture"/>
+                                <img className={style.Pic} src={imgus} alt="coffee"/>
                             )
                         }
                     </Media>

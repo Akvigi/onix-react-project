@@ -4,6 +4,7 @@ import Container from '../Container/Container'
 import style from './Popular.module.sass'
 import SectionHeading from '../SectionHeading/SectionHeading'
 import PopList from './PopList/PopList'
+import data from '../../popdata'
 
 
 const Popular = () => {
@@ -11,7 +12,7 @@ const Popular = () => {
         <section className={style.Popular}>
             <Container>
               <SectionHeading>Popular Now</SectionHeading>
-              <PopList/>
+              <PopList data={data} />
                 {/* <ul className={style.List}>
                     <li className={style.Item}>
                         <img className={style.Img} src={vlate} alt="Vanilla Latte"/>

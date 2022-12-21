@@ -16,7 +16,7 @@ const Head = styled.h2`
         font-size: 32px;
         margin-bottom: 32px;
         text-align: start;
-        padding-left: 30px;
+        padding-left: 15px;
     `}
 `
 
