@@ -1,6 +1,6 @@
 import React from 'react'
 import Media from 'react-media'
-import imgus from '../../images/aboutus.png'
+import imgus from '../../images/aboutus.jpg'
 import style from './AboutUs.module.sass'
 
 const AboutUs = () => {

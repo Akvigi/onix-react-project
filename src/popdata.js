@@ -1,6 +1,6 @@
-import vlate from './images/vanillalatte.png'
-import hazlate from './images/hazelnut-latte.png'
-import esp from './images/espresso.png'
+import vlate from './images/vanillalatte.jpg'
+import hazlate from './images/hazelnut-latte.jpg'
+import esp from './images/espresso.jpg'
 
 const data = [{
     name:"Vanilla Latte",
