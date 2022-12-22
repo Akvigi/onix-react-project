@@ -3,7 +3,7 @@ import style from './Hero.module.sass'
 import Media from 'react-media'
 import coffee from '../../images/img-hero.png'
 import ContainerHero from './ContainerHero/ContainerHero'
-const Hero = () => {
+const Hero = ({onMenu}) => {
   return (
     <section className={style.Hero}>
         <ContainerHero>
@@ -19,7 +19,7 @@ const Hero = () => {
               <p className={style.Text}>Boost your productivity and build your mood with a glass of coffee in the morning</p>
               <div >
                   <button type="button" className={style.Btn}>Order now</button>
-                  <a className={style.Linkmenu} href="" >More menu</a>
+                  <button className={style.Linkmenu} onClick={onMenu} >More menu</button>
               </div >
           </div>
           <Media queries={{ small: '(max-width: 767px)' }}>

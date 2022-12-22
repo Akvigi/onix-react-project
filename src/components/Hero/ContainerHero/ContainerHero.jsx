@@ -10,7 +10,7 @@ const ContainerHero = ({children}) => {
 
 const Cont = styled.div`
     ${respondTo.md`
-      max-width: 1200px;
+      max-width: 1140px;
     `}
     /* ${respondTo.md`
       max-width: 1200px;

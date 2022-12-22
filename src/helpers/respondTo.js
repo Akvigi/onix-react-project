@@ -16,6 +16,5 @@ const respondTo = Object.keys(breakpoints).reduce((accumulator, label) => {
   return accumulator
 }, {})
 
-console.log('respondTo', respondTo)
 
 export { respondTo }

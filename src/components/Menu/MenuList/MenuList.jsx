@@ -1,0 +1,54 @@
+import React from 'react'
+import style from './MenuList.module.sass'
+import Rate from '../../List/Rate/Rate'
+const MenuList = ({dataFu, dataPop}) => {
+  return (
+        <ul className={style.List}>
+          {dataFu.map(({ name, desc, price, link, rate}) => {
+              return (<li className={style.Item}>
+                 <div className={style.Desc}>
+                    <img className={style.Img} src={link} alt={name} />
+                    
+                    <div className={style.ContainerInfo}>
+                        <h3>{name}</h3>
+                        <p>{desc}</p>
+                        <div className={style.Rate}>
+                            <Rate rate={rate}/>
+                        </div>  
+                        
+                      </div>
+                    </div>
+                  <div className={style.PriceBtnCont}>
+                        <p>{price}K</p>
+                        <button className={style.Btn} type='click'>+</button>
+                  </div>
+                  
+              </li>)
+          
+          })}
+          {dataPop.map(({ name, price, link, rate }) => {
+              return (<li className={style.Item}>
+                  <div className={style.Desc}>
+                      <img className={style.Img} src={link} alt={name} />
+                    
+                      <div className={style.ContainerInfo}>
+                        <h3>{name}</h3>
+                        <p></p>
+                        <div className={style.Rate}>
+                            <Rate rate={rate}/>
+                        </div>  
+                        
+                      </div>
+                    </div>
+                  <div className={style.PriceBtnCont}>
+                      <p>{price}K</p>
+                      <button className={style.Btn} type='click'>+</button>
+                  </div>
+                  
+              </li>)
+          })}
+        </ul>
+  )
+}
+
+export default MenuList
