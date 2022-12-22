@@ -3,6 +3,7 @@ import style from './Hero.module.sass'
 import Media from 'react-media'
 import coffee from '../../images/img-hero.png'
 import ContainerHero from './ContainerHero/ContainerHero'
+
 const Hero = ({onMenu}) => {
   return (
     <section className={style.Hero}>

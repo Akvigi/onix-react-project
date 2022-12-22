@@ -10,11 +10,11 @@ const ContainerHero = ({children}) => {
 
 const Cont = styled.div`
     ${respondTo.md`
+      max-width: 950px;
+    `}
+    ${respondTo.lg`
       max-width: 1140px;
     `}
-    /* ${respondTo.md`
-      max-width: 1200px;
-    `} */
     max-width: 740px;
     margin: 0 auto;
     width: 100%;
