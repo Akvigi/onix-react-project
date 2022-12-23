@@ -1,15 +1,26 @@
-import React, { useCallback, useEffect } from 'react'
+import Notiflix from 'notiflix'
+import React, { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-const portal = document.querySelector('#portal')
+import style from './FormModal.module.sass'
 
-const FormModal = ({ noExit }) => {
+const portal = document.querySelector('#portal')
+  
+const FormModal = ({ onExit, onMenu, order, modal, onDelete }) => {
+  const [name, setName] = useState('')
+  const [number, setPhone] = useState('')
+  const [Address, setAddress] = useState('')
+  const reset = () => {
+    setName('')
+    setPhone('')
+    setAddress('')
+  }
      const esc = useCallback(
         e => {
             if (e.code === `Escape`) {
-                noExit()
+                onExit()
             }
         },
-        [noExit]
+        [onExit]
   )
 
   useEffect(() => {
@@ -19,40 +30,59 @@ const FormModal = ({ noExit }) => {
       window.removeEventListener('keydown', esc)
     }
   }, [esc])
-
-  const onBackClick = useCallback(
-    e => {
-      if (e.currentTarget === e.target) {
-        noExit()
-      }
-    },
-    [noExit]
-  )
-   return createPortal(
-       <div onClick={onBackClick}>
-           <form action="submit">
-               <input type="text" placeholder="Name"/>
-               <input type="text" placeholder="Adress"/>
-               <input type="phone" placeholder="Phone"/>
-               <button type='click'>Menu</button>
-               <ul>
-                   <h3>Your order</h3>
-                   <li></li>
+  // const onBackClick = useCallback(
+  //   e => {
+  //     if (e.currentTarget === e.target) {
+  //       onExit()
+  //     }
+  //   },
+  //   [onExit]
+  // )
+  return createPortal(
+    <div className={modal ? `${style.Overlay} ${style.Active}` : style.Overlay}
+      //  onClick={onBackClick}
+     >   
+       <form className={style.Form} onSubmit={(e) => {
+         e.preventDefault()
+         if (order.length === 0) {
+           return Notiflix.Notify.warning('Nothing in cart');
+          }
+          if (number === "") {
+           return Notiflix.Notify.failure('Please input number of your phone!');
+         }
+         console.log(Address, number, name);
+          onExit()
+         reset()
+       }} action="submit">
+         <button type='button' onClick={onExit} className={style.ExitBtn}>X</button>
+         <input className={style.Input}
+           onChange={(e) => setName(e.currentTarget.value)}
+           type="text"
+           placeholder="Name" />
+         <input className={style.Input}
+           type="text"
+           placeholder="Address"
+           onChange={(e) => setAddress(e.currentTarget.value)}
+         />
+         <input className={style.Input}
+           type="phone"
+           placeholder="Phone"
+            onChange={(e) => setPhone(e.currentTarget.value)}
+         />
+        <button className={style.MenuBtn} onClick={onMenu} type='click'>Menu</button>
+                <h4>Your order</h4>
+                <ul className={style.List}>
+                  
+                {order.length > 0 ? (order.map(({ name, price, id }) =>
+                (<li key={id} className={style.OrderItem}>
+                  <p>{name}</p>
+                  <div className={style.PriceDelbtnCont}><p>{price}K</p><button onClick={() => onDelete(id)} className={style.DelBtn}>-</button></div>
+                </li>))) : (<p>Nothing in cart</p>)
+                   }
                </ul>
-               <button type="submit">Order</button>
+               <button className={style.OrderBtn} type="submit">Order</button>
            </form>
-      {/* <div >
-        <p className={'modalLogoutText'}>
-          Are you sure that you want to log out?
-        </p>
-        <div>
-          <ModalLogoutButtonYes onClick={() => onHandleLogOut()}>
-            YES
-          </ModalLogoutButtonYes>
-          <ModalLogoutButtonNo onClick={noExit}>NO</ModalLogoutButtonNo>
-        </div>
-      </d> */}
-    </div>,
+     </div>,
     portal
   )
 }

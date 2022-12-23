@@ -1,5 +1,5 @@
 .Overlay
-    background-color: 
+    background-color: rgba(0, 0, 0, 0.503)
     position: fixed
     top: 0
     left: 0
@@ -9,11 +9,111 @@
     justify-content: center
     align-items: center
     z-index: 1200
+    opacity: 0
+    pointer-events: none
+    transition: 1s
+
+.Active
+    opacity: 1
+    pointer-events: all
+
+.ExitBtn
+    position: absolute
+    background: transparent
+    right: 2%
+    top: 3%
+    padding: 2px 8px
+    border: 1px solid black
+    border-radius: 25px
+    &:hover, &:focus
+        border: 1px solid #F4AE26
+        color: #F4AE26
 
 .Form
-    background-color: white
+    background-color: #f5dbb5
+    position: relative
     display: flex
     flex-direction: column
     align-items: center
-    padding: 20px 15px
+    padding: 40px 35px
     border-radius: 20px
+    width: 100%
+    max-width: 400px
+
+.MenuBtn
+    color: #F4AE26;
+    font-size: 12px;
+    font-weight: 700;
+    background: transparent
+    cursor: pointer
+    margin-bottom: 5px
+    &:hover, &:focus
+        color: #ffffff
+    @media screen and (max-width: 767px)
+        border: 1px #F4AE26 solid
+        padding: 3px 12px;
+        border-radius: 50px;
+    @media screen and (min-width: 1200px)
+        font-size: 16px
+
+
+.Input
+    background: transparent
+    width: 100%
+    box-sizing: border-box
+    padding: 5px 10px
+    border-radius: 10px
+    border: 1px solid gray
+    &:focus
+        border: 1px solid #F4AE26
+        color: #F4AE26
+        &::placeholder
+            color: #F4AE26
+    &:not(:last-child)
+        margin-bottom: 7px
+    &::placeholder
+        color: black
+
+.List
+    align-items: center
+    justify-content: center
+    display: flex
+    flex-direction: column
+    width: 100% 
+    // max-height: 250px
+    // overflow-x: hidden
+    // overflow-y: scroll
+
+
+.DelBtn 
+    padding: 3px 9px
+    background: red
+    border-radius: 120px
+    margin-left: 10px
+
+.PriceDelbtnCont
+    display: flex
+    flex-direction: row
+    align-items: center
+
+.OrderBtn
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: 50px;
+    background-color: black;
+    color: white
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px
+    &:hover, &:focus
+        background: #F4AE26
+        color: black
+
+.OrderItem 
+    display: flex
+    flex-direction: row
+    width: 100%
+    justify-content: space-between
+    &:not(:last-child)
+        margin-bottom: 20px
+        

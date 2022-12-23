@@ -4,7 +4,7 @@ import Media from 'react-media'
 import coffee from '../../images/img-hero.png'
 import ContainerHero from './ContainerHero/ContainerHero'
 
-const Hero = ({onMenu}) => {
+const Hero = ({onMenu, onOrder}) => {
   return (
     <section className={style.Hero}>
         <ContainerHero>
@@ -19,7 +19,7 @@ const Hero = ({onMenu}) => {
             </Media>
               <p className={style.Text}>Boost your productivity and build your mood with a glass of coffee in the morning</p>
               <div >
-                  <button type="button" className={style.Btn}>Order now</button>
+                  <button onClick={onOrder} className={style.Btn}>Order now</button>
                   <button className={style.Linkmenu} onClick={onMenu} >More menu</button>
               </div >
           </div>

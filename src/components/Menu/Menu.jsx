@@ -3,7 +3,7 @@ import MenuList from './MenuList/MenuList'
 import dataF from '../../fudata';
 import dataP from '../../popdata'
 import style from './Menu.module.sass'
-const Menu = ({onExit}) => {
+const Menu = ({onExit, onOrder, modal, addProd}) => {
     const esc = useCallback(
         e => {
             if (e.code === `Escape`) {
@@ -30,10 +30,11 @@ const Menu = ({onExit}) => {
     [onExit]
   )
   return (
-    <div onClick={onBackClick} className={style.Overlay}>
+    <div onClick={onBackClick} className={modal ? `${style.Overlay} ${style.Active}` : style.Overlay}>
           <div className={style.Menu}>
               <h2>Menu</h2>
-              <MenuList dataFu={dataF} dataPop={dataP} />
+              <MenuList dataFu={dataF} dataPop={dataP} onAdd={addProd} />
+              <button className={style.toOrder} type="click" onClick={onOrder}>To order</button>
           </div>
     </div>
   )

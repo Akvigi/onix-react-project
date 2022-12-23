@@ -5,12 +5,12 @@ import SectionHeading from '../SectionHeading/SectionHeading'
 import SpList from './SpList/SpList'
 import style from './SpecialFU.module.sass'
 
-const SpecialFU = () => {
+const SpecialFU = ({specialRef, onAddProd}) => {
   return (
-    <section className={style.Foryou}>
+    <section className={style.Foryou} ref={specialRef}>
         <Container>
             <SectionHeading>Special menu for You</SectionHeading>
-            <SpList data={data} />
+        <SpList data={data} addProd={onAddProd}/>
         </Container>
     </section>
   )
