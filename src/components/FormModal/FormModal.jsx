@@ -69,7 +69,7 @@ const FormModal = ({ onExit, onMenu, order, modal, onDelete }) => {
            placeholder="Phone"
             onChange={(e) => setPhone(e.currentTarget.value)}
          />
-        <button className={style.MenuBtn} onClick={onMenu} type='click'>Menu</button>
+        <button className={style.MenuBtn} onClick={onMenu} type='button'>Menu</button>
                 <h4>Your order</h4>
                 <ul className={style.List}>
                   
