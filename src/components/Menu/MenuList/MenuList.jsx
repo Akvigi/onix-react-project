@@ -39,7 +39,7 @@ const MenuList = ({dataFu, dataPop, onAdd}) => {
                     </div>
                   <div className={style.PriceBtnCont}>
                       <p>{price}K</p>
-                      <button className={style.Btn} type='click'>+</button>
+                      <button className={style.Btn} onClick={() => onAdd(name, price)} type='click'>+</button>
                   </div>
                   
               </li>)
