@@ -10,6 +10,7 @@ import Hero from './components/Hero/Hero';
 import Menu from './components/Menu/Menu';
 import Popular from './components/Popular/Popular';
 import SpecialFU from './components/SpecialFU/SpecialFU'
+import Team from './components/Reviews/Reviews';
 
 
 function App() {
@@ -54,7 +55,8 @@ function App() {
       <Hero onMenu={() => setMenuModal(true)} onOrder={() => setOrderModal(true)} />
       <Popular onAddProd={onOrder} />
       <AboutUs refTo={aboutUsRef} onOrder={() => setMenuModal(true)}/>
-      <SpecialFU specialRef={specialRef} onAddProd={onOrder}/>
+      <SpecialFU specialRef={specialRef} onAddProd={onOrder} />
+      <Team/>
       <Footer />
       <Menu modal={menuModal}
         onExit={() => setMenuModal(false)}

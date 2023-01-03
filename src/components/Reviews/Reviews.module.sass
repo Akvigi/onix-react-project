@@ -1,0 +1,93 @@
+.Section 
+    position: relative
+    padding: 120px 0
+    width: 100%
+    display: flex
+
+.Container
+    background-image: url(../../images/background-about.png)
+    padding: 60px 0
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    @media screen and (min-width: 1124px)
+        align-items: start
+        padding: 120px 0
+        border-top-right-radius: 50px
+        border-bottom-right-radius: 50px
+        max-width: 60%
+
+.TextCont 
+    // padding-left: 60px
+    // margin: 0 auto
+    margin-bottom: 35px 
+    @media screen and (min-width: 1124px) 
+        padding-left: 15px   
+        margin-bottom: 0 
+    @media screen and (min-width: 1420px)
+        padding-left: 120px
+    @media screen and (min-width: 1850px)
+        padding-left: 40%
+
+.Heading
+    font-weight: 600
+    font-size: 32px
+    line-height: 48px
+
+.Text
+    color: #7E7D7A
+    max-width: 350px
+    margin-top: 15px
+    font-weight: 400
+    font-size: 18px
+    line-height: 27px
+
+.List
+    display: flex
+    flex-direction: column
+    @media screen and (min-width: 768px)
+        flex-direction: row
+    @media screen and (min-width: 1124px)
+        width: 210px
+        position: absolute
+        bottom: 35%
+        right: 46%
+
+.Item
+    position: relative
+    margin-bottom: 10px 
+    @media screen and (min-width: 768px)    
+        margin-bottom: 0 
+        &:not(:last-child)
+            margin-right: 44px
+    @media screen and (min-width: 1124px)    
+        &:not(:last-child)
+            margin-right: 94px
+
+.Img
+    width: 0
+    @media screen and (min-width: 1204px)
+        width: 210px
+    @media screen and (min-width: 768px)
+        width: 150px
+        border: 6px solid rgba(255, 211, 145, 0.62)
+
+.RevDesc 
+    top: 60%
+    background: #FFCB7C
+    // border: 6px solid #ffd39066
+    border-radius: 8px
+    
+    @media screen and (min-width: 768px)
+        position: absolute
+        left: 30px
+        width: 150px
+    @media screen and (min-width: 1224px)
+        width: 200px
+    padding: 12px
+    font-weight: 400
+    font-size: 14px
+    line-height: 21px
+    display: flex
+    flex-direction: column

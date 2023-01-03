@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './MenuList.module.sass'
 import Rate from '../../List/Rate/Rate'
+
 const MenuList = ({dataFu, dataPop, onAdd}) => {
   return (
         <ul className={style.List}>
