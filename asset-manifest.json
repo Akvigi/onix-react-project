@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/onix-react-project/static/css/main.d3471961.css",
-    "main.js": "/onix-react-project/static/js/main.b78cd700.js",
+    "main.css": "/onix-react-project/static/css/main.b4419866.css",
+    "main.js": "/onix-react-project/static/js/main.49f6a6ac.js",
     "static/media/img-hero.png": "/onix-react-project/static/media/img-hero.2d81266569ebf969a2cb.png",
     "static/media/t1.png": "/onix-react-project/static/media/t1.a4fb3fae07d42892f876.png",
     "static/media/t2.png": "/onix-react-project/static/media/t2.630bef4a6fc867ead63a.png",
@@ -12,11 +12,11 @@
     "static/media/waffle.jpg": "/onix-react-project/static/media/waffle.1e31022373f2f0542081.jpg",
     "static/media/sandwich.jpg": "/onix-react-project/static/media/sandwich.e68602aaf31fa9fe15d0.jpg",
     "index.html": "/onix-react-project/index.html",
-    "main.d3471961.css.map": "/onix-react-project/static/css/main.d3471961.css.map",
-    "main.b78cd700.js.map": "/onix-react-project/static/js/main.b78cd700.js.map"
+    "main.b4419866.css.map": "/onix-react-project/static/css/main.b4419866.css.map",
+    "main.49f6a6ac.js.map": "/onix-react-project/static/js/main.49f6a6ac.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3471961.css",
-    "static/js/main.b78cd700.js"
+    "static/css/main.b4419866.css",
+    "static/js/main.49f6a6ac.js"
   ]
 }
