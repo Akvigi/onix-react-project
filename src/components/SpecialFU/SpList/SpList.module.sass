@@ -11,25 +11,28 @@
         justify-content: space-between
         margin: 0 auto
     @media screen and (min-width: 768px) and (max-width: 1100px)
-        max-width: 700px
+        max-width: 750px
     @media screen and (min-width: 1100px)
         padding: 0
         max-width: 1140px
 
 .Item 
     background-color: white
-    padding: 10px
+    padding: 15px 10px 
     position: relative
     max-width: 300px
     border-radius: 12px       
+    display: flex
+    flex-direction: column
     filter: drop-shadow(10px 10px 32px rgba(0, 0, 0, 0.25))
-    &:not(:last-child)
+    &:not(:nth-child(n+5))
         margin-bottom: 15px
-    @media screen and (min-width: 480px) 
-        max-width: 340px
+    // @media screen and (min-width: 480px) 
+        // max-width: 330px
     @media screen and (min-width: 768px) 
-        padding: 25px 17px
+        padding: 30px 24px
     @media screen and (min-width: 1100px)
+        max-width: 355px
         &:nth-child(n+4) 
             margin-top: 40px
         &:not(:last-child)

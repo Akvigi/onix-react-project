@@ -33,7 +33,7 @@ const data = [{
     link:t2,
     },
     {
-    name:"Dana",
+    name:"Den",
     desc:"menu is very big",
     link:t3,
     }]
@@ -51,7 +51,7 @@ const data = [{
     link:t2,
     },
     {
-    name:"Lana",
+    name:"Kel",
     desc:"I am attending this coffee shop every day",
     link:t3,
     }]
