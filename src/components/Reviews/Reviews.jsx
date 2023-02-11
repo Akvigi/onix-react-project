@@ -3,8 +3,7 @@ import style from './Reviews.module.sass'
 import data from '../../reviewsdata'
 
 const Reviews = () => {
-    const [pagePag, setPagePag] = useState(1)
-    console.log(data)
+  const [pagePag, setPagePag] = useState(1)
   return (
       <section className={style.Section}>
           <div className={style.Container}>
@@ -24,7 +23,9 @@ const Reviews = () => {
                       </li>)}
                 </ul>
                 <div className={style.BtnCont}>
-                    {data.map(({ page }) => <button type='button' onClick={() => setPagePag(page)} className={page === pagePag ? `${style.Btn} ${style.BtnActive}` : `${style.Btn}`}></button>)}
+            {data.map(({ page }) => <button type='button' onClick={() => setPagePag(page)}
+              className={page === pagePag ? `${style.Btn} ${style.BtnActive}` :
+                `${style.Btn}`} key={page}></button>)}
                 </div>
               </div>
               

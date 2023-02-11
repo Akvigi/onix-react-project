@@ -5,8 +5,8 @@ import Rate from '../../List/Rate/Rate'
 const MenuList = ({dataFu, dataPop, onAdd}) => {
   return (
         <ul className={style.List}>
-          {dataFu.map(({ name, desc, price, link, rate}) => {
-              return (<li className={style.Item} key={name}>
+      {dataFu.map(({ name, desc, price, link, rate }) => (
+        <li className={style.Item} key={name}>
                  <div className={style.Desc}>
                     <img className={style.Img} src={link} alt={name} />
                     
@@ -22,10 +22,10 @@ const MenuList = ({dataFu, dataPop, onAdd}) => {
                         <p>{price}K</p>
                         <button className={style.Btn} onClick={() => onAdd(name, price)} type='click'>+</button>
                   </div>
-              </li>)
-          })}
-          {dataPop.map(({ name, price, link, rate }) => {
-              return (<li className={style.Item}>
+        </li>)
+          )}
+      {dataPop.map(({ name, price, link, rate }) => (
+        <li className={style.Item} key={`${name}${price}`}>
                   <div className={style.Desc}>
                       <img className={style.Img} src={link} alt={name} />
                     
@@ -35,16 +35,16 @@ const MenuList = ({dataFu, dataPop, onAdd}) => {
                         <div className={style.Rate}>
                             <Rate rate={rate}/>
                         </div>  
-                        
                       </div>
-                    </div>
+                  </div>
                   <div className={style.PriceBtnCont}>
                       <p>{price}K</p>
-                      <button className={style.Btn} onClick={() => onAdd(name, price)} type='click'>+</button>
+                      <button className={style.Btn}
+                        onClick={() => onAdd(name, price)}
+                        type='click'>+</button>
                   </div>
-                  
-              </li>)
-          })}
+        </li>)
+        )}
         </ul>
   )
 }

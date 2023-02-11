@@ -18,12 +18,16 @@ const SpList = ({data, addProd}) => {
             <div className={style.RateCont}>
               <Rate rate={rate} />
             </div>
-            <button className={style.BtnAdd} onClick={() => addProd(name, price)} type='button' id={name}><ShoppingCartTwoToneIcon
-              sx={{
+            <button className={style.BtnAdd}
+              onClick={() => addProd(name, price)}
+              type='button' id={name}>
+              <ShoppingCartTwoToneIcon
+                sx={{
                 color: "white",
                 width: "25px",
                 height: "25px"
-            }}/></button>
+                }} />
+            </button>
           </div>
       </li>
       ))}

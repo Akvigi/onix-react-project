@@ -14,13 +14,13 @@ const FormModal = ({ onExit, onMenu, order, modal, onDelete }) => {
     setPhone('')
     setAddress('')
   }
-     const esc = useCallback(
-        e => {
-            if (e.code === `Escape`) {
-                onExit()
-            }
-        },
-        [onExit]
+  const esc = useCallback(
+    e => {
+      if (e.code === `Escape`) {
+        onExit()
+      }
+    },
+    [onExit]
   )
 
   useEffect(() => {
@@ -30,19 +30,8 @@ const FormModal = ({ onExit, onMenu, order, modal, onDelete }) => {
       window.removeEventListener('keydown', esc)
     }
   }, [esc])
-  // const onBackClick = useCallback(
-  //   e => {
-  //     if (e.currentTarget === e.target) {
-  //       onExit()
-  //     }
-  //   },
-  //   [onExit]
-  // )
-  return createPortal(
-    <div className={modal ? `${style.Overlay} ${style.Active}` : style.Overlay}
-      //  onClick={onBackClick}
-     >   
-       <form className={style.Form} onSubmit={(e) => {
+
+  const onSubmitForm = (e) => {
          e.preventDefault()
          if (order.length === 0) {
            return Notiflix.Notify.warning('Nothing in cart');
@@ -53,36 +42,46 @@ const FormModal = ({ onExit, onMenu, order, modal, onDelete }) => {
          console.log(Address, number, name);
           onExit()
          reset()
-       }} action="submit">
-         <button type='button' onClick={onExit} className={style.ExitBtn}>X</button>
-         <input className={style.Input}
-           onChange={(e) => setName(e.currentTarget.value)}
-           type="text"
-           placeholder="Name" />
-         <input className={style.Input}
-           type="text"
-           placeholder="Address"
-           onChange={(e) => setAddress(e.currentTarget.value)}
-         />
-         <input className={style.Input}
-           type="phone"
-           placeholder="Phone"
-            onChange={(e) => setPhone(e.currentTarget.value)}
-         />
-        <button className={style.MenuBtn} onClick={onMenu} type='button'>Menu</button>
-                <h4>Your order</h4>
-                <ul className={style.List}>
+  }
+  
+  return createPortal(
+    <div className={modal ? `${style.Overlay} ${style.Active}` : style.Overlay}>   
+        <form className={style.Form} onSubmit={(e) => onSubmitForm(e)} action="submit">
+          <button type='button'
+            onClick={onExit}
+            className={style.ExitBtn}>X</button>
+          <input className={style.Input}
+            onChange={(e) => setName(e.currentTarget.value)}
+            type="text"
+            placeholder="Name" />
+          <input className={style.Input}
+            type="text"
+            placeholder="Address"
+            onChange={(e) => setAddress(e.currentTarget.value)}
+          />
+          <input className={style.Input}
+            type="phone"
+            placeholder="Phone"
+              onChange={(e) => setPhone(e.currentTarget.value)}
+          />
+          <button className={style.MenuBtn}
+            onClick={onMenu} type='button'>Menu</button>
+          <h4>Your order</h4>
+          <ul className={style.List}>
                   
                 {order.length > 0 ? (order.map(({ name, price, id }) =>
-                (<li key={id} className={style.OrderItem}>
+                  (<li key={id} className={style.OrderItem}>
                   <p>{name}</p>
-                  <div className={style.PriceDelbtnCont}><p>{price}K</p><button onClick={() => onDelete(id)} className={style.DelBtn}>-</button></div>
-                </li>))) : (<p>Nothing in cart</p>)
-                   }
-               </ul>
-               <button className={style.OrderBtn} type="submit">Order</button>
-           </form>
-     </div>,
+                  <div className={style.PriceDelbtnCont}>
+                    <p>{price}K</p>
+                    <button onClick={() => onDelete(id)} className={style.DelBtn}>-</button>
+                  </div>
+                  </li>))) : (<p>Nothing in cart</p>)
+                }
+          </ul>
+          <button className={style.OrderBtn} type="submit">Order</button>
+        </form>
+    </div>,
     portal
   )
 }
