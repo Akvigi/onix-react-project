@@ -1,10 +1,10 @@
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 import React, { useEffect, useState } from 'react';
-import './App.css';
+
 import AboutUs from './components/AboutUs/AboutUs';
 import Footer from './components/Footer/Footer';
-import FormModal from './components/FormModal/FormModal';
+import FormModal from './components/FormModalOrder/FormModalOrder';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Menu from './components/Menu/Menu';
@@ -46,6 +46,24 @@ function App() {
     localStorage.setItem("order", JSON.stringify(orderStorage))
   }, [orderStorage])
   
+  const sortOrder = (prevState, by, setToggle) => {
+    if (by === "price") {
+      if (prevState === false) {
+        setOrderStorage(orderStorage.sort((a, b) => a.price - b.price))
+      } else if (prevState === true) {
+        setOrderStorage(orderStorage.sort((a, b) => b.price - a.price))
+      }
+      setToggle(!prevState)
+    }
+    if (by === "name") {
+      if (prevState === false) {
+        setOrderStorage(orderStorage.sort((a, b) => a.name.localeCompare(b.name)))
+      } else if (prevState === true) {
+        setOrderStorage(orderStorage.sort((a, b) => b.name.localeCompare(a.name)))
+      }
+      setToggle(!prevState)
+    } 
+  }
 
   return (
     <div className="App">
@@ -62,13 +80,17 @@ function App() {
         onExit={() => setMenuModal(false)}
         addProd={onOrder}
         onOrder={() => {
-        setMenuModal(false)
-        setOrderModal(true)
-      }} />
-      <FormModal modal={orderModal} onExit={() => setOrderModal(false)} onMenu={() => {
-        setOrderModal(false)
-        setMenuModal(true)
-      }} order={orderStorage}
+          setMenuModal(false)
+          setOrderModal(true)
+        }} />
+      <FormModal modal={orderModal}
+        onExit={() => setOrderModal(false)}
+        onMenu={() => {
+          setOrderModal(false)
+          setMenuModal(true)
+        }}
+        onSort={sortOrder}
+        order={orderStorage}
         onDelete={onDelete}
       />
     </div>

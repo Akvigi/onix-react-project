@@ -1,14 +1,18 @@
 import Notiflix from 'notiflix'
 import React, { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
-import style from './FormModal.module.sass'
+import style from './FormModalOrder.module.sass'
 
 const portal = document.querySelector('#portal')
   
-const FormModal = ({ onExit, onMenu, order, modal, onDelete }) => {
+const FormModal = ({ onExit, onMenu, order, modal, onDelete, onSort }) => {
   const [name, setName] = useState('')
   const [number, setPhone] = useState('')
   const [Address, setAddress] = useState('')
+  // const [order, setOrder] = useState([...fOrder])
+  const [priceToggle, setPriceToggle] = useState(false)
+  const [nameToggle, setNameToggle] = useState(false)
+
   const reset = () => {
     setName('')
     setPhone('')
@@ -44,6 +48,25 @@ const FormModal = ({ onExit, onMenu, order, modal, onDelete }) => {
          reset()
   }
   
+  // const sortOrder = (prevState, by, order) => {
+  //   if (by === "price") {
+  //     if (prevState === false) {
+  //       setOrder(order.sort((a, b) => a.price - b.price))
+  //     } else if (prevState === true) {
+  //       setOrder(order.sort((a, b) => b.price - a.price))
+  //     }
+  //     setPriceToggle(!prevState)
+  //   }
+  //   if (by === "name") {
+  //     if (prevState === false) {
+  //       setOrder(order.sort((a, b) => a.name.localeCompare(b.name)))
+  //     } else if (prevState === true) {
+  //       setOrder(order.sort((a, b) => b.name.localeCompare(a.name)))
+  //     }
+  //     setNameToggle(!prevState)
+  //   } 
+  // }
+
   return createPortal(
     <div className={modal ? `${style.Overlay} ${style.Active}` : style.Overlay}>   
         <form className={style.Form} onSubmit={(e) => onSubmitForm(e)} action="submit">
@@ -67,8 +90,13 @@ const FormModal = ({ onExit, onMenu, order, modal, onDelete }) => {
           <button className={style.MenuBtn}
             onClick={onMenu} type='button'>Menu</button>
           <h4>Your order</h4>
+          <div className={style.SortBtnCont}>
+          <button type='button' className={style.SortBtn}
+            onClick={() => onSort(priceToggle, "price", setPriceToggle)}>Sort by price</button>
+          <button type='button' className={style.SortBtn}
+            onClick={() => onSort(nameToggle, "name", setNameToggle)}>Sort by name</button>          
+          </div>
           <ul className={style.List}>
-                  
                 {order.length > 0 ? (order.map(({ name, price, id }) =>
                   (<li key={id} className={style.OrderItem}>
                   <p>{name}</p>
