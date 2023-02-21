@@ -4,7 +4,7 @@ import Rate from '../../List/Rate/Rate'
 
 const MenuList = ({dataFu, dataPop, onAdd}) => {
   return (
-        <ul className={style.List}>
+    <ul className={style.List}>
       {dataFu.map(({ name, desc, price, link, rate }) => (
         <li className={style.Item} key={name}>
                  <div className={style.Desc}>
@@ -23,7 +23,7 @@ const MenuList = ({dataFu, dataPop, onAdd}) => {
                         <button className={style.Btn} onClick={() => onAdd(name, price)} type='click'>+</button>
                   </div>
         </li>)
-          )}
+      )}
       {dataPop.map(({ name, price, link, rate }) => (
         <li className={style.Item} key={`${name}${price}`}>
                   <div className={style.Desc}>
@@ -44,8 +44,8 @@ const MenuList = ({dataFu, dataPop, onAdd}) => {
                         type='click'>+</button>
                   </div>
         </li>)
-        )}
-        </ul>
+      )}
+    </ul>
   )
 }
 

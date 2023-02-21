@@ -65,6 +65,39 @@ function App() {
     } 
   }
 
+  const sortWtSort = (prevState, setToggle) => {
+    let done = false
+    let array = JSON.parse(localStorage.getItem("order"))
+    if (prevState === false) {
+      while (!done) {
+      done = true;
+      for (let i = 1; i < array.length; i += 1) {
+        if (array[i - 1].price > array[i].price) {
+          done = false;
+          let a = array[i - 1];
+          array[i - 1] = array[i];
+          array[i] = a;
+        }
+      }
+    }
+    } else if (prevState === true) {
+      while (!done) {
+      done = true;
+      for (let i = 1; i < array.length; i += 1) {
+        if (array[i - 1].price < array[i].price) {
+          done = false;
+          let a = array[i - 1];
+          array[i - 1] = array[i];
+          array[i] = a;
+        }
+      }
+    }
+    }
+    setToggle(!prevState)
+    setOrderStorage(array)
+  } 
+
+
   return (
     <div className="App">
       <Header goToAbout={() => onScroll(aboutUsRef)}
@@ -90,6 +123,7 @@ function App() {
           setMenuModal(true)
         }}
         onSort={sortOrder}
+        onSortWS={sortWtSort}
         order={orderStorage}
         onDelete={onDelete}
       />
