@@ -1,19 +1,17 @@
-import React from 'react'
-import data from '../../fudata'
-import Container from '../Container/Container'
-import SectionHeading from '../SectionHeading/SectionHeading'
-import SpList from './SpList/SpList'
-import style from './SpecialFU.module.sass'
+import React from 'react';
 
-const SpecialFU = ({specialRef, onAddProd}) => {
-  return (
-    <section className={style.Foryou} ref={specialRef}>
-        <Container>
-            <SectionHeading>Special menu for You</SectionHeading>
-        <SpList data={data} addProd={onAddProd}/>
-        </Container>
-    </section>
-  )
-}
+import Container from '../Container/Container';
+import SectionHeading from '../SectionHeading/SectionHeading';
+import SpList from './SpList/SpList';
+import style from './SpecialFU.module.sass';
 
-export default SpecialFU
+const SpecialFU = ({specialRef}) => (
+	<section className={style.Foryou} ref={specialRef}>
+		<Container>
+			<SectionHeading>Special menu for You</SectionHeading>
+			<SpList/>
+		</Container>
+	</section>
+);
+
+export default SpecialFU;

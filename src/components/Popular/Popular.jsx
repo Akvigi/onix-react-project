@@ -1,21 +1,20 @@
-import React from 'react'
-import Container from '../Container/Container'
+import React from 'react';
+import style from './Popular.module.sass';
 
-import style from './Popular.module.sass'
-import SectionHeading from '../SectionHeading/SectionHeading'
-import PopList from './PopList/PopList'
-import data from '../../popdata'
+import Container from '../Container/Container';
+import SectionHeading from '../SectionHeading/SectionHeading';
+import PopList from './PopList/PopList';
+import {useSelector} from 'react-redux';
+import {getPopData} from '../../redux/selectors';
 
+const Popular = () => {
+	const data = useSelector(getPopData);
+	return (<section className={style.Popular}>
+		<Container>
+			<SectionHeading>Popular Now</SectionHeading>
+			<PopList data={data}/>
+		</Container>
+	</section>);
+};
 
-const Popular = ({onAddProd}) => {
-  return (
-        <section className={style.Popular}>
-            <Container>
-              <SectionHeading>Popular Now</SectionHeading>
-              <PopList data={data} addProd={onAddProd} />
-            </Container>
-        </section>
-  )
-}
-
-export default Popular
+export default Popular;

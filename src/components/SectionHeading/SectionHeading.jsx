@@ -1,12 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { respondTo } from '../../helpers/respondTo'
+import React from 'react';
+import styled from 'styled-components';
+import {respondTo} from '../../helpers/respondTo';
 
-const SectionHeading = ({children}) => {
-  return (
-    <Head>{children}</Head>
-  )
-}
+const SectionHeading = ({children}) => (
+	<Head>{children}</Head>
+);
 
 const Head = styled.h2`
     font-weight: 600;
@@ -18,7 +16,7 @@ const Head = styled.h2`
         text-align: start;
         padding-left: 15px;
     `}
-`
+`;
 
-export default SectionHeading
+export default SectionHeading;
 

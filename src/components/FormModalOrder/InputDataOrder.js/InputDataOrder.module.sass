@@ -1,0 +1,16 @@
+.Input
+    background: transparent
+    width: 100%
+    box-sizing: border-box
+    padding: 5px 10px
+    border-radius: 10px
+    border: 1px solid gray
+    &:focus
+        border: 1px solid #F4AE26
+        color: #030201
+        &::placeholder
+            color: #c94d00
+    &:not(:last-child)
+        margin-bottom: 7px
+    &::placeholder
+        color: black

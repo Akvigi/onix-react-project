@@ -1,12 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { respondTo } from '../../../helpers/respondTo'
+import React from 'react';
+import styled from 'styled-components';
+import {respondTo} from '../../../helpers/respondTo';
 
-const ContainerHero = ({children}) => {
-  return (
-      <Cont>{children}</Cont>
-  )
-}
+const ContainerHero = ({children}) => (
+	<Cont>{children}</Cont>
+);
 
 const Cont = styled.div`
     ${respondTo.md`
@@ -21,6 +19,6 @@ const Cont = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-`
+`;
 
-export default ContainerHero
+export default ContainerHero;
