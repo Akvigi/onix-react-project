@@ -2,22 +2,33 @@ import Notiflix from 'notiflix';
 import React, {useCallback, useEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {useDispatch, useSelector} from 'react-redux';
+import {closeOrderModal, toggleMenuModal, toggleOrderModal} from '../../redux/modalsSlice';
 import {deleteItemFromOrder} from '../../redux/orderSlice';
-import {getOrder} from '../../redux/selectors';
+import {getOrder, getOrderModal} from '../../redux/selectors';
 import style from './FormModalOrder.module.sass';
 import InputDataOrder from './InputDataOrder.js/InputDataOrder';
 import SortBtn from './SortBtn/SortBtn';
 
 const portal = document.querySelector('#portal');
 
-const FormModal = ({onExit, onMenu, modal}) => {
+const FormModal = () => {
 	const [name, setName] = useState('');
 	const [number, setPhone] = useState('');
 	const [Address, setAddress] = useState('');
+
 	const order = useSelector(getOrder);
+	const modal = useSelector(getOrderModal);
+
 	const [priceToggle, setPriceToggle] = useState(false);
 	const [nameToggle, setNameToggle] = useState(false);
+
 	const dispatch = useDispatch();
+
+	const onMenu = () => {
+		dispatch(toggleOrderModal());
+		dispatch(toggleMenuModal());
+	};
+
 	const reset = () => {
 		setName('');
 		setPhone('');
@@ -27,10 +38,10 @@ const FormModal = ({onExit, onMenu, modal}) => {
 	const esc = useCallback(
 		e => {
 			if (e.code === 'Escape') {
-				onExit();
+				dispatch(closeOrderModal());
 			}
 		},
-		[onExit],
+		[],
 	);
 
 	useEffect(() => {
@@ -52,7 +63,7 @@ const FormModal = ({onExit, onMenu, modal}) => {
 		}
 
 		console.log(Address, number, name);
-		onExit();
+		dispatch(toggleOrderModal());
 		reset();
 	};
 
@@ -92,7 +103,7 @@ const FormModal = ({onExit, onMenu, modal}) => {
 		<div className={modal ? `${style.Overlay} ${style.Active}` : style.Overlay}>
 			<form className={style.Form} onSubmit={e => onSubmitForm(e)} action='submit'>
 				<button type='button'
-					onClick={onExit}
+					onClick={() => dispatch(toggleOrderModal())}
 					className={style.ExitBtn}>X</button>
 				<InputDataOrder
 					placeholder='Name'
@@ -114,12 +125,10 @@ const FormModal = ({onExit, onMenu, modal}) => {
 					<SortBtn toggle={priceToggle}
 						by={'price'}
 						setToggle={setPriceToggle}
-						// onSort={sortOrder}
 					>Sort by price</SortBtn>
 					<SortBtn toggle={nameToggle}
 						by={'name'}
 						setToggle={setNameToggle}
-						// onSort={sortOrder}
 					>Sort by name</SortBtn>
 					<SortBtn toggle={priceToggle}
 						by={'price'}

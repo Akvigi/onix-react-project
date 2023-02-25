@@ -1,14 +1,18 @@
 import React from 'react';
 import style from './MenuList.module.sass';
 import Rate from '../../List/Rate/Rate';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {addItemToOrder} from '../../../redux/orderSlice';
+import {getDataFU, getPopData} from '../../../redux/selectors';
 
-const MenuList = ({dataFu, dataPop}) => {
+const MenuList = () => {
+	const dataFU = useSelector(getDataFU);
+	const dataPop = useSelector(getPopData);
+
 	const dispatch = useDispatch();
 	return (
 		<ul className={style.List}>
-			{dataFu.map(({name, desc, price, link, rate}) => (
+			{dataFU.map(({name, desc, price, link, rate}) => (
 				<li className={style.Item} key={name}>
 					<div className={style.Desc}>
 						<img className={style.Img} src={link} alt={name} />

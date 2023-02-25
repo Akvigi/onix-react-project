@@ -1,11 +1,18 @@
 import React from 'react';
-import style from './Hero.module.sass';
 import Media from 'react-media';
+import {useDispatch} from 'react-redux';
+
+import {toggleMenuModal, toggleOrderModal} from '../../redux/modalsSlice';
+
+import style from './Hero.module.sass';
+
 import coffee from '../../images/img-hero.png';
 import ContainerHero from './ContainerHero/ContainerHero';
 
-const Hero = ({onMenu, onOrder}) => (
-	<section className={style.Hero}>
+const Hero = () => {
+	const dispatch = useDispatch();
+
+	return (<section className={style.Hero}>
 		<ContainerHero>
 			<div className={style.HeroCont}>
 				<h1 className={style.Heading}>Enjoy your <span>coffee</span> before your activity</h1>
@@ -18,8 +25,8 @@ const Hero = ({onMenu, onOrder}) => (
 				</Media>
 				<p className={style.Text}>Boost your productivity and build your mood with a glass of coffee in the morning</p>
 				<div >
-					<button onClick={onOrder} className={style.Btn}>Order now</button>
-					<button className={style.Linkmenu} onClick={onMenu} >More menu</button>
+					<button onClick={() => dispatch(toggleOrderModal())} className={style.Btn}>Order now</button>
+					<button className={style.Linkmenu} onClick={() => dispatch(toggleMenuModal())} >More menu</button>
 				</div >
 			</div>
 			<Media queries={{small: '(max-width: 767px)'}}>
@@ -30,7 +37,7 @@ const Hero = ({onMenu, onOrder}) => (
 				}
 			</Media>
 		</ContainerHero>
-	</section>
-);
+	</section>);
+};
 
 export default Hero;

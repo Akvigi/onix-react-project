@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 
 import AboutUs from './components/AboutUs/AboutUs';
 import Footer from './components/Footer/Footer';
@@ -10,15 +10,15 @@ import Popular from './components/Popular/Popular';
 import SpecialFU from './components/SpecialFU/SpecialFU';
 import Team from './components/Reviews/Reviews';
 
-import {getOrder} from './redux/selectors';
+import {getMenuModal, getOrder, getOrderModal} from './redux/selectors';
 import {useSelector} from 'react-redux';
 
 function App() {
-	const [menuModal, setMenuModal] = useState(false);
-	const [orderModal, setOrderModal] = useState(false);
 	const order = useSelector(getOrder);
 	const aboutUsRef = React.createRef(null);
 	const specialRef = React.createRef(null);
+	const menuModal = useSelector(getMenuModal);
+	const orderModal = useSelector(getOrderModal);
 
 	const onScroll = section => window.scrollTo({top: section.current.offsetTop, behavior: 'smooth'});
 
@@ -26,25 +26,13 @@ function App() {
 		localStorage.setItem('order', JSON.stringify(order));
 	}, [order]);
 
-	// Const sortOrder = (prevState, by, setToggle) => {
-	//   if (by === "price") {
-	//     if (prevState === false) {
-	//       setOrderStorage(orderStorage.sort((a, b) => a.price - b.price))
-	//       return orderStorage.sort(///////)
-	//     } else if (prevState === true) {
-	//       setOrderStorage(orderStorage.sort((a, b) => b.price - a.price))
-	//     }
-	//     setToggle(!prevState)
-	//   }
-	//   if (by === "name") {
-	//     if (prevState === false) {
-	//       setOrderStorage(orderStorage.sort((a, b) => a.name.localeCompare(b.name)))
-	//     } else if (prevState === true) {
-	//       setOrderStorage(orderStorage.sort((a, b) => b.name.localeCompare(a.name)))
-	//     }
-	//     setToggle(!prevState)
-	//   }
-	// }
+	useEffect(() => {
+		const modals = {
+			menu: menuModal,
+			order: orderModal,
+		};
+		localStorage.setItem('modals', JSON.stringify(modals));
+	}, [menuModal, orderModal]);
 
 	const sortWtSort = (prevState, setToggle) => {
 		let done = false;
@@ -81,26 +69,15 @@ function App() {
 	return (
 		<div className='App'>
 			<Header goToAbout={() => onScroll(aboutUsRef)}
-				goToSpecial={() => onScroll(specialRef)}
-				onOrder={() => setOrderModal(true)} />
-			<Hero onMenu={() => setMenuModal(true)} onOrder={() => setOrderModal(true)} />
-			<Popular onAddProd='onOrder'/>
-			<AboutUs refTo={aboutUsRef} onOrder={() => setMenuModal(true)}/>
-			<SpecialFU specialRef={specialRef} onAddProd='onOrder' />
-			<Team/>
+				goToSpecial={() => onScroll(specialRef)} />
+			<Hero />
+			<Popular />
+			<AboutUs refTo={aboutUsRef} />
+			<SpecialFU specialRef={specialRef} />
+			<Team />
 			<Footer />
-			<Menu modal={menuModal}
-				onExit={() => setMenuModal(false)}
-				onOrder={() => {
-					setMenuModal(false);
-					setOrderModal(true);
-				}} />
-			<FormModal modal={orderModal}
-				onExit={() => setOrderModal(false)}
-				onMenu={() => {
-					setOrderModal(false);
-					setMenuModal(true);
-				}}
+			<Menu/>
+			<FormModal
 				onSortWS={sortWtSort}
 			/>
 		</div>
