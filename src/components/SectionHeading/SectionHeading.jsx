@@ -1,12 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import {respondTo} from '../../helpers/respondTo';
 
-const SectionHeading = ({children}) => (
-	<Head>{children}</Head>
-);
-
-const Head = styled.h2`
+const SectionHeading = styled.h2`
     font-weight: 600;
     text-align: center;
     margin-bottom: 20px;

@@ -29,21 +29,9 @@ const orderSlice = createSlice({
 			return state.filter(item => item.id !== action.payload);
 		},
 		replaceWithSorted(state, action) {
-			// state = [...action.payload];
+			// State = [...action.payload];
 			return [...action.payload];
 		},
-		// SortOrderFromLowest(state, _) {
-		// 	return state.sort((a, b) => a.price - b.price);
-		// },
-		// sortOrderFromBiggest(state, _) {
-		// 	return state.sort((a, b) => b.price - a.price);
-		// },
-		// sortOrderFromA(state, _) {
-		// 	return state.sort((a, b) => a.name.localeCompare(b.name));
-		// },
-		// sortOrderFromZ(state, _) {
-		// 	return state.sort((a, b) => b.name.localeCompare(a.name));
-		// },
 	},
 });
 

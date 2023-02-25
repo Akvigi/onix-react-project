@@ -1,12 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import {respondTo} from '../../../helpers/respondTo';
 
-const ContainerHero = ({children}) => (
-	<Cont>{children}</Cont>
-);
-
-const Cont = styled.div`
+const ContainerHero = styled.div`
     ${respondTo.md`
       max-width: 950px;
     `}

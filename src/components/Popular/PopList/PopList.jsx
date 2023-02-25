@@ -4,12 +4,14 @@ import Rate from '../../List/Rate/Rate';
 import Img from '../../List/ImgList/ImgList';
 import NamePrice from '../../List/NamePrice/NamePrice';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {addItemToOrder} from '../../../redux/orderSlice';
 import Notiflix from 'notiflix';
+import {getPopData} from '../../../redux/selectors';
 
-const PopList = ({data}) => {
+const PopList = () => {
 	const dispatch = useDispatch();
+	const data = useSelector(getPopData);
 	const onAdd = (name, price) => {
 		dispatch(addItemToOrder(name, price));
 		Notiflix.Notify.success(`Successfull added to cart: ${name}`);
