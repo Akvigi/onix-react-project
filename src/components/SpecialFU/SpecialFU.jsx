@@ -4,6 +4,7 @@ import Container from '../Container/Container';
 import SectionHeading from '../SectionHeading/SectionHeading';
 import SpList from './SpList/SpList';
 import style from './SpecialFU.module.sass';
+import PropTypes from 'prop-types';
 
 const SpecialFU = ({specialRef}) => (
 	<section className={style.Foryou} ref={specialRef}>
@@ -13,5 +14,9 @@ const SpecialFU = ({specialRef}) => (
 		</Container>
 	</section>
 );
+
+SpecialFU.propTypes = {
+	specialRef: PropTypes.object,
+};
 
 export default SpecialFU;

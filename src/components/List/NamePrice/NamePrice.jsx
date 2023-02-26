@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './NamePrice.module.sass';
+import PropTypes from 'prop-types';
 
 const NamePrice = ({name, price}) => (
 	<div className={style.NamePriceCont}>
@@ -7,5 +8,10 @@ const NamePrice = ({name, price}) => (
 		<p className={style.Price}>{price}K</p>
 	</div>
 );
+
+NamePrice.propTypes = {
+	name: PropTypes.string.isRequired,
+	price: PropTypes.number.isRequired,
+};
 
 export default NamePrice;

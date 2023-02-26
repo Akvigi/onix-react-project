@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import style from './InputDataOrder.module.sass';
 
 const InputDataOrder = ({onSet, placeholder}) => (
@@ -8,5 +10,10 @@ const InputDataOrder = ({onSet, placeholder}) => (
 		placeholder={placeholder}
 	/>
 );
+
+InputDataOrder.propTypes = {
+	placeholder: PropTypes.string,
+	onSet: PropTypes.func,
+};
 
 export default InputDataOrder;

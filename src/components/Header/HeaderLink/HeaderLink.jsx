@@ -1,12 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import {respondTo} from '../../../helpers/respondTo';
 
-const HeaderLink = ({href, textL}) => (
-	<Link href={href}>{textL}</Link>
-);
-
-const Link = styled.a`
+const HeaderLink = styled.a`
     color: rgb(0, 0, 0);
     font-size: 14px;
     ${respondTo.xs`

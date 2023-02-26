@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux';
 import imgus from '../../images/aboutus.jpg';
 import {toggleMenuModal} from '../../redux/modalsSlice';
 import style from './AboutUs.module.sass';
+import PropTypes from 'prop-types';
 
 const AboutUs = ({refTo}) => {
 	const dispatch = useDispatch();
@@ -29,6 +30,10 @@ const AboutUs = ({refTo}) => {
 			</div>
 		</section>
 	);
+};
+
+AboutUs.propTypes = {
+	refTo: PropTypes.object,
 };
 
 export default AboutUs;

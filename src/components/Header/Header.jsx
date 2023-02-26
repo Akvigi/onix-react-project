@@ -3,6 +3,7 @@ import style from './Header.module.sass';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import {useDispatch} from 'react-redux';
 import {toggleOrderModal} from '../../redux/modalsSlice';
+import PropTypes from 'prop-types';
 
 const Header = ({goToAbout, goToSpecial}) => {
 	const dispatch = useDispatch();
@@ -23,6 +24,11 @@ const Header = ({goToAbout, goToSpecial}) => {
 			</div>
 		</header>
 	);
+};
+
+Header.propTypes = {
+	goToAbout: PropTypes.func.isRequired,
+	goToSpecial: PropTypes.func.isRequired,
 };
 
 export default Header;

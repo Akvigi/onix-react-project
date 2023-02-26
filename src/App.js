@@ -19,7 +19,6 @@ function App() {
 	const specialRef = React.createRef(null);
 	const menuModal = useSelector(getMenuModal);
 	const orderModal = useSelector(getOrderModal);
-
 	const onScroll = section => window.scrollTo({top: section.current.offsetTop, behavior: 'smooth'});
 
 	useEffect(() => {

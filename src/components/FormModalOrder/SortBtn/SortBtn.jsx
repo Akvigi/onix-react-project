@@ -1,8 +1,9 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {replaceWithSorted} from '../../../redux/orderSlice';
-
+import PropTypes from 'prop-types';
 import style from './SortBtn.module.sass';
+
 const SortBtn = ({children, toggle, setToggle, by}) => {
 	const dispatch = useDispatch();
 
@@ -36,6 +37,13 @@ const SortBtn = ({children, toggle, setToggle, by}) => {
 		onClick={() => sortOrder(toggle, by, setToggle)}>
 		{children}
 	</button>);
+};
+
+SortBtn.propTypes = {
+	children: PropTypes.string,
+	toggle: PropTypes.bool,
+	setToggle: PropTypes.func,
+	by: PropTypes.string,
 };
 
 export default SortBtn;

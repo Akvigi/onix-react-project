@@ -3,7 +3,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {closeOrderModal, toggleMenuModal, toggleOrderModal} from '../../redux/modalsSlice';
-import {deleteItemFromOrder} from '../../redux/orderSlice';
+import {deleteItemFromOrder, replaceWithSorted} from '../../redux/orderSlice';
 import {getOrder, getOrderModal} from '../../redux/selectors';
 import style from './FormModalOrder.module.sass';
 import InputDataOrder from './InputDataOrder.js/InputDataOrder';
@@ -96,6 +96,7 @@ const FormModal = () => {
 			}
 		}
 
+		dispatch(replaceWithSorted(array));
 		setToggle(!prevState);
 	};
 
