@@ -5,7 +5,7 @@ export const filterStatus = Object.freeze({
 		f9t1: 'f9t1',
 	},
 	name: {
-		fAtZ: 'f1t9',
-		fZtA: 'f9t1',
+		fAtZ: 'fAtZ',
+		fZtA: 'fZtA',
 	},
 });

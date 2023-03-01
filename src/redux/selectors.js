@@ -6,17 +6,17 @@ export const getFilter = state => state.filter;
 
 export const getSortedOrder = createSelector(
 	[getOrder, getFilter],
-    (order, filter) => {
-        console.log(order)
+	(order, filter) => {
+		const ord = JSON.stringify(order);
 		switch (filter) {
 			case filterStatus.price.f1t9:
-				return order.sort((a, b) => a.price - b.price);
+				return JSON.parse(ord).sort((a, b) => a.price - b.price);
 			case filterStatus.price.f9t1:
-				return order.sort((a, b) => b.price - a.price);
+				return JSON.parse(ord).sort((a, b) => b.price - a.price);
 			case filterStatus.name.fAtZ:
-				return order.sort((a, b) => a.name.localeCompare(b.name));
+				return JSON.parse(ord).sort((a, b) => a.name.localeCompare(b.name));
 			case filterStatus.name.fZtA:
-				return order.sort((a, b) => b.name.localeCompare(a.name));
+				return JSON.parse(ord).sort((a, b) => b.name.localeCompare(a.name));
 			default:
 				return order;
 		}

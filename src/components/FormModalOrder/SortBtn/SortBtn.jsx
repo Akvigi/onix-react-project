@@ -24,7 +24,7 @@ const SortBtn = ({children, toggle, setToggle, by}) => {
 			if (prevState === false) {
 				dispatch(changeFilter(filterStatus.name.fAtZ));
 			} else if (prevState === true) {
-				dispatch(changeFilter(filterStatus.price.fZtA));
+				dispatch(changeFilter(filterStatus.name.fZtA));
 			}
 
 			setToggle(!prevState);
