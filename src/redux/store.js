@@ -1,8 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {dataReducer} from './dataSlice';
-import {filterReducer} from './filterSlice';
-import {modalsReducers} from './modalsSlice';
-import {orderReducer} from './orderSlice';
+import {dataReducer} from './slices/dataSlice';
+import {filterReducer} from './slices/filterSlice';
+import {modalsReducers} from './slices/modalsSlice';
+import {orderReducer} from './slices/orderSlice';
 
 const store = configureStore({
 	reducer: {

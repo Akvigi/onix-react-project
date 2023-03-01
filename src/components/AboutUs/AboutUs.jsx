@@ -2,7 +2,7 @@ import React from 'react';
 import Media from 'react-media';
 import {useDispatch} from 'react-redux';
 import imgus from '../../images/aboutus.jpg';
-import {toggleMenuModal} from '../../redux/modalsSlice';
+import {toggleMenuModal} from '../../redux/slices/modalsSlice';
 import style from './AboutUs.module.sass';
 import PropTypes from 'prop-types';
 

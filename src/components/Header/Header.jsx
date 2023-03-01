@@ -2,7 +2,7 @@ import React from 'react';
 import style from './Header.module.sass';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import {useDispatch} from 'react-redux';
-import {toggleOrderModal} from '../../redux/modalsSlice';
+import {toggleOrderModal} from '../../redux/slices/modalsSlice';
 import PropTypes from 'prop-types';
 
 const Header = ({goToAbout, goToSpecial}) => {

@@ -3,7 +3,7 @@ import MenuList from './MenuList/MenuList';
 import style from './Menu.module.sass';
 import {useDispatch, useSelector} from 'react-redux';
 import {getMenuModal} from '../../redux/selectors';
-import {closeMenuModal, toggleMenuModal, toggleOrderModal} from '../../redux/modalsSlice';
+import {closeMenuModal, toggleMenuModal, toggleOrderModal} from '../../redux/slices/modalsSlice';
 
 const Menu = () => {
 	const modal = useSelector(getMenuModal);

@@ -2,7 +2,7 @@ import React from 'react';
 import Media from 'react-media';
 import {useDispatch} from 'react-redux';
 
-import {toggleMenuModal, toggleOrderModal} from '../../redux/modalsSlice';
+import {toggleMenuModal, toggleOrderModal} from '../../redux/slices/modalsSlice';
 
 import style from './Hero.module.sass';
 

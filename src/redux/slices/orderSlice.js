@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {nanoid} from 'nanoid';
-import {getOrderStFromLocal} from './helpers';
+import {getOrderStFromLocal} from '../helpers';
 
 const orderSlice = createSlice({
 	name: 'order',

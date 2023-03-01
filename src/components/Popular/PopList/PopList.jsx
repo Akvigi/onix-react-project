@@ -5,7 +5,7 @@ import Img from '../../List/ImgList/ImgList';
 import NamePrice from '../../List/NamePrice/NamePrice';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import {useDispatch, useSelector} from 'react-redux';
-import {addItemToOrder} from '../../../redux/orderSlice';
+import {addItemToOrder} from '../../../redux/slices/orderSlice';
 import Notiflix from 'notiflix';
 import {getPopData} from '../../../redux/selectors';
 

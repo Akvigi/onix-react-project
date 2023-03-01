@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
-import dataFU from '../fudata';
-import popData from '../popdata';
-import reviewsData from '../reviewsdata';
+import dataFU from '../../fudata';
+import popData from '../../popdata';
+import reviewsData from '../../reviewsdata';
 
 const initialDataState = {
 	dataFU,

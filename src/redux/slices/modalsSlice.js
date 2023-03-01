@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getModalsFromLocal} from './helpers';
+import {getModalsFromLocal} from '../helpers';
 
 const initialModalState = getModalsFromLocal();
 

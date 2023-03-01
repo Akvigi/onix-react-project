@@ -5,7 +5,7 @@ import Rate from '../../List/Rate/Rate';
 import style from './SpList.module.sass';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 import {useDispatch, useSelector} from 'react-redux';
-import {addItemToOrder} from '../../../redux/orderSlice';
+import {addItemToOrder} from '../../../redux/slices/orderSlice';
 import Notiflix from 'notiflix';
 import {getDataFU} from '../../../redux/selectors';
 
