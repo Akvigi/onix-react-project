@@ -1,6 +1,7 @@
+import {createSelector} from '@reduxjs/toolkit';
+import {filterStatus} from './constants';
+
 export const getOrder = state => state.order;
-<<<<<<< Updated upstream
-=======
 export const getFilter = state => state.filter;
 
 export const getSortedOrder = createSelector(
@@ -20,7 +21,6 @@ export const getSortedOrder = createSelector(
 		}
 	},
 );
->>>>>>> Stashed changes
 
 export const getAllData = state => state.data.allData;
 export const getPopData = state => state.data.popData;
