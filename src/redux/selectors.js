@@ -1,4 +1,26 @@
 export const getOrder = state => state.order;
+<<<<<<< Updated upstream
+=======
+export const getFilter = state => state.filter;
+
+export const getSortedOrder = createSelector(
+	[getOrder, getFilter],
+	(order, filter) => {
+		switch (filter) {
+			case filterStatus.price.f1t9:
+				return [...order].sort((a, b) => a.price - b.price);
+			case filterStatus.price.f9t1:
+				return [...order].sort((a, b) => b.price - a.price);
+			case filterStatus.name.fAtZ:
+				return [...order].sort((a, b) => a.name.localeCompare(b.name));
+			case filterStatus.name.fZtA:
+				return [...order].sort((a, b) => b.name.localeCompare(a.name));
+			default:
+				return order;
+		}
+	},
+);
+>>>>>>> Stashed changes
 
 export const getAllData = state => state.data.allData;
 export const getPopData = state => state.data.popData;
