@@ -4,7 +4,7 @@ import {createPortal} from 'react-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {closeOrderModal, toggleMenuModal, toggleOrderModal} from '../../redux/modalsSlice';
 import {deleteItemFromOrder, replaceWithSorted} from '../../redux/orderSlice';
-import {getOrder, getOrderModal} from '../../redux/selectors';
+import {getOrderModal, getSortedOrder} from '../../redux/selectors';
 import style from './FormModalOrder.module.sass';
 import InputDataOrder from './InputDataOrder.js/InputDataOrder';
 import SortBtn from './SortBtn/SortBtn';
@@ -16,7 +16,7 @@ const FormModal = () => {
 	const [number, setPhone] = useState('');
 	const [Address, setAddress] = useState('');
 
-	const order = useSelector(getOrder);
+	const order = useSelector(getSortedOrder);
 	const modal = useSelector(getOrderModal);
 
 	const [priceToggle, setPriceToggle] = useState(false);

@@ -1,20 +1,20 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {replaceWithSorted} from '../../../redux/orderSlice';
+
 import PropTypes from 'prop-types';
 import style from './SortBtn.module.sass';
 
+import {changeFilter} from '../../../redux/filterSlice';
+import {filterStatus} from '../../../redux/constants';
+
 const SortBtn = ({children, toggle, setToggle, by}) => {
 	const dispatch = useDispatch();
-
 	const sortOrder = (prevState, by, setToggle) => {
 		if (by === 'price') {
 			if (prevState === false) {
-				const array = JSON.parse(localStorage.getItem('order')).sort((a, b) => a.price - b.price);
-				dispatch(replaceWithSorted(array));
+				dispatch(changeFilter(filterStatus.price.f1t9));
 			} else if (prevState === true) {
-				const array = JSON.parse(localStorage.getItem('order')).sort((a, b) => b.price - a.price);
-				dispatch(replaceWithSorted(array));
+				dispatch(changeFilter(filterStatus.price.f9t1));
 			}
 
 			setToggle(!prevState);
@@ -22,11 +22,9 @@ const SortBtn = ({children, toggle, setToggle, by}) => {
 
 		if (by === 'name') {
 			if (prevState === false) {
-				const array = JSON.parse(localStorage.getItem('order')).sort((a, b) => a.name.localeCompare(b.name));
-				dispatch(replaceWithSorted(array));
+				dispatch(changeFilter(filterStatus.name.fAtZ));
 			} else if (prevState === true) {
-				const array = JSON.parse(localStorage.getItem('order')).sort((a, b) => b.name.localeCompare(a.name));
-				dispatch(replaceWithSorted(array));
+				dispatch(changeFilter(filterStatus.name.fZtA));
 			}
 
 			setToggle(!prevState);
