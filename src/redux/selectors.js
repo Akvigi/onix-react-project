@@ -10,9 +10,9 @@ export const getSortedOrder = createSelector(
         console.log(order)
 		switch (filter) {
 			case filterStatus.price.f1t9:
-				return order.sort((a, b) => a - b);
+				return order.sort((a, b) => a.price - b.price);
 			case filterStatus.price.f9t1:
-				return order.sort((a, b) => b - a);
+				return order.sort((a, b) => b.price - a.price);
 			case filterStatus.name.fAtZ:
 				return order.sort((a, b) => a.name.localeCompare(b.name));
 			case filterStatus.name.fZtA:
