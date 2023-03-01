@@ -5,6 +5,7 @@ import reviewsData from '../reviewsdata';
 
 const initialDataState = {
 	dataFU,
+	allData: [...dataFU, ...popData],
 	popData,
 	reviewsData,
 };
@@ -12,13 +13,6 @@ const initialDataState = {
 const dataSlice = createSlice({
 	name: 'data',
 	initialState: initialDataState,
-	reducers: {
-		getData(state, _) {
-			return state;
-		},
-	},
 });
-
-export const {getData} = dataSlice.actions;
 
 export const dataReducer = dataSlice.reducer;
