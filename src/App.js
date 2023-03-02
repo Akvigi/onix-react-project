@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import AboutUs from './components/AboutUs/AboutUs';
 import Footer from './components/Footer/Footer';
@@ -10,28 +10,11 @@ import Popular from './components/Popular/Popular';
 import SpecialFU from './components/SpecialFU/SpecialFU';
 import Team from './components/Reviews/Reviews';
 
-import {getMenuModal, getOrder, getOrderModal} from './redux/selectors';
-import {useSelector} from 'react-redux';
-
 function App() {
-	const order = useSelector(getOrder);
 	const aboutUsRef = React.createRef(null);
 	const specialRef = React.createRef(null);
-	const menuModal = useSelector(getMenuModal);
-	const orderModal = useSelector(getOrderModal);
+
 	const onScroll = section => window.scrollTo({top: section.current.offsetTop, behavior: 'smooth'});
-
-	useEffect(() => {
-		localStorage.setItem('order', JSON.stringify(order));
-	}, [order]);
-
-	useEffect(() => {
-		const modals = {
-			menu: menuModal,
-			order: orderModal,
-		};
-		localStorage.setItem('modals', JSON.stringify(modals));
-	}, [menuModal, orderModal]);
 
 	const sortWtSort = (prevState, setToggle) => {
 		let done = false;
