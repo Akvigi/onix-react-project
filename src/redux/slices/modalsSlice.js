@@ -1,11 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getModalsFromLocal} from '../helpers';
-
-const initialModalState = getModalsFromLocal();
 
 const modalsSlice = createSlice({
 	name: 'modals',
-	initialState: initialModalState,
+	initialState: {
+		menu: false,
+		order: false,
+		table: false,
+	},
 	reducers: {
 		toggleOrderModal(state, _) {
 			return {
@@ -17,6 +18,12 @@ const modalsSlice = createSlice({
 			return {
 				...state,
 				menu: !state.menu,
+			};
+		},
+		toggleTableModal(state, _) {
+			return {
+				...state,
+				order: !state.order,
 			};
 		},
 		closeMenuModal(state, _) {
@@ -34,6 +41,12 @@ const modalsSlice = createSlice({
 	},
 });
 
-export const {toggleMenuModal, toggleOrderModal, closeMenuModal, closeOrderModal} = modalsSlice.actions;
+export const {
+	toggleMenuModal,
+	toggleOrderModal,
+	closeMenuModal,
+	closeOrderModal,
+	toggleTableModal,
+} = modalsSlice.actions;
 
 export const modalsReducers = modalsSlice.reducer;

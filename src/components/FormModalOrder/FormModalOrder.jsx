@@ -8,13 +8,14 @@ import {getOrderModal, getSortedOrder} from '../../redux/selectors';
 import style from './FormModalOrder.module.sass';
 import InputDataOrder from './InputDataOrder.js/InputDataOrder';
 import SortBtn from './SortBtn/SortBtn';
+import FormLItem from './FormLItem/FormLItem';
 
 const portal = document.querySelector('#portal');
 
 const FormModal = () => {
 	const [name, setName] = useState('');
 	const [number, setPhone] = useState('');
-	const [Address, setAddress] = useState('');
+	const [address, setAddress] = useState('');
 
 	const order = useSelector(getSortedOrder);
 	const modal = useSelector(getOrderModal);
@@ -33,6 +34,7 @@ const FormModal = () => {
 		setName('');
 		setPhone('');
 		setAddress('');
+		dispatch(replaceWithSorted([]));
 	};
 
 	const esc = useCallback(
@@ -62,8 +64,16 @@ const FormModal = () => {
 			return Notiflix.Notify.failure('Please input number of your phone!');
 		}
 
-		console.log(Address, number, name);
+		console.log(address, number, name);
 		dispatch(toggleOrderModal());
+		Notiflix.Notify.success(
+			'Wait for call from us to clarify your order',
+			{
+				timeout: 3000,
+				position: 'center-top',
+				fontSize: '20px',
+			},
+		);
 		reset();
 	};
 
@@ -100,6 +110,22 @@ const FormModal = () => {
 		setToggle(!prevState);
 	};
 
+	const onDragStart = (e, index) => e.dataTransfer.setData('text/plain', index);
+
+	const onDragEnd = e => e.preventDefault();
+
+	const handleDrop = (e, index) => {
+		const oldIndex = e.dataTransfer.getData('text/plain');
+		const newOrder = [...order];
+		const itemInOrd = newOrder[oldIndex];
+
+		newOrder.splice(oldIndex, 1);
+
+		newOrder.splice(index, 0, itemInOrd);
+
+		dispatch(replaceWithSorted(newOrder));
+	};
+
 	return createPortal(
 		<div className={modal ? `${style.Overlay} ${style.Active}` : style.Overlay}>
 			<form className={style.Form} onSubmit={e => onSubmitForm(e)} action='submit'>
@@ -108,15 +134,18 @@ const FormModal = () => {
 					className={style.ExitBtn}>X</button>
 				<InputDataOrder
 					placeholder='Name'
+					value={name}
 					onSet={setName}
 				/>
 				<InputDataOrder
+					value={address}
 					placeholder='Address'
 					onSet={setAddress}
 				/>
 				<input className={style.Input}
 					type='phone'
 					placeholder='Phone'
+					value={number}
 					onChange={e => setPhone(e.currentTarget.value)}
 				/>
 				<button className={style.MenuBtn}
@@ -137,16 +166,11 @@ const FormModal = () => {
 						onSort={sortWtSort}>Sort without sort</SortBtn>
 				</div>
 				<ul className={style.List}>
-					{order.length > 0 ? (order.map(({name, price, id}) =>
-						(<li key={id} className={style.OrderItem}>
-							<p>{name}</p>
-							<div className={style.PriceDelbtnCont}>
-								<p>{price}K</p>
-								<button type='button'
-									onClick={() => dispatch(deleteItemFromOrder(id))}
-									className={style.DelBtn}>-</button>
-							</div>
-						</li>))) : (<p>Nothing in cart</p>)
+					{order.length > 0 ? order.map(({name, price, id}, index) =>
+						(<FormLItem id={id} key={id} index={index}
+							name={name} onDE={onDragEnd} onDS={onDragStart}
+							price={price} onDrop={handleDrop}
+							onAdd={() => dispatch(deleteItemFromOrder(id))}/>)) : (<p>Nothing in cart</p>)
 					}
 				</ul>
 				<button className={style.OrderBtn} type='submit'>Order</button>

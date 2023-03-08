@@ -53,54 +53,6 @@
         bottom: 30%
         right: 10%
 
-.List
-    display: flex
-    flex-direction: column
-    @media screen and (min-width: 768px)
-        flex-direction: row
-    @media screen and (min-width: 1124px)
-        // width: 210px
-
-
-.Item
-    position: relative
-    &:not(:last-child)
-        margin-bottom: 10px 
-    @media screen and (min-width: 768px)    
-        margin-bottom: 0 
-        &:not(:last-child)
-            margin-right: 44px
-    @media screen and (min-width: 1124px)    
-        &:not(:last-child)
-            margin-right: 94px
-
-.Img
-    width: 0
-    @media screen and (min-width: 1204px)
-        width: 210px
-    @media screen and (min-width: 768px)
-        width: 150px
-        height: 205px
-        border: 6px solid rgba(255, 211, 145, 0.62)
-
-.RevDesc 
-    top: 55%
-    background: #FFCB7C
-    // border: 6px solid #ffd39066
-    border-radius: 8px
-    
-    @media screen and (min-width: 768px)
-        position: absolute
-        left: 30px
-        width: 150px
-    @media screen and (min-width: 1224px)
-        width: 180px
-    padding: 12px
-    font-weight: 400
-    font-size: 14px
-    line-height: 21px
-    display: flex
-    flex-direction: column
 
 .BtnCont
     display: flex

@@ -12,8 +12,8 @@ const InputDataOrder = ({onSet, placeholder}) => (
 );
 
 InputDataOrder.propTypes = {
-	placeholder: PropTypes.string,
-	onSet: PropTypes.func,
+	placeholder: PropTypes.string.isRequired,
+	onSet: PropTypes.func.isRequired,
 };
 
 export default InputDataOrder;

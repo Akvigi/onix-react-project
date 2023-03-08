@@ -1,10 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {nanoid} from 'nanoid';
-import {getOrderStFromLocal} from '../helpers';
 
 const orderSlice = createSlice({
 	name: 'order',
-	initialState: getOrderStFromLocal(),
+	initialState: [],
 	reducers: {
 		addItemToOrder: {
 			reducer(state, action) {
@@ -28,7 +27,7 @@ const orderSlice = createSlice({
 			// state.splice(index, 1);
 			return state.filter(item => item.id !== action.payload);
 		},
-		replaceWithSorted(state, action) {
+		replaceWithSorted(_, action) {
 			// State = [...action.payload];
 			return [...action.payload];
 		},

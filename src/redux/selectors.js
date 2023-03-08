@@ -30,5 +30,6 @@ export const getReviewsData = state => state.data.reviewsData;
 export const getModals = state => state.modals;
 export const getMenuModal = state => state.modals.menu;
 export const getOrderModal = state => state.modals.order;
+export const getTable = state => state.modals.table;
 
 export const getState = state => state;

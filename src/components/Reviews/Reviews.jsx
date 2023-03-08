@@ -3,6 +3,7 @@ import style from './Reviews.module.sass';
 
 import {useSelector} from 'react-redux';
 import {getReviewsData} from '../../redux/selectors';
+import ReviewsList from './ReviewsList/ReviewsList';
 
 const Reviews = () => {
 	const [pagePag, setPagePag] = useState(1);
@@ -15,23 +16,13 @@ const Reviews = () => {
 					<p className={style.Text}>We always provide the best service and always maintain the quality of coffee</p>
 				</div>
 				<div className={style.ListBtnsCont}>
-					<ul className={style.List}>
-						{data.find(({page}) => pagePag === page).data.map(({name, desc, link}) =>
-							<li className={style.Item} key={desc}>
-								<img className={style.Img} src={link} alt={name} />
-								<div className={style.RevDesc}>
-									<h4>{name}</h4>
-									<p>{desc}</p>
-								</div>
-							</li>)}
-					</ul>
+					<ReviewsList pagePag={pagePag}/>
 					<div className={style.BtnCont}>
 						{data.map(({page}) => <button type='button' onClick={() => setPagePag(page)}
 							className={page === pagePag ? `${style.Btn} ${style.BtnActive}`
 								: `${style.Btn}`} key={page}></button>)}
 					</div>
 				</div>
-
 			</div>
 		</section>
 	);
