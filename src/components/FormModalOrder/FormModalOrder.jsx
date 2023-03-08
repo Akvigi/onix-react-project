@@ -9,6 +9,8 @@ import style from './FormModalOrder.module.sass';
 import InputDataOrder from './InputDataOrder.js/InputDataOrder';
 import SortBtn from './SortBtn/SortBtn';
 import FormLItem from './FormLItem/FormLItem';
+import {changeFilter} from '../../redux/slices/filterSlice';
+import {filterStatus} from '../../redux/constants';
 
 const portal = document.querySelector('#portal');
 
@@ -123,6 +125,7 @@ const FormModal = () => {
 
 		newOrder.splice(index, 0, itemInOrd);
 
+		dispatch(changeFilter(filterStatus.basic));
 		dispatch(replaceWithSorted(newOrder));
 	};
 
