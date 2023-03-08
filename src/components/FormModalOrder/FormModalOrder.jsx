@@ -1,16 +1,20 @@
-import Notiflix from 'notiflix';
 import React, {useCallback, useEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {closeOrderModal, toggleMenuModal, toggleOrderModal} from '../../redux/slices/modalsSlice';
-import {deleteItemFromOrder, replaceWithSorted} from '../../redux/slices/orderSlice';
-import {getOrderModal, getSortedOrder} from '../../redux/selectors';
+import Notiflix from 'notiflix';
+
 import style from './FormModalOrder.module.sass';
+
 import InputDataOrder from './InputDataOrder.js/InputDataOrder';
 import SortBtn from './SortBtn/SortBtn';
 import FormLItem from './FormLItem/FormLItem';
+
 import {changeFilter} from '../../redux/slices/filterSlice';
+import {toggleMenuModal, toggleOrderModal} from '../../redux/slices/modalsSlice';
+import {deleteItemFromOrder, replaceWithSorted} from '../../redux/slices/orderSlice';
 import {filterStatus} from '../../redux/constants';
+
+import {getSortedOrder} from '../../redux/selectors';
 
 const portal = document.querySelector('#portal');
 
@@ -20,15 +24,20 @@ const FormModal = () => {
 	const [address, setAddress] = useState('');
 
 	const order = useSelector(getSortedOrder);
-	const modal = useSelector(getOrderModal);
+	const [modalStyling, setModalStyling] = useState(true);
 
 	const [priceToggle, setPriceToggle] = useState(false);
 	const [nameToggle, setNameToggle] = useState(false);
 
 	const dispatch = useDispatch();
 
+	const onCloseModal = () => {
+		setModalStyling(false);
+		setTimeout(() => dispatch(toggleOrderModal()), 1000);
+	};
+
 	const onMenu = () => {
-		dispatch(toggleOrderModal());
+		onCloseModal();
 		dispatch(toggleMenuModal());
 	};
 
@@ -42,7 +51,7 @@ const FormModal = () => {
 	const esc = useCallback(
 		e => {
 			if (e.code === 'Escape') {
-				dispatch(closeOrderModal());
+				onCloseModal();
 			}
 		},
 		[],
@@ -67,7 +76,7 @@ const FormModal = () => {
 		}
 
 		console.log(address, number, name);
-		dispatch(toggleOrderModal());
+		onCloseModal();
 		Notiflix.Notify.success(
 			'Wait for call from us to clarify your order',
 			{
@@ -130,10 +139,10 @@ const FormModal = () => {
 	};
 
 	return createPortal(
-		<div className={modal ? `${style.Overlay} ${style.Active}` : style.Overlay}>
+		<div className={modalStyling ? `${style.Overlay} ${style.Active}` : `${style.Overlay} ${style.NotActive}`}>
 			<form className={style.Form} onSubmit={e => onSubmitForm(e)} action='submit'>
 				<button type='button'
-					onClick={() => dispatch(toggleOrderModal())}
+					onClick={() => onCloseModal()}
 					className={style.ExitBtn}>X</button>
 				<InputDataOrder
 					placeholder='Name'

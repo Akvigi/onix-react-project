@@ -10,14 +10,31 @@
     align-items: center
     z-index: 1200
     opacity: 0
-    pointer-events: none
     transition: 1s
     
 
 .Active
-    opacity: 1
+    animation-name: modalFadeIn
+    animation-duration: 1s
+    animation-fill-mode: forwards
     pointer-events: all
+@keyframes modalFadeIn
+    from
+        opacity: 0
+    to
+        opacity: 1
 
+.NotActive
+    animation-name: modalFadeOut
+    animation-duration: 1s
+    animation-fill-mode: forwards
+    pointer-events: none
+@keyframes modalFadeOut
+    from
+        opacity: 1
+    to
+        opacity: 0
+    
 .Menu
     background-color: #f5dbb5
     position: relative
@@ -38,12 +55,12 @@
     position: fixed
     bottom: 87%
     left: 33%
-    font-size: 14px;
-    padding: 15px 35px;
-    border-radius: 50px;
-    background-color: black;
+    font-size: 14px
+    padding: 15px 35px
+    border-radius: 50px
+    background-color: black
     color: white
-    font-weight: 600;
+    font-weight: 600
     cursor: pointer
     @media screen and (min-width: 768px)
         left: 42%

@@ -1,23 +1,30 @@
-import React, {useCallback, useEffect} from 'react';
-import MenuList from './MenuList/MenuList';
+import React, {useCallback, useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
+
 import style from './Menu.module.sass';
-import {useDispatch, useSelector} from 'react-redux';
-import {getMenuModal} from '../../redux/selectors';
-import {closeMenuModal, toggleMenuModal, toggleOrderModal} from '../../redux/slices/modalsSlice';
+
+import MenuList from './MenuList/MenuList';
+
+import {toggleMenuModal, toggleOrderModal} from '../../redux/slices/modalsSlice';
 
 const Menu = () => {
-	const modal = useSelector(getMenuModal);
 	const dispatch = useDispatch();
+	const [modalStyling, setModalStyling] = useState(true);
+
+	const onCloseModal = () => {
+		setModalStyling(false);
+		setTimeout(() => dispatch(toggleMenuModal()), 1000);
+	};
 
 	const openOrder = () => {
-		dispatch(toggleMenuModal());
+		onCloseModal();
 		dispatch(toggleOrderModal());
 	};
 
 	const esc = useCallback(
 		e => {
 			if (e.code === 'Escape') {
-				dispatch(closeMenuModal());
+				onCloseModal();
 			}
 		},
 		[],
@@ -34,13 +41,13 @@ const Menu = () => {
 	const onBackClick = useCallback(
 		e => {
 			if (e.currentTarget === e.target) {
-				dispatch(toggleMenuModal());
+				onCloseModal();
 			}
 		},
 		[],
 	);
 	return (
-		<div onClick={onBackClick} className={modal ? `${style.Overlay} ${style.Active}` : style.Overlay}>
+		<div onClick={onBackClick} className={modalStyling ? `${style.Overlay} ${style.Active}` : `${style.Overlay} ${style.NotActive}`}>
 			<div className={style.Menu}>
 				<h2>Menu</h2>
 				<MenuList />

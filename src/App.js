@@ -1,4 +1,5 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 
 import AboutUs from './components/AboutUs/AboutUs';
 import Footer from './components/Footer/Footer';
@@ -10,9 +11,14 @@ import Popular from './components/Popular/Popular';
 import SpecialFU from './components/SpecialFU/SpecialFU';
 import Team from './components/Reviews/Reviews';
 
+import {getMenuModal, getOrderModal} from './redux/selectors';
+
 function App() {
 	const aboutUsRef = React.createRef(null);
 	const specialRef = React.createRef(null);
+
+	const orderModal = useSelector(getOrderModal);
+	const menuModal = useSelector(getMenuModal);
 
 	const onScroll = section => window.scrollTo({top: section.current.offsetTop, behavior: 'smooth'});
 
@@ -58,10 +64,10 @@ function App() {
 			<SpecialFU specialRef={specialRef} />
 			<Team />
 			<Footer />
-			<Menu/>
-			<FormModal
+			{menuModal && <Menu />}
+			{orderModal && <FormModal
 				onSortWS={sortWtSort}
-			/>
+			/>}
 		</div>
 	);
 }
