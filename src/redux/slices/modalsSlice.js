@@ -26,26 +26,12 @@ const modalsSlice = createSlice({
 				order: !state.order,
 			};
 		},
-		closeMenuModal(state, _) {
-			return {
-				...state,
-				menu: false,
-			};
-		},
-		closeOrderModal(state, _) {
-			return {
-				...state,
-				order: false,
-			};
-		},
 	},
 });
 
 export const {
 	toggleMenuModal,
 	toggleOrderModal,
-	closeMenuModal,
-	closeOrderModal,
 	toggleTableModal,
 } = modalsSlice.actions;
 

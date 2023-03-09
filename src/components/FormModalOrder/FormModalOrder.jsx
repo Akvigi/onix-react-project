@@ -22,6 +22,7 @@ const FormModal = () => {
 	const [name, setName] = useState('');
 	const [number, setPhone] = useState('');
 	const [address, setAddress] = useState('');
+	const [dataItem, setDataItem] = useState('');
 
 	const order = useSelector(getSortedOrder);
 	const [modalStyling, setModalStyling] = useState(true);
@@ -121,21 +122,23 @@ const FormModal = () => {
 		setToggle(!prevState);
 	};
 
-	const onDragStart = (e, index) => e.dataTransfer.setData('text/plain', index);
+	const onDragStart = item => setDataItem(item);
 
 	const onDragEnd = e => e.preventDefault();
 
-	const handleDrop = (e, index) => {
-		const oldIndex = e.dataTransfer.getData('text/plain');
-		const newOrder = [...order];
-		const itemInOrd = newOrder[oldIndex];
+	const handleDrop = (e, item) => {
+		if (dataItem) {
+			e.preventDefault();
+			const newOrder = [...order];
+			const index = newOrder.indexOf(item);
 
-		newOrder.splice(oldIndex, 1);
+			newOrder.splice(newOrder.indexOf(dataItem), 1);
+			newOrder.splice(index, 0, dataItem);
 
-		newOrder.splice(index, 0, itemInOrd);
-
-		dispatch(changeFilter(filterStatus.basic));
-		dispatch(replaceWithSorted(newOrder));
+			setDataItem('');
+			dispatch(changeFilter(filterStatus.basic));
+			dispatch(replaceWithSorted(newOrder));
+		}
 	};
 
 	return createPortal(
@@ -178,11 +181,10 @@ const FormModal = () => {
 						onSort={sortWtSort}>Sort without sort</SortBtn>
 				</div>
 				<ul className={style.List}>
-					{order.length > 0 ? order.map(({name, price, id}, index) =>
-						(<FormLItem id={id} key={id} index={index}
-							name={name} onDE={onDragEnd} onDS={onDragStart}
-							price={price} onDrop={handleDrop}
-							onAdd={() => dispatch(deleteItemFromOrder(id))}/>)) : (<p>Nothing in cart</p>)
+					{order.length > 0 ? order.map(item =>
+						(<FormLItem item={item} key={item.id}
+							onDE={onDragEnd} onDS={onDragStart} onDrop={handleDrop}
+							onAdd={() => dispatch(deleteItemFromOrder(item.id))}/>)) : (<p>Nothing in cart</p>)
 					}
 				</ul>
 				<button className={style.OrderBtn} type='submit'>Order</button>

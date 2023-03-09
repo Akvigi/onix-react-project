@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 
 import style from './FormLItem.module.sass';
 
-const FormLItem = ({name, price, onAdd, onDS, onDE, onDrop, index}) => (
+const FormLItem = ({item, onAdd, onDS, onDE, onDrop}) => (
 	<li
 		className={style.OrderItem}
 		draggable
-		onDragStart={e => onDS(e, index)}
+		onDragStart={() => onDS(item)}
 		onDragOver={onDE}
-		onDrop={e => onDrop(e, index)}
+		onDrop={e => onDrop(e, item)}
 	>
-		<p>{name}</p>
+		<p>{item.name}</p>
 		<div className={style.PriceDelbtnCont}>
-			<p>{price}K</p>
+			<p>{item.price}K</p>
 			<button type='button'
 				onClick={() => onAdd()}
 				className={style.DelBtn}>-</button>
@@ -22,8 +22,10 @@ const FormLItem = ({name, price, onAdd, onDS, onDE, onDrop, index}) => (
 );
 
 FormLItem.propTypes = {
-	name: PropTypes.string.isRequired,
-	price: PropTypes.number.isRequired,
+	item: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		price: PropTypes.number.isRequired,
+	}).isRequired,
 	onAdd: PropTypes.func.isRequired,
 	onDS: PropTypes.func,
 	onDE: PropTypes.func,
