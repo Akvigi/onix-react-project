@@ -23,7 +23,7 @@ const modalsSlice = createSlice({
 		toggleTableModal(state, _) {
 			return {
 				...state,
-				order: !state.order,
+				table: !state.table,
 			};
 		},
 	},

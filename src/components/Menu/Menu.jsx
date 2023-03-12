@@ -7,6 +7,7 @@ import style from './Menu.module.sass';
 import MenuList from './MenuList/MenuList';
 
 import {toggleMenuModal, toggleOrderModal} from '../../redux/slices/modalsSlice';
+import Overlay from '../Overlay/Overlay';
 
 const portal = document.querySelector('#portal');
 
@@ -50,13 +51,13 @@ const Menu = () => {
 		[],
 	);
 	return createPortal(
-		<div onClick={onBackClick} className={modalStyling ? `${style.Overlay} ${style.Active}` : `${style.Overlay} ${style.NotActive}`}>
+		<Overlay onClick={onBackClick} stateModal={modalStyling}>
 			<div className={style.Menu}>
 				<h2>Menu</h2>
 				<MenuList />
 				<button className={style.toOrder} type='button' onClick={() => openOrder()}>To order</button>
 			</div>
-		</div>,
+		</Overlay>,
 		portal,
 	);
 };

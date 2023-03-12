@@ -1,5 +1,5 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 import AboutUs from './components/AboutUs/AboutUs';
 import Footer from './components/Footer/Footer';
@@ -10,13 +10,18 @@ import Menu from './components/Menu/Menu';
 import Popular from './components/Popular/Popular';
 import SpecialFU from './components/SpecialFU/SpecialFU';
 import Team from './components/Reviews/Reviews';
+import Table from './components/Table/Table';
 
-import {getMenuModal, getOrderModal} from './redux/selectors';
+import {getMenuModal, getOrderModal, getTable} from './redux/selectors';
+import {toggleTableModal} from './redux/slices/modalsSlice';
 
 function App() {
 	const aboutUsRef = React.createRef(null);
 	const specialRef = React.createRef(null);
 
+	const dispatch = useDispatch();
+
+	const modalTable = useSelector(getTable);
 	const orderModal = useSelector(getOrderModal);
 	const menuModal = useSelector(getMenuModal);
 
@@ -54,6 +59,16 @@ function App() {
 		setToggle(!prevState);
 	};
 
+	const toggleTable = e => {
+		if (e.code === 'KeyT') {
+			dispatch(toggleTableModal());
+		}
+	};
+
+	useEffect(() => {
+		window.addEventListener('keydown', toggleTable);
+	}, []);
+
 	return (
 		<div className='App'>
 			<Header goToAbout={() => onScroll(aboutUsRef)}
@@ -68,6 +83,7 @@ function App() {
 			{orderModal && <FormModal
 				onSortWS={sortWtSort}
 			/>}
+			{modalTable && <Table/>}
 		</div>
 	);
 }

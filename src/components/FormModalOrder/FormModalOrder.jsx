@@ -15,6 +15,7 @@ import {deleteItemFromOrder, replaceWithSorted} from '../../redux/slices/orderSl
 import {filterStatus} from '../../redux/constants';
 
 import {getSortedOrder} from '../../redux/selectors';
+import Overlay from '../Overlay/Overlay';
 
 const portal = document.querySelector('#portal');
 
@@ -142,7 +143,7 @@ const FormModal = () => {
 	};
 
 	return createPortal(
-		<div className={modalStyling ? `${style.Overlay} ${style.Active}` : `${style.Overlay} ${style.NotActive}`}>
+		<Overlay stateModal={modalStyling}>
 			<form className={style.Form} onSubmit={e => onSubmitForm(e)} action='submit'>
 				<button type='button'
 					onClick={() => onCloseModal()}
@@ -189,7 +190,7 @@ const FormModal = () => {
 				</ul>
 				<button className={style.OrderBtn} type='submit'>Order</button>
 			</form>
-		</div>,
+		</Overlay>,
 		portal,
 	);
 };
