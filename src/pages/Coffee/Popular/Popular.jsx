@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './Popular.module.sass';
 
-import Container from '../../../components/Container/Container';
-import SectionHeading from '../../../components/SectionHeading/SectionHeading';
+import Container from '../../../components/Container';
+import SectionHeading from '../../../components/SectionHeading';
 import PopList from '../../../components/PopList/PopList';
 
 import {useSelector} from 'react-redux';

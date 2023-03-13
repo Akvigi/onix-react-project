@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {respondTo} from '../../helpers/respondTo';
+import {respondTo} from '../helpers/respondTo';
 
 const ContainerHero = styled.div`
     ${respondTo.md`

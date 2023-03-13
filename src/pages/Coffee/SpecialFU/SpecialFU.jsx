@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Container from '../../../components/Container/Container';
-import SectionHeading from '../../../components/SectionHeading/SectionHeading';
+import Container from '../../../components/Container';
+import SectionHeading from '../../../components/SectionHeading';
 import SpList from '../../../components/SpList/SpList';
 import style from './SpecialFU.module.sass';
 import PropTypes from 'prop-types';

@@ -7,7 +7,7 @@ import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSli
 import style from './Hero.module.sass';
 
 import coffee from '../../../images/img-hero.png';
-import ContainerHero from '../../../components/ContainerHero/ContainerHero';
+import ContainerHero from '../../../components/ContainerHero';
 
 const Hero = () => {
 	const dispatch = useDispatch();

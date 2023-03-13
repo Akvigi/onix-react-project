@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Route, Routes} from 'react-router-dom';
-import SharedLayout from './components/SharedLayout/SharedLayout';
+import SharedLayout from './components/SharedLayout';
 import Coffee from './pages/Coffee/Coffee.jsx';
 import Pokemons from './pages/Pokemons';
 
