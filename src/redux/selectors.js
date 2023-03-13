@@ -32,4 +32,6 @@ export const getMenuModal = state => state.modals.menu;
 export const getOrderModal = state => state.modals.order;
 export const getTable = state => state.modals.table;
 
+export const getCoffePage = state => state.pages.coffee;
+
 export const getState = state => state;
