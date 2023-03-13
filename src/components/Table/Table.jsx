@@ -15,7 +15,6 @@ const Table = () => {
 	const [activeB, setActiveB] = useState(false);
 
 	const changeBorder = e => {
-		console.log(e.code);
 		if (e.code === 'KeyA') {
 			setActiveB(!activeB);
 		}
