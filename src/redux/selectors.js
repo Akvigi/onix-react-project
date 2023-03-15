@@ -1,11 +1,11 @@
 import {createSelector} from '@reduxjs/toolkit';
 import {filterStatus} from './constants';
 
-export const selectOrder = state => state.order;
+export const selectOrderCoffee = state => state.order.coffee;
 export const selectFilter = state => state.filter;
 
 export const selectSortedOrder = createSelector(
-	[selectOrder, selectFilter],
+	[selectOrderCoffee, selectFilter],
 	(order, filter) => {
 		switch (filter) {
 			case filterStatus.price.f1t9:

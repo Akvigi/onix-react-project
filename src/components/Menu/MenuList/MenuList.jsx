@@ -5,7 +5,7 @@ import style from './MenuList.module.sass';
 
 import {useDispatch, useSelector} from 'react-redux';
 
-import {addItemToOrder} from '../../../redux/slices/coffee/orderSlice';
+import {addCoffeToOrder} from '../../../redux/slices/coffee/orderSlice';
 import {selectAllData} from '../../../redux/selectors';
 
 import MenuItem from '../MenuItem/MenuItem';
@@ -15,7 +15,7 @@ const MenuList = () => {
 
 	const dispatch = useDispatch();
 	const onAdd = (name, price) => {
-		dispatch(addItemToOrder(name, price));
+		dispatch(addCoffeToOrder(name, price));
 		Notiflix.Notify.success(`Successfull added to cart: ${name}`);
 	};
 
