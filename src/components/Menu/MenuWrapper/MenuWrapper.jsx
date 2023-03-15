@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import style from './MenuWrapper.module.sass';
 
@@ -46,7 +47,7 @@ const MenuWrapper = ({children, menuListFor}) => {
 		[],
 	);
 	return (
-		<Overlay onClick={e => onBackClick(e)} stateModal={modalStyling}>
+		<Overlay onBackCl={e => onBackClick(e)} stateModal={modalStyling}>
 			<div className={style.Menu}>
 				{menuListFor === 'pokemon' ? <h2>Catalog</h2> : <h2>Menu</h2>}
 				{/* <MenuList /> */}
@@ -55,6 +56,11 @@ const MenuWrapper = ({children, menuListFor}) => {
 			</div>
 		</Overlay>
 	);
+};
+
+MenuWrapper.propTypes = {
+	children: PropTypes.element.isRequired,
+	menuListFor: PropTypes.string,
 };
 
 export default MenuWrapper;

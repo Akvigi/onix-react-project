@@ -7,18 +7,11 @@ import MenuWrapper from '../../../components/Menu/MenuWrapper/MenuWrapper';
 
 const portal = document.querySelector('#portal');
 
-const Menu = () => {
-	function onBacLick(e) {
-		console.log(e.target);
-		console.log(e.currentTarget);
-	}
-
-	return createPortal(
-		<MenuWrapper onClick={onBacLick}>
-			<MenuList />
-		</MenuWrapper>,
-		portal,
-	);
-};
+const Menu = () => createPortal(
+	<MenuWrapper>
+		<MenuList />
+	</MenuWrapper>,
+	portal,
+);
 
 export default Menu;

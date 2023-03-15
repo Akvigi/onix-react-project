@@ -11,7 +11,7 @@ import FormLItem from '../../../components/FormLItem/FormLItem';
 
 import {changeFilter} from '../../../redux/slices/coffee/filterSlice';
 import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
-import {deleteItemFromOrder, replaceWithSorted} from '../../../redux/slices/coffee/orderSlice';
+import {deleteCoffeeFromOrder, replaceCOWithSorted} from '../../../redux/slices/coffee/orderSlice';
 import {filterStatus} from '../../../redux/constants';
 
 import {selectSortedOrder} from '../../../redux/selectors';
@@ -47,7 +47,7 @@ const FormModal = () => {
 		setName('');
 		setPhone('');
 		setAddress('');
-		dispatch(replaceWithSorted([]));
+		dispatch(replaceCOWithSorted([]));
 	};
 
 	const esc = useCallback(
@@ -119,7 +119,7 @@ const FormModal = () => {
 			}
 		}
 
-		dispatch(replaceWithSorted(array));
+		dispatch(replaceCOWithSorted(array));
 		setToggle(!prevState);
 	};
 
@@ -138,7 +138,7 @@ const FormModal = () => {
 
 			setDataItem('');
 			dispatch(changeFilter(filterStatus.basic));
-			dispatch(replaceWithSorted(newOrder));
+			dispatch(replaceCOWithSorted(newOrder));
 		}
 	};
 
@@ -185,7 +185,7 @@ const FormModal = () => {
 					{order.length > 0 ? order.map(item =>
 						(<FormLItem item={item} key={item.id}
 							onDE={onDragEnd} onDS={onDragStart} onDrop={handleDrop}
-							onAdd={() => dispatch(deleteItemFromOrder(item.id))}/>)) : (<p>Nothing in cart</p>)
+							onAdd={() => dispatch(deleteCoffeeFromOrder(item.id))}/>)) : (<p>Nothing in cart</p>)
 					}
 				</ul>
 				<button className={style.OrderBtn} type='submit'>Order</button>

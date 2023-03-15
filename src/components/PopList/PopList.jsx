@@ -10,13 +10,13 @@ import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {selectPopData} from '../../redux/selectors';
-import {addItemToOrder} from '../../redux/slices/coffee/orderSlice';
+import {addCoffeToOrder} from '../../redux/slices/coffee/orderSlice';
 
 const PopList = () => {
 	const dispatch = useDispatch();
 	const data = useSelector(selectPopData);
 	const onAdd = (name, price) => {
-		dispatch(addItemToOrder(name, price));
+		dispatch(addCoffeToOrder(name, price));
 		Notiflix.Notify.success(`Successfull added to cart: ${name}`);
 	};
 

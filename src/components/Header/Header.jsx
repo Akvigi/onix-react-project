@@ -5,13 +5,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {toggleOrderModal} from '../../redux/slices/modalsSlice';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
-import {selectCoffePage, selectOrder} from '../../redux/selectors';
+import {selectCoffePage, selectOrderCoffee} from '../../redux/selectors';
 import {toggleCoffeePage} from '../../redux/slices/pageSlice';
 
 const Header = ({goToAbout, goToSpecial}) => {
 	const dispatch = useDispatch();
 	const coffeePage = useSelector(selectCoffePage);
-	const order = useSelector(selectOrder);
+	const order = useSelector(selectOrderCoffee);
 	return (
 		<header className={style.Header}>
 			<div className={style.container}>
@@ -28,7 +28,7 @@ const Header = ({goToAbout, goToSpecial}) => {
 									width: '32px',
 									height: '32px',
 								}} />
-							<span className={style.BtnIndicator}>{order.length}</span>
+							{order && <span className={style.BtnIndicator}>{order.length}</span>}
 						</button>
 					</>) : <NavLink to='/onix-react-project' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>Coffee</NavLink>
 					}

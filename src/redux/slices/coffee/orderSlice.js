@@ -3,14 +3,20 @@ import {nanoid} from 'nanoid';
 
 const orderSlice = createSlice({
 	name: 'order',
-	initialState: [],
+	initialState: {
+		pokemon: [],
+		coffee: [],
+	},
 	reducers: {
-		addItemToOrder: {
+		addCoffeToOrder: {
 			reducer(state, action) {
 				// State.push(action.payload)
 				// const order = [...state, action.payload]
 				// localStorage.setItem("order", JSON.stringify(order))
-				return [...state, action.payload];
+				return {
+					...state,
+					coffee: [...state.coffee, action.payload],
+				};
 			},
 			prepare(name, price) {
 				return {
@@ -22,22 +28,49 @@ const orderSlice = createSlice({
 				};
 			},
 		},
-		deleteItemFromOrder(state, action) {
+		addPokemonToOrder: {
+			reducer(state, action) {
+				// State.push(action.payload)
+				// const order = [...state, action.payload]
+				// localStorage.setItem("order", JSON.stringify(order))
+				return {
+					...state,
+					pokemon: [...state.pokemon, action.payload],
+				};
+			},
+			prepare(name, price) {
+				return {
+					payload: {
+						name,
+						price,
+						id: nanoid(),
+					},
+				};
+			},
+		},
+		deleteCoffeeFromOrder(state, action) {
 			// Const index = state.findIndex(state => state.id === action.id);
 			// state.splice(index, 1);
-			return state.filter(item => item.id !== action.payload);
+			return {
+				...state,
+				coffee: state.coffee.filter(item => item.id !== action.payload),
+			};
 		},
-		replaceWithSorted(_, action) {
+		replaceCOWithSorted(state, action) {
 			// State = [...action.payload];
-			return [...action.payload];
+			return {
+				...state,
+				coffee: [...action.payload],
+			};
 		},
 	},
 });
 
 export const {
-	addItemToOrder,
-	deleteItemFromOrder,
-	replaceWithSorted,
+	addCoffeToOrder,
+	addPokemonToOrder,
+	deleteCoffeeFromOrder,
+	replaceCOWithSorted,
 } = orderSlice.actions;
 
 export const orderReducer = orderSlice.reducer;
