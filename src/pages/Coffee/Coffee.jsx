@@ -10,16 +10,18 @@ import Table from '../../components/Table/Table';
 import Reviews from './Reviews/Reviews';
 import AboutUs from './AboutUs/AboutUs';
 
-import {getMenuModal, getOrderModal, getTable} from '../../redux/selectors';
+import {selectMenuModal, selectOrderModal, selectTable} from '../../redux/selectors';
 import {toggleTableModal} from '../../redux/slices/modalsSlice';
 import PropTypes from 'prop-types';
+import {useLocation} from 'react-router-dom';
+import {setCoffeePageTrue} from '../../redux/slices/pageSlice';
 
 const Coffee = ({aboutUsRef, specialRef}) => {
 	const dispatch = useDispatch();
-
-	const modalTable = useSelector(getTable);
-	const orderModal = useSelector(getOrderModal);
-	const menuModal = useSelector(getMenuModal);
+	const loc = useLocation();
+	const modalTable = useSelector(selectTable);
+	const orderModal = useSelector(selectOrderModal);
+	const menuModal = useSelector(selectMenuModal);
 
 	const sortWtSort = (prevState, setToggle) => {
 		let done = false;
@@ -61,6 +63,9 @@ const Coffee = ({aboutUsRef, specialRef}) => {
 
 	useEffect(() => {
 		window.addEventListener('keydown', toggleTable);
+		if (loc.pathname === '/onix-react-project') {
+			dispatch(setCoffeePageTrue());
+		}
 	}, []);
 	return (
 		<>

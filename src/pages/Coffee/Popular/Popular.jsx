@@ -6,10 +6,10 @@ import SectionHeading from '../../../components/SectionHeading';
 import PopList from '../../../components/PopList/PopList';
 
 import {useSelector} from 'react-redux';
-import {getPopData} from '../../../redux/selectors';
+import {selectPopData} from '../../../redux/selectors';
 
 const Popular = () => {
-	const data = useSelector(getPopData);
+	const data = useSelector(selectPopData);
 	return (<section className={style.Popular}>
 		<Container>
 			<SectionHeading>Popular Now</SectionHeading>

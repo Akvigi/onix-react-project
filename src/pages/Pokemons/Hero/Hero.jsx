@@ -1,10 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Media from 'react-media';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
-import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
-
-import coffee from '../../../images/img-hero.png';
 import ContainerHero from '../../../components/Hero/ContainerHero';
 import HeroSection from '../../../components/Hero/HeroSection';
 import HeroDesc from '../../../components/Hero/HeroDesc';
@@ -14,31 +11,41 @@ import HeroOrderBtn from '../../../components/Hero/HeroOrderBtn';
 import HeroMenuBtn from '../../../components/Hero/HeroMenuBtn';
 import HeroBtnCont from '../../../components/Hero/HeroBtnCont';
 import HeroImg from '../../../components/Hero/HeroImg';
+
+import {getHeroImg} from '../../../redux/requests';
+
+import {selectHeroPokemon} from '../../../redux/selectors';
 const Hero = () => {
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getHeroImg());
+	}, [dispatch]);
+
+	const pokemon = useSelector(selectHeroPokemon);
 
 	return (
 		<HeroSection>
 			<ContainerHero>
 				<HeroDesc>
-					<HeroHeader>Enjoy your <span>coffee</span> before your activity</HeroHeader>
+					<HeroHeader>Buy pokemon at our site!</HeroHeader>
 					<Media queries={{small: '(max-width: 767px)'}}>
 						{matches =>
 							matches.small && (
-								<HeroImg src={coffee} alt='cup of Cappucino and statistics'/>
+								<HeroImg src={pokemon} alt='cup of Cappucino and statistics'/>
 							)
 						}
 					</Media>
-					<HeroText>Boost your productivity and build your mood with a glass of coffee in the morning</HeroText>
+					<HeroText>Welcome to our online store for buying Pokemon! We offer a wide variety of Pokemon species, each with their own unique abilities and strengths.</HeroText>
 					<HeroBtnCont>
-						<HeroOrderBtn onClick={() => dispatch(toggleOrderModal())}>Order now</HeroOrderBtn>
-						<HeroMenuBtn onClick={() => dispatch(toggleMenuModal())} >More menu</HeroMenuBtn>
+						<HeroOrderBtn onClick={() => dispatch()}>Order now</HeroOrderBtn>
+						<HeroMenuBtn onClick={() => dispatch()} >More menu</HeroMenuBtn>
 					</HeroBtnCont>
 				</HeroDesc>
 				<Media queries={{small: '(max-width: 767px)'}}>
 					{matches =>
 						!matches.small && (
-							<HeroImg src={coffee} alt='cup of Cappucino and statistics'/>
+							<HeroImg src={pokemon} alt=''/>
 						)
 					}
 				</Media>

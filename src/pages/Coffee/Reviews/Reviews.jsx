@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import style from './Reviews.module.sass';
 
 import {useSelector} from 'react-redux';
-import {getReviewsData} from '../../../redux/selectors';
+import {selectReviewsData} from '../../../redux/selectors';
 import ReviewsList from '../../../components/ReviewsList/ReviewsList';
 
 const Reviews = () => {
 	const [pagePag, setPagePag] = useState(1);
-	const data = useSelector(getReviewsData);
+	const data = useSelector(selectReviewsData);
 	return (
 		<section className={style.Section}>
 			<div className={style.Container}>

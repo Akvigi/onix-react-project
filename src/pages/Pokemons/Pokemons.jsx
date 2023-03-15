@@ -1,7 +1,10 @@
 import React from 'react';
+import Hero from './Hero/Hero';
 
 const Pokemons = () => (
-	<div>Pokemons</div>
+	<div>
+		<Hero/>
+	</div>
 );
 
 export default Pokemons;

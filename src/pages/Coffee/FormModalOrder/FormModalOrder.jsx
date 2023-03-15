@@ -9,12 +9,12 @@ import InputDataOrder from '../../../components/InputDataOrder.js/InputDataOrder
 import SortBtn from '../../../components/SortBtn/SortBtn';
 import FormLItem from '../../../components/FormLItem/FormLItem';
 
-import {changeFilter} from '../../../redux/slices/filterSlice';
+import {changeFilter} from '../../../redux/slices/coffee/filterSlice';
 import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
-import {deleteItemFromOrder, replaceWithSorted} from '../../../redux/slices/orderSlice';
+import {deleteItemFromOrder, replaceWithSorted} from '../../../redux/slices/coffee/orderSlice';
 import {filterStatus} from '../../../redux/constants';
 
-import {getSortedOrder} from '../../../redux/selectors';
+import {selectSortedOrder} from '../../../redux/selectors';
 import Overlay from '../../../components/Overlay/Overlay';
 
 const portal = document.querySelector('#portal');
@@ -25,7 +25,7 @@ const FormModal = () => {
 	const [address, setAddress] = useState('');
 	const [dataItem, setDataItem] = useState('');
 
-	const order = useSelector(getSortedOrder);
+	const order = useSelector(selectSortedOrder);
 	const [modalStyling, setModalStyling] = useState(true);
 
 	const [priceToggle, setPriceToggle] = useState(false);

@@ -5,13 +5,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import {toggleOrderModal} from '../../redux/slices/modalsSlice';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
-import {getCoffePage} from '../../redux/selectors';
+import {selectCoffePage, selectOrder} from '../../redux/selectors';
 import {toggleCoffeePage} from '../../redux/slices/pageSlice';
 
 const Header = ({goToAbout, goToSpecial}) => {
 	const dispatch = useDispatch();
-	const coffeePage = useSelector(getCoffePage);
-
+	const coffeePage = useSelector(selectCoffePage);
+	const order = useSelector(selectOrder);
 	return (
 		<header className={style.Header}>
 			<div className={style.container}>
@@ -21,12 +21,15 @@ const Header = ({goToAbout, goToSpecial}) => {
 						<a className={style.Link} onClick={goToAbout} href='#aboutus'>About us</a>
 						<a className={style.Link} onClick={goToSpecial} href='#specialforyou'>Special for you</a>
 						<NavLink to='/pokemons' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>Pokemons</NavLink>
-						<button className={style.Btn} onClick={() => dispatch(toggleOrderModal())} type='button'><ShoppingCartTwoToneIcon
-							sx={{
-								color: '#2F2105',
-								width: '32px',
-								height: '32px',
-							}}/></button>
+						<button className={style.Btn} onClick={() => dispatch(toggleOrderModal())} type='button'>
+							<ShoppingCartTwoToneIcon
+								sx={{
+									color: '#2F2105',
+									width: '32px',
+									height: '32px',
+								}} />
+							<span className={style.BtnIndicator}>{order.length}</span>
+						</button>
 					</>) : <NavLink to='/onix-react-project' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>Coffee</NavLink>
 					}
 				</nav>

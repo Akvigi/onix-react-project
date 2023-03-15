@@ -1,4 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit';
+import {getDefaultMiddleware, configureStore} from '@reduxjs/toolkit';
 
 import {
 	persistStore,
@@ -11,6 +11,7 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
 
 const persistConfig = {
@@ -22,12 +23,11 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
 	reducer: persistedReducer,
-	middleware: getDefaultMiddleware =>
-		getDefaultMiddleware({
-			serializableCheck: {
-				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-			},
-		}),
+	middleware: [thunk, ...getDefaultMiddleware({
+		serializableCheck: {
+			ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+		},
+	})],
 });
 
 export const persistor = persistStore(store);

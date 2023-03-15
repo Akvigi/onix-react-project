@@ -2,12 +2,12 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {getReviewsData} from '../../redux/selectors';
+import {selectReviewsData} from '../../redux/selectors';
 
 import style from './ReviewsList.module.sass';
 
 const ReviewsList = ({pagePag}) => {
-	const data = useSelector(getReviewsData);
+	const data = useSelector(selectReviewsData);
 	return (
 		<ul className={style.List}>
 			{data.find(({page}) => pagePag === page).data.map(({name, desc, link}) =>

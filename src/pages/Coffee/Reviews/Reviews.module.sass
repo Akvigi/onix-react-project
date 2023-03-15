@@ -64,10 +64,22 @@
     padding: 10px
     background: #fafafa
     @media screen and (min-width: 1124px)
-        background-color: #eec68b
-    &Active
-        background: #FF902B
+        background-color: #eec68b  
     border-radius: 15px
+    cursor: pointer
     &:not(:last-child)
         margin-right: 13px
+    &:hover
+        transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
+        background: black
+        &>svg
+            fill: #F4AE26
+    &Active
+        pointer-events: none
+        background: #FF902B
+        // &:hover
+        //     background: black
+        //     &>svg
+        //         fill: #F4AE26
+        
     

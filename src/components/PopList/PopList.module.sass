@@ -9,9 +9,9 @@
         flex-direction: row
         justify-content: space-between
         margin: 0 auto
-    @media screen and (min-width: 768px) and (max-width: 1020px)
+    @media screen and (min-width: 768px) and (max-width: 1050px)
         max-width: 700px
-    @media screen and (min-width: 1020px)
+    @media screen and (min-width: 1050px)
         padding: 0
         max-width: 1140px
 
@@ -23,7 +23,7 @@
     max-width: 340px
     &:not(:last-child)
         margin-bottom: 15px
-    @media screen and (min-width: 768px) and (max-width: 1020px)
+    @media screen and (min-width: 768px) and (max-width: 1050px)
         &:last-child
             width: 0
             height: 0
@@ -68,4 +68,10 @@
     padding: 11px 12px
     border-radius: 50px
     background: #F4AE26
+    cursor: pointer
+    transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms
+    &:hover
+        background: black
+        &>svg
+            fill: #F4AE26
 

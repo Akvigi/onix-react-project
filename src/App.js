@@ -3,7 +3,7 @@ import React from 'react';
 import {Route, Routes} from 'react-router-dom';
 import SharedLayout from './components/SharedLayout';
 import Coffee from './pages/Coffee/Coffee.jsx';
-import Pokemons from './pages/Pokemons';
+import Pokemons from './pages/Pokemons/Pokemons';
 
 function App() {
 	const aboutUsRef = React.createRef(null);

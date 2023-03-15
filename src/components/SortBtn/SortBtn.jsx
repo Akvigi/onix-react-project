@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './SortBtn.module.sass';
 
-import {changeFilter} from '../../redux/slices/filterSlice';
+import {changeFilter} from '../../redux/slices/coffee/filterSlice';
 import {filterStatus} from '../../redux/constants';
 
 const SortBtn = ({children, toggle, setToggle, by}) => {

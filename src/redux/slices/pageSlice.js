@@ -13,9 +13,18 @@ const pageSlice = createSlice({
 				coffee: !state.coffee,
 			};
 		},
+		setCoffeePageTrue(state, _) {
+			return {
+				...state,
+				coffee: true,
+			};
+		},
 	},
 });
 
-export const {toggleCoffeePage} = pageSlice.actions;
+export const {
+	toggleCoffeePage,
+	setCoffeePageTrue,
+} = pageSlice.actions;
 
 export const pagesReducer = pageSlice.reducer;

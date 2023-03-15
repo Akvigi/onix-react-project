@@ -2,8 +2,9 @@ import {css} from 'styled-components';
 
 const breakpoints = {
 	xs: '480px',
-	sm: '768px',
+	sm: '767px',
 	md: '1000px',
+	mdSm: '1100px',
 	lg: '1200px',
 };
 
