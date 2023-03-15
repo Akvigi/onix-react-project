@@ -1,7 +1,9 @@
 import React from 'react';
-import Rate from '../List/Rate/Rate';
-import style from './MenuItem.module.sass';
 import PropTypes from 'prop-types';
+
+import style from './MenuItem.module.sass';
+
+import Rate from '../../List/Rate/Rate';
 
 const MenuItem = ({name, rate, link, desc, price, addItem}) => (
 	<li className={style.Item} key={name}>

@@ -4,13 +4,14 @@ import Notiflix from 'notiflix';
 import style from './MenuList.module.sass';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {addItemToOrder} from '../../redux/slices/orderSlice';
-import {getAllData} from '../../redux/selectors';
+
+import {addItemToOrder} from '../../../redux/slices/coffee/orderSlice';
+import {selectAllData} from '../../../redux/selectors';
 
 import MenuItem from '../MenuItem/MenuItem';
 
 const MenuList = () => {
-	const data = useSelector(getAllData);
+	const data = useSelector(selectAllData);
 
 	const dispatch = useDispatch();
 	const onAdd = (name, price) => {

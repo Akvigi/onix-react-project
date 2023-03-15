@@ -1,62 +1,22 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React from 'react';
+
 import {createPortal} from 'react-dom';
 
-import style from './Menu.module.sass';
-
-import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
-import Overlay from '../../../components/Overlay/Overlay';
-import MenuList from '../../../components/MenuList/MenuList';
+import MenuList from '../../../components/Menu/MenuList/MenuList';
+import MenuWrapper from '../../../components/Menu/MenuWrapper/MenuWrapper';
 
 const portal = document.querySelector('#portal');
 
 const Menu = () => {
-	const dispatch = useDispatch();
-	const [modalStyling, setModalStyling] = useState(true);
+	function onBacLick(e) {
+		console.log(e.target);
+		console.log(e.currentTarget);
+	}
 
-	const onCloseModal = () => {
-		setModalStyling(false);
-		setTimeout(() => dispatch(toggleMenuModal()), 1000);
-	};
-
-	const openOrder = () => {
-		onCloseModal();
-		dispatch(toggleOrderModal());
-	};
-
-	const esc = useCallback(
-		e => {
-			if (e.code === 'Escape') {
-				onCloseModal();
-			}
-		},
-		[],
-	);
-
-	useEffect(() => {
-		window.addEventListener('keydown', esc);
-
-		return () => {
-			window.removeEventListener('keydown', esc);
-		};
-	}, [esc]);
-
-	const onBackClick = useCallback(
-		e => {
-			if (e.currentTarget === e.target) {
-				onCloseModal();
-			}
-		},
-		[],
-	);
 	return createPortal(
-		<Overlay onClick={onBackClick} stateModal={modalStyling}>
-			<div className={style.Menu}>
-				<h2>Menu</h2>
-				<MenuList />
-				<button className={style.toOrder} type='button' onClick={() => openOrder()}>To order</button>
-			</div>
-		</Overlay>,
+		<MenuWrapper onClick={onBacLick}>
+			<MenuList />
+		</MenuWrapper>,
 		portal,
 	);
 };
