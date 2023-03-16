@@ -2,9 +2,9 @@ import {combineReducers} from '@reduxjs/toolkit';
 import {dataReducer} from './slices/coffee/dataSlice';
 import {filterReducer} from './slices/coffee/filterSlice';
 import {modalsReducers} from './slices/modalsSlice';
-import {orderReducer} from './slices/coffee/orderSlice';
+import {orderReducer} from './slices/orderSlice';
 import {pagesReducer} from './slices/pageSlice';
-import pokemonsReducer from './slices/pokemons/pokemonsSlice';
+import {pokemonsReducer} from './slices/pokemons/pokemonsSlice';
 
 const rootReducer = combineReducers({
 	order: orderReducer,

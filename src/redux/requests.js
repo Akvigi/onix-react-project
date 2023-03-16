@@ -3,10 +3,14 @@ import * as api from '../api';
 
 export const getPokemonsForMenu = createAsyncThunk(
 	'pokemons/getPokemonsFMenu',
-	async (_, thunkAPI) => {
+	async (payload, thunkAPI) => {
 		try {
-			const data = await api.getPackofPokemons();
-			return data.results;
+			const arrayOfPokemons = await api.getPackofPokemons(payload * 10);
+			const arrayWithTruePokemons = await Promise.all(arrayOfPokemons.results.map(async pokemon => {
+				const {name, sprites, weight, stats} = await api.getPokemon(pokemon.name);
+				return {name, sprites, weight, stats};
+			}));
+			return arrayWithTruePokemons;
 		} catch (error) {
 			return thunkAPI.rejectWithValue(error);
 		}

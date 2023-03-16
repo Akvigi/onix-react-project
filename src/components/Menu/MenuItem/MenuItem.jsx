@@ -29,7 +29,7 @@ const MenuItem = ({name, rate, link, desc, price, addItem}) => (
 
 MenuItem.propTypes = {
 	name: PropTypes.string.isRequired,
-	rate: PropTypes.number.isRequired,
+	rate: PropTypes.number,
 	link: PropTypes.string.isRequired,
 	desc: PropTypes.string,
 	price: PropTypes.number.isRequired,

@@ -6,8 +6,24 @@ const pokemonsSlice = createSlice({
 	initialState: {
 		menu: [],
 		heroPokemon: null,
+		pagPage: 0,
 		loading: false,
 		error: null,
+	},
+	reducers: {
+		setPagPage(store, {payload}) {
+			return {
+				...store,
+				pagPage: payload,
+			};
+		},
+		setMenuToStart(store, _) {
+			return {
+				...store,
+				pagPage: 0,
+				menu: [],
+			};
+		},
 	},
 	extraReducers: {
 		[getPokemonsForMenu.pending](store) {
@@ -17,7 +33,19 @@ const pokemonsSlice = createSlice({
 		[getPokemonsForMenu.fulfilled](store, {payload}) {
 			store.loading = false;
 			store.error = null;
-			store.menu = [...payload];
+			if (store.pagPage !== 0 && store.menu) {
+				store.menu = [...store.menu, ...payload].reduce((acc, curr) => {
+					const index = acc.findIndex(obj => obj.name === curr.name);
+					if (index === -1) {
+						return [...acc, curr];
+					}
+
+					acc[index] = curr;
+					return acc;
+				}, []);
+			} else {
+				store.menu = [...payload];
+			}
 		},
 		[getPokemonsForMenu.rejected](store, {payload}) {
 			store.loading = false;
@@ -50,4 +78,6 @@ const pokemonsSlice = createSlice({
 	},
 });
 
-export default pokemonsSlice.reducer;
+export const {setPagPage, setMenuToStart} = pokemonsSlice.actions;
+
+export const pokemonsReducer = pokemonsSlice.reducer;

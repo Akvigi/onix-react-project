@@ -10,7 +10,7 @@ import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {selectPopData} from '../../redux/selectors';
-import {addCoffeToOrder} from '../../redux/slices/coffee/orderSlice';
+import {addCoffeToOrder} from '../../redux/slices/orderSlice';
 
 const PopList = () => {
 	const dispatch = useDispatch();

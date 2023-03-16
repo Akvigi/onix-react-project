@@ -11,7 +11,7 @@ import FormLItem from '../../../components/FormLItem/FormLItem';
 
 import {changeFilter} from '../../../redux/slices/coffee/filterSlice';
 import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
-import {deleteCoffeeFromOrder, replaceCOWithSorted} from '../../../redux/slices/coffee/orderSlice';
+import {deleteCoffeeFromOrder, replaceCOWithSorted} from '../../../redux/slices/orderSlice';
 import {filterStatus} from '../../../redux/constants';
 
 import {selectSortedOrder} from '../../../redux/selectors';
@@ -182,7 +182,7 @@ const FormModal = () => {
 						onSort={sortWtSort}>Sort without sort</SortBtn>
 				</div>
 				<ul className={style.List}>
-					{order.length > 0 ? order.map(item =>
+					{order ? order.map(item =>
 						(<FormLItem item={item} key={item.id}
 							onDE={onDragEnd} onDS={onDragStart} onDrop={handleDrop}
 							onAdd={() => dispatch(deleteCoffeeFromOrder(item.id))}/>)) : (<p>Nothing in cart</p>)

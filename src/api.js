@@ -3,15 +3,15 @@ const API_KEY = '28235798-10089aa8a519f6d1c62a23eff';
 // } q=${query}&page=${page}
 
 const requestIMG = axios.create({
-	baseURL: `https://pixabay.com/api/?key=${API_KEY}`,
+	baseURL: 'https://pixabay.com/api/',
 });
 
 const requestPok = axios.create({
 	baseURL: 'https://pokeapi.co/api/v2',
 });
 
-export const getPackofPokemons = async () => {
-	const {data} = await requestPok.get('/pokemon?limit=10&offset=0');
+export const getPackofPokemons = async inMenu => {
+	const {data} = await requestPok.get('/pokemon', {params: {limit: 10, offset: inMenu}});
 	return data;
 };
 
@@ -21,6 +21,6 @@ export const getPokemon = async name => {
 };
 
 export const getImgPokemons = async () => {
-	const {data} = await requestIMG.get('&q=pokemon');
+	const {data} = await requestIMG.get(`/?key=${API_KEY}&q=pokemon`);
 	return data;
 };

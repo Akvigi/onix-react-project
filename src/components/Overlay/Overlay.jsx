@@ -8,9 +8,9 @@ const Overlay = ({children, stateModal, onBackCl}) => (
 );
 
 Overlay.propTypes = {
+	onBackCl: PropTypes.func,
 	children: PropTypes.element,
 	stateModal: PropTypes.bool.isRequired,
-	onBackCl: PropTypes.func,
 };
 
 export default Overlay;

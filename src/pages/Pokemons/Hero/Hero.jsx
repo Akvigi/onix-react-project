@@ -15,6 +15,7 @@ import HeroImg from '../../../components/Hero/HeroImg';
 import {getHeroImg} from '../../../redux/requests';
 
 import {selectHeroPokemon} from '../../../redux/selectors';
+import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
 const Hero = () => {
 	const dispatch = useDispatch();
 
@@ -38,8 +39,8 @@ const Hero = () => {
 					</Media>
 					<HeroText>Welcome to our online store for buying Pokemon! We offer a wide variety of Pokemon species, each with their own unique abilities and strengths.</HeroText>
 					<HeroBtnCont>
-						<HeroOrderBtn onClick={() => dispatch()}>Order now</HeroOrderBtn>
-						<HeroMenuBtn onClick={() => dispatch()} >More menu</HeroMenuBtn>
+						<HeroOrderBtn onClick={() => dispatch(toggleOrderModal())}>Order now</HeroOrderBtn>
+						<HeroMenuBtn onClick={() => dispatch(toggleMenuModal())} >More menu</HeroMenuBtn>
 					</HeroBtnCont>
 				</HeroDesc>
 				<Media queries={{small: '(max-width: 767px)'}}>

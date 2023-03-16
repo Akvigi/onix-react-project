@@ -56,11 +56,26 @@ const orderSlice = createSlice({
 				coffee: state.coffee.filter(item => item.id !== action.payload),
 			};
 		},
+		deletePokemonFromOrder(state, action) {
+			// Const index = state.findIndex(state => state.id === action.id);
+			// state.splice(index, 1);
+			return {
+				...state,
+				pokemon: state.pokemon.filter(item => item.id !== action.payload),
+			};
+		},
 		replaceCOWithSorted(state, action) {
 			// State = [...action.payload];
 			return {
 				...state,
 				coffee: [...action.payload],
+			};
+		},
+		replacePOWithSorted(state, action) {
+			// State = [...action.payload];
+			return {
+				...state,
+				pokemon: [...action.payload],
 			};
 		},
 	},
@@ -70,7 +85,9 @@ export const {
 	addCoffeToOrder,
 	addPokemonToOrder,
 	deleteCoffeeFromOrder,
+	deletePokemonFromOrder,
 	replaceCOWithSorted,
+	replacePOWithSorted,
 } = orderSlice.actions;
 
 export const orderReducer = orderSlice.reducer;
