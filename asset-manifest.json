@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/onix-react-project/static/css/main.a42420ee.css",
-    "main.js": "/onix-react-project/static/js/main.0a917c46.js",
+    "main.js": "/onix-react-project/static/js/main.d13bce7f.js",
     "static/media/img-hero.png": "/onix-react-project/static/media/img-hero.2d81266569ebf969a2cb.png",
     "static/media/t1.png": "/onix-react-project/static/media/t1.a4fb3fae07d42892f876.png",
     "static/media/sandwich.jpg": "/onix-react-project/static/media/sandwich.77c5882e8fab351e6740.jpg",
@@ -16,10 +16,10 @@
     "static/media/moccacino.jpg": "/onix-react-project/static/media/moccacino.9bdf04f2868f06418f2e.jpg",
     "index.html": "/onix-react-project/index.html",
     "main.a42420ee.css.map": "/onix-react-project/static/css/main.a42420ee.css.map",
-    "main.0a917c46.js.map": "/onix-react-project/static/js/main.0a917c46.js.map"
+    "main.d13bce7f.js.map": "/onix-react-project/static/js/main.d13bce7f.js.map"
   },
   "entrypoints": [
     "static/css/main.a42420ee.css",
-    "static/js/main.0a917c46.js"
+    "static/js/main.d13bce7f.js"
   ]
 }
