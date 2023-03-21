@@ -13,9 +13,16 @@ const orderSlice = createSlice({
 				// State.push(action.payload)
 				// const order = [...state, action.payload]
 				// localStorage.setItem("order", JSON.stringify(order))
+				let array;
+				if (state.coffee) {
+					array = [...state.coffee, action.payload];
+				} else {
+					array = [action.payload];
+				}
+
 				return {
 					...state,
-					coffee: [...state.coffee, action.payload],
+					coffee: array,
 				};
 			},
 			prepare(name, price) {
@@ -33,9 +40,16 @@ const orderSlice = createSlice({
 				// State.push(action.payload)
 				// const order = [...state, action.payload]
 				// localStorage.setItem("order", JSON.stringify(order))
+				let array;
+				if (state.pokemon) {
+					array = [...state.coffee, action.payload];
+				} else {
+					array = [action.payload];
+				}
+
 				return {
 					...state,
-					pokemon: [...state.pokemon, action.payload],
+					pokemon: array,
 				};
 			},
 			prepare(name, price) {
