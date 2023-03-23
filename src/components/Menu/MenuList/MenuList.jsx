@@ -46,14 +46,24 @@ const MenuList = () => {
 	return (
 		<ul className={style.List}>
 			{coffeePage && data.map(({name, desc, price, link, rate}) => (
-				<MenuItem key={name} link={link} alt={name}
-					name={name} desc={desc} price={price} rate={rate}
+				<MenuItem key={name}
+					link={link}
+					alt={name}
+					name={name}
+					desc={desc}
+					price={price}
+					rate={rate}
 					addItem={() => onAdd(name, price)}
 				/>),
 			)}
 			{!coffeePage && dataPok.map(({name, sprites, weight, stats}) => (
-				<MenuItem key={name} link={sprites.front_default} alt={name}
-					name={name} price={weight} rate={stats[0].base_stat}
+				<MenuItem
+					key={name}
+					link={sprites.front_default}
+					alt={name}
+					name={name}
+					price={weight}
+					rate={stats[0].base_stat}
 					addItem={() => onAdd(name, weight)}
 				/>),
 			)}
