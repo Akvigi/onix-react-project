@@ -6,7 +6,7 @@ import style from './MenuItem.module.sass';
 import Rate from '../../List/Rate/Rate';
 
 const MenuItem = ({name, rate, link, desc, price, addItem}) => (
-	<li className={style.Item} key={name}>
+	<li className={style.Item}>
 		<div className={style.Desc}>
 			<img className={style.Img} src={link} alt={name} />
 
