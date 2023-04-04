@@ -11,18 +11,10 @@ const orderSlice = createSlice({
 		addCoffeToOrder: {
 			reducer(state, action) {
 				// State.push(action.payload)
-				// const order = [...state, action.payload]
-				// localStorage.setItem("order", JSON.stringify(order))
-				let array;
-				if (state.coffee) {
-					array = [...state.coffee, action.payload];
-				} else {
-					array = [action.payload];
-				}
 
 				return {
 					...state,
-					coffee: array,
+					coffee: [...(state.coffee || []), action.payload],
 				};
 			},
 			prepare(name, price) {
@@ -38,18 +30,10 @@ const orderSlice = createSlice({
 		addPokemonToOrder: {
 			reducer(state, action) {
 				// State.push(action.payload)
-				// const order = [...state, action.payload]
-				// localStorage.setItem("order", JSON.stringify(order))
-				let array;
-				if (state.pokemon) {
-					array = [...state.coffee, action.payload];
-				} else {
-					array = [action.payload];
-				}
 
 				return {
 					...state,
-					pokemon: array,
+					pokemon: [...(state.pokemon || []), action.payload],
 				};
 			},
 			prepare(name, price) {

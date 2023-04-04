@@ -15,7 +15,7 @@ const FormLItem = ({item, onAdd, onDS, onDE, onDrop}) => (
 		<div className={style.PriceDelbtnCont}>
 			<p>{item.price}K</p>
 			<button type='button'
-				onClick={() => onAdd()}
+				onClick={onAdd}
 				className={style.DelBtn}>-</button>
 		</div>
 	</li>

@@ -8,19 +8,19 @@ const modalsSlice = createSlice({
 		table: false,
 	},
 	reducers: {
-		toggleOrderModal(state, _) {
+		toggleOrderModal(state) {
 			return {
 				...state,
 				order: !state.order,
 			};
 		},
-		toggleMenuModal(state, _) {
+		toggleMenuModal(state) {
 			return {
 				...state,
 				menu: !state.menu,
 			};
 		},
-		toggleTableModal(state, _) {
+		toggleTableModal(state) {
 			return {
 				...state,
 				table: !state.table,

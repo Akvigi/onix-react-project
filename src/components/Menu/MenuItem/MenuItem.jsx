@@ -8,7 +8,10 @@ import Rate from '../../List/Rate/Rate';
 const MenuItem = ({name, rate, link, desc, price, addItem}) => (
 	<li className={style.Item}>
 		<div className={style.Desc}>
-			<img className={style.Img} src={link} alt={name} />
+			<img
+				className={style.Img}
+				src={link}
+				alt={name} />
 
 			<div className={style.ContainerInfo}>
 				<h3>{name}</h3>

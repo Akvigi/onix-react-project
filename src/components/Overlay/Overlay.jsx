@@ -8,24 +8,28 @@ const Overlay = ({children, stateModal, onBackCl}) => (
 			: `${style.Overlay} ${style.NotActive}`}
 	>{children}</div>
 );
-const Overl = WrappedComponent => class extends React.Component {
-	// Constructor(props) {
-	// 	super(props);
-	// 	this.state = {
-	// 		children: props.children,
-	// 		stateModal: props.stateModal,
-	// 		onBackCl: props.onBackCl,
-	// 	};
-	// }
-	render() {
-		return (
-			<div onClick={this.props.onBackCl}
-				className={this.props.stateModal ? `${style.Overlay} ${style.Active}`
-					: `${style.Overlay} ${style.NotActive}`}
-			><WrappedComponent {...this.props} /></div>
-		);
+function overl(Component) {
+	class WrappedComponent extends React.Component {
+	// WrappedComponent.propTypes = {
+	// 	onBackCl: PropTypes.func,
+	// 	children: PropTypes.element,
+	// 	stateModal: PropTypes.bool.isRequired,
+	// };
+		render() {
+			return (
+				<div onClick={this.props.onBackCl}
+					className={this.props.stateModal ? `${style.Overlay} ${style.Active}`
+						: `${style.Overlay} ${style.NotActive}`}
+				><Component {...this.props} /></div>
+			);
+		}
 	}
-};
+	WrappedComponent.propTypes = {
+		onBackCl: PropTypes.func,
+		stateModal: PropTypes.bool.isRequired,
+	};
+	return WrappedComponent;
+}
 
 Overlay.propTypes = {
 	onBackCl: PropTypes.func,
@@ -33,12 +37,7 @@ Overlay.propTypes = {
 	stateModal: PropTypes.bool.isRequired,
 };
 
-Overl.propTypes = {
-	onBackCl: PropTypes.func,
-	stateModal: PropTypes.bool.isRequired,
-};
-
 // Export default Overlay;
 
-export default Overl(Overlay);
+export default overl(Overlay);
 

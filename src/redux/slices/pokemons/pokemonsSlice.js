@@ -17,7 +17,7 @@ const pokemonsSlice = createSlice({
 				pagPage: payload,
 			};
 		},
-		setMenuToStart(store, _) {
+		setMenuToStart(store) {
 			return {
 				...store,
 				pagPage: 0,

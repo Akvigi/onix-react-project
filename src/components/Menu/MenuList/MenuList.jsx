@@ -36,11 +36,15 @@ const MenuList = () => {
 
 	useEffect(() => {
 		dispatch(setMenuToStart());
-		dispatch(getPokemonsForMenu(page));
+		if (!coffeePage) {
+			dispatch(getPokemonsForMenu(page));
+		}
 	}, []);
 
 	useEffect(() => {
-		dispatch(getPokemonsForMenu(page));
+		if (!coffeePage) {
+			dispatch(getPokemonsForMenu(page));
+		}
 	}, [page]);
 
 	return (
@@ -67,7 +71,7 @@ const MenuList = () => {
 					addItem={() => onAdd(name, weight)}
 				/>),
 			)}
-			{!coffeePage && <button className={style.PagBtn} type='button' onClick={() => onPag()}>Load more</button>}
+			{!coffeePage && <button className={style.PagBtn} type='button' onClick={onPag}>Load more</button>}
 		</ul>
 	);
 };

@@ -7,13 +7,13 @@ const pageSlice = createSlice({
 		// Pokemon: false,
 	},
 	reducers: {
-		toggleCoffeePage(state, _) {
+		toggleCoffeePage(state) {
 			return {
 				...state,
 				coffee: !state.coffee,
 			};
 		},
-		setCoffeePageTrue(state, _) {
+		setCoffeePageTrue(state) {
 			return {
 				...state,
 				coffee: true,

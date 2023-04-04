@@ -16,7 +16,7 @@ const Table = () => {
 
 	const changeBorder = e => {
 		if (e.code === 'KeyA') {
-			setActiveB(!activeB);
+			setActiveB(prevActiveB => !prevActiveB);
 		}
 	};
 
@@ -35,7 +35,7 @@ const Table = () => {
 			window.removeEventListener('keydown', esc);
 			window.removeEventListener('keydown', changeBorder);
 		};
-	}, [activeB]);
+	}, []);
 
 	return createPortal(
 		<Overlay stateModal={modalSt}>
