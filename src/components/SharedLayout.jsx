@@ -1,15 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Outlet} from 'react-router-dom';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import PropTypes from 'prop-types';
+import {Context, themeConst} from '../App';
 
 const SharedLayout = ({aboutUsRef, specialRef}) => {
+	const {theme} = useContext(Context);
 	const onScroll = section => window.scrollTo({top: section.current.offsetTop, behavior: 'smooth'});
 	return (
-		<div>
+		<div style={theme === themeConst.light ? {background: 'white'} : {background: 'black'}}>
 			<Header goToAbout={() => onScroll(aboutUsRef)}
-				goToSpecial={() => onScroll(specialRef)} />
+				goToSpecial={() => onScroll(specialRef)}
+			/>
 			<Outlet />
 			<Footer />
 		</div>
@@ -19,6 +22,7 @@ const SharedLayout = ({aboutUsRef, specialRef}) => {
 SharedLayout.propTypes = {
 	aboutUsRef: PropTypes.object,
 	specialRef: PropTypes.object,
+	changeTheme: PropTypes.func,
 };
 
 export default SharedLayout;

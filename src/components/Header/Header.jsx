@@ -1,17 +1,22 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import style from './Header.module.sass';
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+
 import {useDispatch, useSelector} from 'react-redux';
 import {toggleOrderModal} from '../../redux/slices/modalsSlice';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
 import {selectCoffePage, selectOrderCoffee} from '../../redux/selectors';
 import {toggleCoffeePage} from '../../redux/slices/pageSlice';
+import {Context, themeConst} from '../../App';
 
 const Header = ({goToAbout, goToSpecial}) => {
 	const dispatch = useDispatch();
 	const coffeePage = useSelector(selectCoffePage);
 	const order = useSelector(selectOrderCoffee);
+	const {theme, changeTheme} = useContext(Context);
 	return (
 		<header className={style.Header}>
 			<div className={style.container}>
@@ -30,6 +35,25 @@ const Header = ({goToAbout, goToSpecial}) => {
 								}} />
 							{order && <span className={style.BtnIndicator}>{order.length}</span>}
 						</button>
+						<button type='button' className={style.Btn} onClick={() => changeTheme()}>
+							{theme === themeConst.dark
+								? <WbSunnyIcon
+									sx={{
+										color: '#fead0a',
+										width: '32px',
+										height: '32px',
+									}}
+								/>
+								: <DarkModeIcon
+									sx={{
+										color: '#3dcfe6',
+										width: '32px',
+										height: '32px',
+									}}
+								/>}
+						</button>
+						{/* )}
+						</Context.Consumer> */}
 					</>) : <NavLink to='/onix-react-project' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>Coffee</NavLink>
 					}
 				</nav>

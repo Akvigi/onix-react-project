@@ -182,7 +182,7 @@ const FormModal = () => {
 						onSort={sortWtSort}>Sort without sort</SortBtn>
 				</div>
 				<ul className={style.List}>
-					{order ? order.map(item =>
+					{order?.length ? order.map(item =>
 						(<FormLItem item={item} key={item.id}
 							onDE={onDragEnd} onDS={onDragStart} onDrop={handleDrop}
 							onAdd={() => dispatch(deleteCoffeeFromOrder(item.id))}/>)) : (<p>Nothing in cart</p>)
