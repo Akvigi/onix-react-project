@@ -19,6 +19,7 @@ const Header = ({goToAbout, goToSpecial}) => {
 	const order = useSelector(selectOrderCoffee);
 	const {theme, changeTheme} = useContext(Context);
 	const {t, i18n} = useTranslation();
+
 	return (
 		<header className={style.Header}>
 			<div className={style.container}>
