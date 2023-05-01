@@ -23,38 +23,6 @@ const Coffee = ({aboutUsRef, specialRef}) => {
 	const orderModal = useSelector(selectOrderModal);
 	const menuModal = useSelector(selectMenuModal);
 
-	const sortWtSort = (prevState, setToggle) => {
-		let done = false;
-		const array = JSON.parse(localStorage.getItem('order'));
-		if (prevState === false) {
-			while (!done) {
-				done = true;
-				for (let i = 1; i < array.length; i += 1) {
-					if (array[i - 1].price > array[i].price) {
-						done = false;
-						const a = array[i - 1];
-						array[i - 1] = array[i];
-						array[i] = a;
-					}
-				}
-			}
-		} else if (prevState === true) {
-			while (!done) {
-				done = true;
-				for (let i = 1; i < array.length; i += 1) {
-					if (array[i - 1].price < array[i].price) {
-						done = false;
-						const a = array[i - 1];
-						array[i - 1] = array[i];
-						array[i] = a;
-					}
-				}
-			}
-		}
-
-		setToggle(!prevState);
-	};
-
 	const toggleTable = e => {
 		if (e.code === 'KeyT') {
 			dispatch(toggleTableModal());
@@ -75,9 +43,7 @@ const Coffee = ({aboutUsRef, specialRef}) => {
 			<SpecialFU specialRef={specialRef} />
 			<Reviews />
 			{menuModal && <Menu />}
-			{orderModal && <FormModal
-				onSortWS={sortWtSort}
-			/>}
+			{orderModal && <FormModal />}
 			{modalTable && <Table />}
 		</>
 	);

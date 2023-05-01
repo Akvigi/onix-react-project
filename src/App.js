@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Route, Routes} from 'react-router-dom';
-
+import './i18n';
 import SharedLayout from './components/SharedLayout';
 import Coffee from './pages/Coffee/Coffee.jsx';
 import Pokemons from './pages/Pokemons/Pokemons';

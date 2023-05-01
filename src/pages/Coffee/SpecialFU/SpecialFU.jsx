@@ -6,13 +6,15 @@ import SpList from '../../../components/SpList/SpList';
 import style from './SpecialFU.module.sass';
 import PropTypes from 'prop-types';
 import {Context, themeConst} from '../../../App';
+import {useTranslation} from 'react-i18next';
 
 const SpecialFU = ({specialRef}) => {
+	const {t} = useTranslation();
 	const {theme} = useContext(Context);
 	return (
 		<section className={theme === themeConst.light ? `${style.Foryou}` : `${style.Foryou} ${style.Dark}`} ref={specialRef}>
 			<Container>
-				<SectionHeading>Special menu for You</SectionHeading>
+				<SectionHeading>{t('specialH')}</SectionHeading>
 				<SpList/>
 			</Container>
 		</section>

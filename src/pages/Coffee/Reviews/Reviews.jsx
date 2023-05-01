@@ -4,16 +4,18 @@ import style from './Reviews.module.sass';
 import {useSelector} from 'react-redux';
 import {selectReviewsData} from '../../../redux/selectors';
 import ReviewsList from '../../../components/ReviewsList/ReviewsList';
+import {useTranslation} from 'react-i18next';
 
 const Reviews = () => {
 	const [pagePag, setPagePag] = useState(1);
+	const {t} = useTranslation();
 	const data = useSelector(selectReviewsData);
 	return (
 		<section className={style.Section}>
 			<div className={style.Container}>
 				<div className={style.TextCont}>
-					<h3 className={style.Heading}>What they say about us</h3>
-					<p className={style.Text}>We always provide the best service and always maintain the quality of coffee</p>
+					<h3 className={style.Heading}>{t('reviewsMain')}</h3>
+					<p className={style.Text}>{t('reviewsSec')}</p>
 				</div>
 				<div className={style.ListBtnsCont}>
 					<ReviewsList pagePag={pagePag}/>

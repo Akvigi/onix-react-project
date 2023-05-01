@@ -10,8 +10,6 @@ const orderSlice = createSlice({
 	reducers: {
 		addCoffeToOrder: {
 			reducer(state, action) {
-				// State.push(action.payload)
-
 				return {
 					...state,
 					coffee: [...(state.coffee || []), action.payload],

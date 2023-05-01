@@ -14,14 +14,15 @@ import HeroOrderBtn from '../../../components/Hero/HeroOrderBtn';
 import HeroMenuBtn from '../../../components/Hero/HeroMenuBtn';
 import HeroBtnCont from '../../../components/Hero/HeroBtnCont';
 import HeroImg from '../../../components/Hero/HeroImg';
+import {useTranslation} from 'react-i18next';
 const Hero = () => {
 	const dispatch = useDispatch();
-
+	const {t} = useTranslation();
 	return (
 		<HeroSection>
 			<ContainerHero>
 				<HeroDesc>
-					<HeroHeader>Enjoy your <span>coffee</span> before your activity</HeroHeader>
+					<HeroHeader>{t('hero.mainC')}</HeroHeader>
 					<Media queries={{small: '(max-width: 767px)'}}>
 						{matches =>
 							matches.small && (
@@ -29,10 +30,10 @@ const Hero = () => {
 							)
 						}
 					</Media>
-					<HeroText>Boost your productivity and build your mood with a glass of coffee in the morning</HeroText>
+					<HeroText>{t('hero.secC')}</HeroText>
 					<HeroBtnCont>
-						<HeroOrderBtn onClick={() => dispatch(toggleOrderModal())}>Order now</HeroOrderBtn>
-						<HeroMenuBtn onClick={() => dispatch(toggleMenuModal())} >More menu</HeroMenuBtn>
+						<HeroOrderBtn onClick={() => dispatch(toggleOrderModal())}>{t('hero.orderbtn')}</HeroOrderBtn>
+						<HeroMenuBtn onClick={() => dispatch(toggleMenuModal())} >{t('hero.menubtn')}</HeroMenuBtn>
 					</HeroBtnCont>
 				</HeroDesc>
 				<Media queries={{small: '(max-width: 767px)'}}>

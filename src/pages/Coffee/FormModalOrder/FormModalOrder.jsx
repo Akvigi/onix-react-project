@@ -16,6 +16,7 @@ import {filterStatus} from '../../../redux/constants';
 
 import {selectSortedOrder} from '../../../redux/selectors';
 import Overlay from '../../../components/Overlay/Overlay';
+import {useTranslation} from 'react-i18next';
 
 const portal = document.querySelector('#portal');
 
@@ -30,6 +31,7 @@ const FormModal = () => {
 
 	const [priceToggle, setPriceToggle] = useState(false);
 	const [nameToggle, setNameToggle] = useState(false);
+	const {t} = useTranslation();
 
 	const dispatch = useDispatch();
 
@@ -70,17 +72,17 @@ const FormModal = () => {
 	const onSubmitForm = e => {
 		e.preventDefault();
 		if (order.length === 0) {
-			return Notiflix.Notify.warning('Nothing in cart');
+			return Notiflix.Notify.warning(t('form.nothincart'));
 		}
 
 		if (number === '') {
-			return Notiflix.Notify.failure('Please input number of your phone!');
+			return Notiflix.Notify.failure(t('form.notifforinp'));
 		}
 
 		console.log(address, number, name);
 		onCloseModal();
 		Notiflix.Notify.success(
-			'Wait for call from us to clarify your order',
+			t('form.nothincart'),
 			{
 				timeout: 3000,
 				position: 'center-top',
@@ -149,46 +151,46 @@ const FormModal = () => {
 					onClick={() => onCloseModal()}
 					className={style.ExitBtn}>X</button>
 				<InputDataOrder
-					placeholder='Name'
+					placeholder={t('form.name')}
 					value={name}
 					onSet={setName}
 				/>
 				<InputDataOrder
 					value={address}
-					placeholder='Address'
+					placeholder={t('form.addr')}
 					onSet={setAddress}
 				/>
 				<input className={style.Input}
 					type='phone'
-					placeholder='Phone'
+					placeholder={t('form.ph')}
 					value={number}
 					onChange={e => setPhone(e.currentTarget.value)}
 				/>
 				<button className={style.MenuBtn}
-					onClick={onMenu} type='button'>Menu</button>
-				<h4>Your order</h4>
+					onClick={onMenu} type='button'>{t('form.menulink')}</button>
+				<h4>{t('form.ordhead')}</h4>
 				<div className={style.SortBtnCont}>
 					<SortBtn toggle={priceToggle}
 						by={'price'}
 						setToggle={setPriceToggle}
-					>Sort by price</SortBtn>
+					>{t('form.sortAB')}</SortBtn>
 					<SortBtn toggle={nameToggle}
 						by={'name'}
 						setToggle={setNameToggle}
-					>Sort by name</SortBtn>
+					>{t('form.sort19')}</SortBtn>
 					<SortBtn toggle={priceToggle}
 						by={'price'}
 						setToggle={setPriceToggle}
-						onSort={sortWtSort}>Sort without sort</SortBtn>
+						onSort={sortWtSort}>{t('form.sortWS')}</SortBtn>
 				</div>
 				<ul className={style.List}>
 					{order?.length ? order.map(item =>
 						(<FormLItem item={item} key={item.id}
 							onDE={onDragEnd} onDS={onDragStart} onDrop={handleDrop}
-							onAdd={() => dispatch(deleteCoffeeFromOrder(item.id))}/>)) : (<p>Nothing in cart</p>)
+							onAdd={() => dispatch(deleteCoffeeFromOrder(item.id))} />)) : (<p>{t('form.nic')}</p>)
 					}
 				</ul>
-				<button className={style.OrderBtn} type='submit'>Order</button>
+				<button className={style.OrderBtn} type='submit'>{t('form.ordbtn')}</button>
 			</form>
 		</Overlay>,
 		portal,

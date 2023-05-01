@@ -5,9 +5,11 @@ import imgus from '../../../images/aboutus.jpg';
 import style from './AboutUs.module.sass';
 import PropTypes from 'prop-types';
 import {toggleMenuModal} from '../../../redux/slices/modalsSlice';
+import {useTranslation} from 'react-i18next';
 
 const AboutUs = ({refTo}) => {
 	const dispatch = useDispatch();
+	const {t} = useTranslation();
 	return (
 		<section className={style.Aboutus} ref={refTo}>
 			<div className={style.Cont}>
@@ -19,13 +21,10 @@ const AboutUs = ({refTo}) => {
 					}
 				</Media>
 				<div className={style.Info} >
-					<h2 className={style.Heading} >About us</h2>
-					<p className={style.Maintxt}>We provide quality coffee, and ready to deliver.</p>
-					<p className={style.Desc}>
-                    We are a company that makes and distributes delicious drinks. our main product is made with a secret recipe and
-                    available in stores worldwide.
-					</p>
-					<button onClick={() => dispatch(toggleMenuModal())} className={style.Btn} type='button' >Get your coffee</button>
+					<h2 className={style.Heading} >{t('aboutUs.head')}</h2>
+					<p className={style.Maintxt}>{t('aboutUs.main')}</p>
+					<p className={style.Desc}>{t('aboutUs.sec')}</p>
+					<button onClick={() => dispatch(toggleMenuModal())} className={style.Btn} type='button' >{t('aboutUs.btn')}</button>
 				</div>
 			</div>
 		</section>

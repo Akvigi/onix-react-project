@@ -11,21 +11,23 @@ import {NavLink} from 'react-router-dom';
 import {selectCoffePage, selectOrderCoffee} from '../../redux/selectors';
 import {toggleCoffeePage} from '../../redux/slices/pageSlice';
 import {Context, themeConst} from '../../App';
+import {useTranslation} from 'react-i18next';
 
 const Header = ({goToAbout, goToSpecial}) => {
 	const dispatch = useDispatch();
 	const coffeePage = useSelector(selectCoffePage);
 	const order = useSelector(selectOrderCoffee);
 	const {theme, changeTheme} = useContext(Context);
+	const {t, i18n} = useTranslation();
 	return (
 		<header className={style.Header}>
 			<div className={style.container}>
 				<h2 className={style.Logo}>Project Onix</h2>
 				<nav className={style.Nav}>
 					{coffeePage ? (<>
-						<a className={style.Link} onClick={goToAbout} href='#aboutus'>About us</a>
-						<a className={style.Link} onClick={goToSpecial} href='#specialforyou'>Special for you</a>
-						<NavLink to='/pokemons' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>Pokemons</NavLink>
+						<a className={style.Link} onClick={goToAbout} href='#aboutus'>{t('header.b1')}</a>
+						<a className={style.Link} onClick={goToSpecial} href='#specialforyou'>{t('header.b2')}</a>
+						<NavLink to='/pokemons' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>{t('header.b3')}</NavLink>
 						<button className={style.Btn} onClick={() => dispatch(toggleOrderModal())} type='button'>
 							<ShoppingCartTwoToneIcon
 								sx={{
@@ -52,9 +54,16 @@ const Header = ({goToAbout, goToSpecial}) => {
 									}}
 								/>}
 						</button>
-						{/* )}
-						</Context.Consumer> */}
-					</>) : <NavLink to='/onix-react-project' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>Coffee</NavLink>
+
+					</>) : <NavLink to='/onix-react-project' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>{t('header.b4')}</NavLink>
+					}
+					{i18n.language === 'en'
+						? <button type='button' className={`${style.Lang} ${style.Ua}`} onClick={() => i18n.changeLanguage('ua')}>
+							<span className={style.U}>U</span><span className={style.A}>A</span>
+						</button>
+						: <button type='button' className={style.Lang} onClick={() => i18n.changeLanguage('en')}>
+								EN
+						</button>
 					}
 				</nav>
 			</div>

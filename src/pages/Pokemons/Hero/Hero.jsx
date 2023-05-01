@@ -16,9 +16,10 @@ import {getHeroImg} from '../../../redux/requests';
 
 import {selectHeroPokemon} from '../../../redux/selectors';
 import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
+import {useTranslation} from 'react-i18next';
 const Hero = () => {
 	const dispatch = useDispatch();
-
+	const {t} = useTranslation();
 	useEffect(() => {
 		dispatch(getHeroImg());
 	}, [dispatch]);
@@ -29,7 +30,7 @@ const Hero = () => {
 		<HeroSection>
 			<ContainerHero>
 				<HeroDesc>
-					<HeroHeader>Buy pokemon at our site!</HeroHeader>
+					<HeroHeader>{t('hero.mainP')}</HeroHeader>
 					<Media queries={{small: '(max-width: 767px)'}}>
 						{matches =>
 							matches.small && (
@@ -37,10 +38,10 @@ const Hero = () => {
 							)
 						}
 					</Media>
-					<HeroText>Welcome to our online store for buying Pokemon! We offer a wide variety of Pokemon species, each with their own unique abilities and strengths.</HeroText>
+					<HeroText>{t('hero.secP')}</HeroText>
 					<HeroBtnCont>
-						<HeroOrderBtn onClick={() => dispatch(toggleOrderModal())}>Order now</HeroOrderBtn>
-						<HeroMenuBtn onClick={() => dispatch(toggleMenuModal())} >More menu</HeroMenuBtn>
+						<HeroOrderBtn onClick={() => dispatch(toggleOrderModal())}>{t('hero.orderbtn')}</HeroOrderBtn>
+						<HeroMenuBtn onClick={() => dispatch(toggleMenuModal())} >{t('hero.menubtn')}</HeroMenuBtn>
 					</HeroBtnCont>
 				</HeroDesc>
 				<Media queries={{small: '(max-width: 767px)'}}>

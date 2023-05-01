@@ -7,12 +7,14 @@ import PopList from '../../../components/PopList/PopList';
 
 import {useSelector} from 'react-redux';
 import {selectPopData} from '../../../redux/selectors';
+import {useTranslation} from 'react-i18next';
 
 const Popular = () => {
 	const data = useSelector(selectPopData);
+	const {t} = useTranslation();
 	return (<section className={style.Popular}>
 		<Container>
-			<SectionHeading>Popular Now</SectionHeading>
+			<SectionHeading>{t('popularH')}</SectionHeading>
 			<PopList data={data}/>
 		</Container>
 	</section>);

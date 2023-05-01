@@ -4,7 +4,6 @@ const pageSlice = createSlice({
 	name: 'pages',
 	initialState: {
 		coffee: true,
-		// Pokemon: false,
 	},
 	reducers: {
 		toggleCoffeePage(state) {

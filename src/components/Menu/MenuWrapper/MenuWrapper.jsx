@@ -6,11 +6,12 @@ import style from './MenuWrapper.module.sass';
 
 import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
 import Overlay from '../../../components/Overlay/Overlay';
+import {useTranslation} from 'react-i18next';
 
 const MenuWrapper = ({children, menuListFor}) => {
 	const dispatch = useDispatch();
 	const [modalStyling, setModalStyling] = useState(true);
-
+	const {t} = useTranslation();
 	const onCloseModal = () => {
 		setModalStyling(false);
 		setTimeout(() => dispatch(toggleMenuModal()), 1000);
@@ -49,10 +50,9 @@ const MenuWrapper = ({children, menuListFor}) => {
 	return (
 		<Overlay onBackCl={e => onBackClick(e)} stateModal={modalStyling}>
 			<div className={style.Menu}>
-				{menuListFor === 'pokemon' ? <h2>Catalog</h2> : <h2>Menu</h2>}
-				{/* <MenuList /> */}
+				{menuListFor === 'pokemon' ? <h2>{t('menu.headP')}</h2> : <h2>{t('menu.headC')}</h2>}
 				{children}
-				<button className={style.toOrder} type='button' onClick={() => openOrder()}>To order</button>
+				<button className={style.toOrder} type='button' onClick={() => openOrder()}>{t('menu.toOrd')}</button>
 			</div>
 		</Overlay>
 	);

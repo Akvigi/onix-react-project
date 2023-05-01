@@ -11,12 +11,14 @@ import {selectAllData, selectCoffePage, selectPokemonMenu, selectPokemonPagPage}
 import MenuItem from '../MenuItem/MenuItem';
 import {getPokemonsForMenu} from '../../../redux/requests';
 import {setMenuToStart, setPagPage} from '../../../redux/slices/pokemons/pokemonsSlice';
+import {useTranslation} from 'react-i18next';
 
 const MenuList = () => {
 	const data = useSelector(selectAllData);
 	const coffeePage = useSelector(selectCoffePage);
 	const dataPok = useSelector(selectPokemonMenu);
 	const page = useSelector(selectPokemonPagPage);
+	const {t} = useTranslation();
 
 	const dispatch = useDispatch();
 
@@ -71,7 +73,7 @@ const MenuList = () => {
 					addItem={() => onAdd(name, weight)}
 				/>),
 			)}
-			{!coffeePage && <button className={style.PagBtn} type='button' onClick={onPag}>Load more</button>}
+			{!coffeePage && <button className={style.PagBtn} type='button' onClick={onPag}>{t('menu.load')}</button>}
 		</ul>
 	);
 };

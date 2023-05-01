@@ -1,6 +1,5 @@
 import axios from 'axios';
 const API_KEY = '28235798-10089aa8a519f6d1c62a23eff';
-// } q=${query}&page=${page}
 
 const requestIMG = axios.create({
 	baseURL: 'https://pixabay.com/api/',

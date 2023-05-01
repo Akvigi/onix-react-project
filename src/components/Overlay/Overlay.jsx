@@ -10,11 +10,6 @@ const Overlay = ({children, stateModal, onBackCl}) => (
 );
 function overl(Component) {
 	class WrappedComponent extends React.Component {
-	// WrappedComponent.propTypes = {
-	// 	onBackCl: PropTypes.func,
-	// 	children: PropTypes.element,
-	// 	stateModal: PropTypes.bool.isRequired,
-	// };
 		render() {
 			return (
 				<div onClick={this.props.onBackCl}
@@ -36,8 +31,6 @@ Overlay.propTypes = {
 	children: PropTypes.element,
 	stateModal: PropTypes.bool.isRequired,
 };
-
-// Export default Overlay;
 
 export default overl(Overlay);
 
