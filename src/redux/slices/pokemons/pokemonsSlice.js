@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getPokemonsForMenu, getPokemon, getHeroImg} from '../../requests';
+import {getPokemonsForMenu, getHeroImg} from '../../requests';
 
 const pokemonsSlice = createSlice({
 	name: 'pokemons',
@@ -7,7 +7,8 @@ const pokemonsSlice = createSlice({
 		menu: [],
 		heroPokemon: null,
 		pagPage: 0,
-		loading: false,
+		loadingM: false,
+		loadingHero: false,
 		error: null,
 	},
 	reducers: {
@@ -31,7 +32,6 @@ const pokemonsSlice = createSlice({
 			store.error = null;
 		},
 		[getPokemonsForMenu.fulfilled](store, {payload}) {
-			store.loading = false;
 			store.error = null;
 			if (store.pagPage !== 0 && store.menu) {
 				store.menu = [...store.menu, ...payload].reduce((acc, curr) => {
@@ -46,33 +46,25 @@ const pokemonsSlice = createSlice({
 			} else {
 				store.menu = [...payload];
 			}
+
+			if (store.menu.length % 10 === 0) {
+				store.loading = false;
+			}
 		},
 		[getPokemonsForMenu.rejected](store, {payload}) {
 			store.loading = false;
 			store.error = payload;
 		},
-		[getPokemon.pending](store) {
-			store.loading = true;
-			store.error = null;
-		},
-		[getPokemon.fulfilled](store, {payload}) {
-			store.loading = false;
-			store.heroPokemon = payload;
-		},
-		[getPokemon.rejected](store, {payload}) {
-			store.loading = false;
-			store.error = payload;
-		},
 		[getHeroImg.pending](store) {
-			store.loading = true;
+			store.loadingHero = true;
 			store.error = null;
 		},
 		[getHeroImg.fulfilled](store, {payload}) {
-			store.loading = false;
+			store.loadingHero = false;
 			store.heroPokemon = payload.hits[0].largeImageURL;
 		},
 		[getHeroImg.rejected](store, {payload}) {
-			store.loading = false;
+			store.loadingHero = false;
 			store.error = payload;
 		},
 	},

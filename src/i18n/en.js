@@ -33,6 +33,7 @@ export default {
 		toOrd: 'To Order',
 		load: 'Load more',
 		headP: 'Catalog',
+		menuloading: 'Loading...',
 		headC: 'Menu',
 	},
 	form: {

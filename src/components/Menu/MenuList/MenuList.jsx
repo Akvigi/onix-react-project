@@ -6,7 +6,7 @@ import style from './MenuList.module.sass';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {addCoffeToOrder, addPokemonToOrder} from '../../../redux/slices/orderSlice';
-import {selectAllData, selectCoffePage, selectPokemonMenu, selectPokemonPagPage} from '../../../redux/selectors';
+import {selectAllData, selectCoffePage, selectPokemonLoading, selectPokemonMenu, selectPokemonPagPage} from '../../../redux/selectors';
 
 import MenuItem from '../MenuItem/MenuItem';
 import {getPokemonsForMenu} from '../../../redux/requests';
@@ -18,6 +18,7 @@ const MenuList = () => {
 	const coffeePage = useSelector(selectCoffePage);
 	const dataPok = useSelector(selectPokemonMenu);
 	const page = useSelector(selectPokemonPagPage);
+	const loading = useSelector(selectPokemonLoading);
 	const {t} = useTranslation();
 
 	const dispatch = useDispatch();
@@ -62,6 +63,7 @@ const MenuList = () => {
 					addItem={() => onAdd(name, price)}
 				/>),
 			)}
+			{loading && dataPok.length === 0 && <p style={{margin: '30px 0'}}>{t('menu.menuloading')}</p>}
 			{!coffeePage && dataPok.map(({name, sprites, weight, stats}) => (
 				<MenuItem
 					key={name}
@@ -73,7 +75,12 @@ const MenuList = () => {
 					addItem={() => onAdd(name, weight)}
 				/>),
 			)}
-			{!coffeePage && <button className={style.PagBtn} type='button' onClick={onPag}>{t('menu.load')}</button>}
+			{!coffeePage && <button
+				className={style.PagBtn}
+				type='button'
+				onClick={onPag}>
+				{loading ? t('menu.menuloading') : t('menu.load')}
+			</button>}
 		</ul>
 	);
 };

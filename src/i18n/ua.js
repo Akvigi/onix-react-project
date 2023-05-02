@@ -33,6 +33,7 @@ export default {
 		toOrd: 'До замовлення',
 		load: 'Завантажити ще',
 		headP: 'Каталог',
+		menuloading: 'Завантажується...',
 		headC: 'Меню',
 	},
 	form: {
