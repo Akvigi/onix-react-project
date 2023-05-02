@@ -7,7 +7,7 @@ import {Context, themeConst} from '../App';
 
 const SharedLayout = ({aboutUsRef, specialRef}) => {
 	const {theme} = useContext(Context);
-	const onScroll = section => window.scrollTo({top: section.current.offsetTop, behavior: 'smooth'});
+	const onScroll = section => window.scrollTo({top: section.current.offsetTop - 100, behavior: 'smooth'});
 	return (
 		<div style={theme === themeConst.light ? {background: 'white'} : {background: 'black'}}>
 			<Header goToAbout={() => onScroll(aboutUsRef)}
