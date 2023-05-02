@@ -45,8 +45,6 @@
     position: relative
     margin-left: 5px 
     &:hover
-        &>svg
-            fill: #FF902A
         & .BtnIndicator
             background: #FF902A    
             color: black
@@ -60,7 +58,17 @@
         color: white
         padding: 1px 5px
         border-radius: 10px
-        
+
+.Moon
+    &:hover
+        &>svg
+            fill: #FF902A        
+
+.Sun 
+    &:hover
+        &>svg
+            fill: #3dcfe6
+
 .Lang
     font-size: 14px
     @media screen and (min-width: 480px) 
@@ -72,6 +80,7 @@
     cursor: pointer
     align-self: center
     justify-self: center
+
 .Ua
     &:hover
         & .U 

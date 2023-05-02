@@ -38,24 +38,26 @@ const Header = ({goToAbout, goToSpecial}) => {
 								}} />
 							{order && <span className={style.BtnIndicator}>{order.length}</span>}
 						</button>
-						<button type='button' className={style.Btn} onClick={() => changeTheme()}>
-							{theme === themeConst.dark
-								? <WbSunnyIcon
+						{theme === themeConst.dark
+							? <button type='button' className={`${style.Btn} ${style.Sun}`} onClick={() => changeTheme()}>
+								<WbSunnyIcon
 									sx={{
 										color: '#fead0a',
 										width: '32px',
 										height: '32px',
 									}}
 								/>
-								: <DarkModeIcon
+							</button>
+							: <button type='button' className={`${style.Btn} ${style.Moon}`} onClick={() => changeTheme()}>
+								<DarkModeIcon
 									sx={{
 										color: '#3dcfe6',
 										width: '32px',
 										height: '32px',
 									}}
-								/>}
-						</button>
-
+								/>
+							</button>
+						}
 					</>) : <NavLink to='/onix-react-project' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>{t('header.b4')}</NavLink>
 					}
 					{i18n.language === 'en'
