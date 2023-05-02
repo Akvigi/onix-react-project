@@ -9,14 +9,17 @@ import {addCoffeToOrder} from '../../redux/slices/orderSlice';
 import Notiflix from 'notiflix';
 import {selectDataFU} from '../../redux/selectors';
 import {Context, themeConst} from '../../App';
+import {useTranslation} from 'react-i18next';
 
 const SpList = () => {
 	const dispatch = useDispatch();
 	const data = useSelector(selectDataFU);
 	const {theme} = useContext(Context);
+	const {t} = useTranslation();
+
 	const onAdd = (name, price) => {
 		dispatch(addCoffeToOrder(name, price));
-		Notiflix.Notify.success(`Successfull added to cart: ${name}`);
+		Notiflix.Notify.success(`${t('onAdd')}: ${name}`);
 	};
 
 	return (

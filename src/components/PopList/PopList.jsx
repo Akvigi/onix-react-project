@@ -12,14 +12,17 @@ import {useDispatch, useSelector} from 'react-redux';
 import {selectPopData} from '../../redux/selectors';
 import {addCoffeToOrder} from '../../redux/slices/orderSlice';
 import {Context, themeConst} from '../../App';
+import {useTranslation} from 'react-i18next';
 
 const PopList = () => {
 	const dispatch = useDispatch();
 	const data = useSelector(selectPopData);
 	const {theme} = useContext(Context);
+	const {t} = useTranslation();
+
 	const onAdd = (name, price) => {
 		dispatch(addCoffeToOrder(name, price));
-		Notiflix.Notify.success(`Successfull added to cart: ${name}`);
+		Notiflix.Notify.success(`${t('onAdd')}: ${name}`);
 	};
 
 	return (

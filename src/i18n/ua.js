@@ -29,6 +29,7 @@ export default {
 		link: 'Посилання',
 		ghublink: 'Мій GitHub',
 	},
+	onAdd: 'Успішно додано до кошику',
 	menu: {
 		toOrd: 'До замовлення',
 		load: 'Завантажити ще',

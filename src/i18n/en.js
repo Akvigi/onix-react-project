@@ -29,6 +29,7 @@ export default {
 		link: 'Link',
 		ghublink: 'My GitHub',
 	},
+	onAdd: 'Successfull added to cart',
 	menu: {
 		toOrd: 'To Order',
 		load: 'Load more',

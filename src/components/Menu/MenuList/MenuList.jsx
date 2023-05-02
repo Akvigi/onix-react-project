@@ -30,7 +30,7 @@ const MenuList = () => {
 			dispatch(addPokemonToOrder(name, price));
 		}
 
-		Notiflix.Notify.success(`Successfull added to cart: ${name}`);
+		Notiflix.Notify.success(`${t('onAdd')}: ${name}`);
 	};
 
 	const onPag = () => {
