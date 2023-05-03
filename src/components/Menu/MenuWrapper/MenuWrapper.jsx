@@ -7,6 +7,7 @@ import style from './MenuWrapper.module.sass';
 import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
 import Overlay from '../../../components/Overlay/Overlay';
 import {useTranslation} from 'react-i18next';
+import {pokemonConst} from '../../../redux/constants';
 
 const MenuWrapper = ({children, menuListFor}) => {
 	const dispatch = useDispatch();
@@ -50,7 +51,7 @@ const MenuWrapper = ({children, menuListFor}) => {
 	return (
 		<Overlay onBackCl={e => onBackClick(e)} stateModal={modalStyling}>
 			<div className={style.Menu}>
-				{menuListFor === 'pokemon' ? <h2>{t('menu.headP')}</h2> : <h2>{t('menu.headC')}</h2>}
+				{menuListFor === pokemonConst ? <h2>{t('menu.headP')}</h2> : <h2>{t('menu.headC')}</h2>}
 				{children}
 				<button className={style.toOrder} type='button' onClick={() => openOrder()}>{t('menu.toOrd')}</button>
 			</div>
@@ -60,7 +61,7 @@ const MenuWrapper = ({children, menuListFor}) => {
 
 MenuWrapper.propTypes = {
 	children: PropTypes.element.isRequired,
-	menuListFor: PropTypes.string,
+	menuListFor: PropTypes.oneOf(['pokemon', 'menu']),
 };
 
 export default MenuWrapper;

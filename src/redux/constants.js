@@ -9,3 +9,8 @@ export const filterStatus = Object.freeze({
 		fZtA: 'fZtA',
 	},
 });
+
+export const pokemonConst = 'pokemon';
+export const coffeeConst = 'coffee';
+export const nameConst = 'name';
+export const priceConst = 'price';

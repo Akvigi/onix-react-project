@@ -12,7 +12,7 @@ import FormLItem from '../../../components/FormLItem/FormLItem';
 import {changeFilter} from '../../../redux/slices/coffee/filterSlice';
 import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
 import {deleteCoffeeFromOrder, replaceCOWithSorted} from '../../../redux/slices/orderSlice';
-import {filterStatus} from '../../../redux/constants';
+import {filterStatus, nameConst, priceConst} from '../../../redux/constants';
 
 import {selectSortedOrder} from '../../../redux/selectors';
 import Overlay from '../../../components/Overlay/Overlay';
@@ -94,33 +94,25 @@ const FormModal = () => {
 
 	const sortWtSort = (prevState, setToggle) => {
 		let done = false;
-		const array = JSON.parse(localStorage.getItem('order'));
-		if (prevState === false) {
-			while (!done) {
-				done = true;
-				for (let i = 1; i < array.length; i += 1) {
-					if (array[i - 1].price > array[i].price) {
-						done = false;
-						const a = array[i - 1];
-						array[i - 1] = array[i];
-						array[i] = a;
-					}
-				}
-			}
-		} else if (prevState === true) {
-			while (!done) {
-				done = true;
-				for (let i = 1; i < array.length; i += 1) {
-					if (array[i - 1].price < array[i].price) {
-						done = false;
-						const a = array[i - 1];
-						array[i - 1] = array[i];
-						array[i] = a;
-					}
+		const array = [...order];
+		while (!done) {
+			done = true;
+			for (let i = 1; i < array.length; i += 1) {
+				if ((prevState === false) && (array[i - 1].price > array[i].price)) {
+					done = false;
+					const a = array[i - 1];
+					array[i - 1] = array[i];
+					array[i] = a;
+				} else if ((prevState === true) && (array[i - 1].price < array[i].price)) {
+					done = false;
+					const a = array[i - 1];
+					array[i - 1] = array[i];
+					array[i] = a;
 				}
 			}
 		}
 
+		dispatch(changeFilter(''));
 		dispatch(replaceCOWithSorted(array));
 		setToggle(!prevState);
 	};
@@ -171,15 +163,15 @@ const FormModal = () => {
 				<h4>{t('form.ordhead')}</h4>
 				<div className={style.SortBtnCont}>
 					<SortBtn toggle={priceToggle}
-						by={'price'}
+						by={priceConst}
 						setToggle={setPriceToggle}
 					>{t('form.sortAB')}</SortBtn>
 					<SortBtn toggle={nameToggle}
-						by={'name'}
+						by={nameConst}
 						setToggle={setNameToggle}
 					>{t('form.sort19')}</SortBtn>
 					<SortBtn toggle={priceToggle}
-						by={'price'}
+						by={priceConst}
 						setToggle={setPriceToggle}
 						onSort={sortWtSort}>{t('form.sortWS')}</SortBtn>
 				</div>

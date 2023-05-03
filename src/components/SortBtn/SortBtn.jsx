@@ -7,7 +7,7 @@ import style from './SortBtn.module.sass';
 import {changeFilter} from '../../redux/slices/coffee/filterSlice';
 import {filterStatus} from '../../redux/constants';
 
-const SortBtn = ({children, toggle, setToggle, by}) => {
+const SortBtn = ({children, toggle, setToggle, by, onSort}) => {
 	const dispatch = useDispatch();
 	const sortOrder = (prevState, by, setToggle) => {
 		if (by === 'price') {
@@ -32,7 +32,7 @@ const SortBtn = ({children, toggle, setToggle, by}) => {
 	};
 
 	return (<button type='button' className={style.SortBtn}
-		onClick={() => sortOrder(toggle, by, setToggle)}>
+		onClick={onSort ? () => onSort(toggle, setToggle) : () => sortOrder(toggle, by, setToggle)}>
 		{children}
 	</button>);
 };
@@ -41,7 +41,8 @@ SortBtn.propTypes = {
 	children: PropTypes.string,
 	toggle: PropTypes.bool,
 	setToggle: PropTypes.func,
-	by: PropTypes.string,
+	onSort: PropTypes.func,
+	by: PropTypes.oneOf(['price', 'name']),
 };
 
 export default SortBtn;
