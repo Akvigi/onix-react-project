@@ -29,17 +29,23 @@ const Header = ({goToAbout, goToSpecial}) => {
 						<a className={style.Link} onClick={goToAbout} href='#aboutus'>{t('header.b1')}</a>
 						<a className={style.Link} onClick={goToSpecial} href='#specialforyou'>{t('header.b2')}</a>
 						<NavLink to='/pokemons' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>{t('header.b3')}</NavLink>
-						<button className={style.Btn} onClick={() => dispatch(toggleOrderModal())} type='button'>
+						<button
+							aria-label={t('header.blabopencart')}
+							className={style.Btn}
+							onClick={() => dispatch(toggleOrderModal())}
+							type='button'>
 							<ShoppingCartTwoToneIcon
 								sx={{
 									color: '#2F2105',
-									width: '32px',
-									height: '32px',
 								}} />
 							{order && <span className={style.BtnIndicator}>{order.length}</span>}
 						</button>
 						{theme === themeConst.dark
-							? <button type='button' className={`${style.Btn} ${style.Sun}`} onClick={() => changeTheme()}>
+							? <button
+								aria-label={t('header.bllight')}
+								type='button'
+								className={`${style.Btn} ${style.Sun}`}
+								onClick={() => changeTheme()}>
 								<WbSunnyIcon
 									sx={{
 										color: '#fead0a',
@@ -48,7 +54,11 @@ const Header = ({goToAbout, goToSpecial}) => {
 									}}
 								/>
 							</button>
-							: <button type='button' className={`${style.Btn} ${style.Moon}`} onClick={() => changeTheme()}>
+							: <button
+								aria-label={t('header.bldark')}
+								type='button'
+								className={`${style.Btn} ${style.Moon}`}
+								onClick={() => changeTheme()}>
 								<DarkModeIcon
 									sx={{
 										color: '#3dcfe6',
@@ -61,10 +71,20 @@ const Header = ({goToAbout, goToSpecial}) => {
 					</>) : <NavLink to='/onix-react-project' onClick={() => dispatch(toggleCoffeePage())} className={style.Link}>{t('header.b4')}</NavLink>
 					}
 					{i18n.language === 'en'
-						? <button type='button' className={`${style.Lang} ${style.Ua}`} onClick={() => i18n.changeLanguage('ua')}>
+						? <button
+							aria-label={t('header.blua')}
+							type='button'
+							className={`${style.Lang} ${style.Ua}`}
+							onClick={() => i18n.changeLanguage('ua')}
+						>
 							<span className={style.U}>U</span><span className={style.A}>A</span>
 						</button>
-						: <button type='button' className={style.Lang} onClick={() => i18n.changeLanguage('en')}>
+						: <button
+							aria-label={t('header.blen')}
+							type='button'
+							className={style.Lang}
+							onClick={() => i18n.changeLanguage('en')}
+						>
 								EN
 						</button>
 					}

@@ -24,7 +24,11 @@ const AboutUs = ({refTo}) => {
 					<h2 className={style.Heading} >{t('aboutUs.head')}</h2>
 					<p className={style.Maintxt}>{t('aboutUs.main')}</p>
 					<p className={style.Desc}>{t('aboutUs.sec')}</p>
-					<button onClick={() => dispatch(toggleMenuModal())} className={style.Btn} type='button' >{t('aboutUs.btn')}</button>
+					<button
+						onClick={() => dispatch(toggleMenuModal())}
+						className={style.Btn}
+						type='button'
+					>{t('aboutUs.btn')}</button>
 				</div>
 			</div>
 		</section>

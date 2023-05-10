@@ -26,7 +26,7 @@ const Hero = () => {
 					<Media queries={{small: '(max-width: 767px)'}}>
 						{matches =>
 							matches.small && (
-								<HeroImg src={coffee} alt='cup of Cappucino and statistics'/>
+								<HeroImg src={coffee} alt={t('hero.altHero')}/>
 							)
 						}
 					</Media>
@@ -39,7 +39,7 @@ const Hero = () => {
 				<Media queries={{small: '(max-width: 767px)'}}>
 					{matches =>
 						!matches.small && (
-							<HeroImg src={coffee} alt='cup of Cappucino and statistics'/>
+							<HeroImg src={coffee} alt={t('hero.altHero')}/>
 						)
 					}
 				</Media>

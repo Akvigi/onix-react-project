@@ -4,6 +4,11 @@ export default {
 		b2: 'Спеціальні пропозиції для вас',
 		b3: 'Покемони',
 		b4: 'Кофе',
+		blabopencart: 'кнопка що відкриває корзину',
+		bldark: 'кнопко що змінює тему на темну',
+		blua: 'Кнопка що змінює мову на українську. Button that changes language to Ukrainian',
+		blen: 'Button that changes language to English. Кнопка що змінює мову на англійську. ',
+		bllight: 'кнопка що змінює тему на світлу',
 	},
 	hero: {
 		mainC: 'Насолоджуйтеся кавою перед початком дня',
@@ -12,6 +17,7 @@ export default {
 		secC: 'Підвищте свою продуктивність та налаштуйтесь на новий день з чашкою кави вранці',
 		orderbtn: 'Замовити зараз',
 		menubtn: 'Більше меню',
+		altHero: 'чашка Капучино і статистика',
 	},
 	popularH: 'Популярно зараз',
 	aboutUs: {
@@ -23,6 +29,8 @@ export default {
 	specialH: 'Спеціальне меню для вас',
 	reviewsMain: 'Що вони говорять про нас',
 	reviewsSec: 'Ми завжди надаємо найкращий сервіс та якісну каву',
+	reviewsLabStart: 'перемкнути на',
+	reviewsLabEnd: 'сторінку відгуків',
 	footer: {
 		name: 'Панасевич Нікіта',
 		des: 'Дизайн',
@@ -36,6 +44,8 @@ export default {
 		headP: 'Каталог',
 		menuloading: 'Завантажується...',
 		headC: 'Меню',
+		labSt: 'додати',
+		labEnd: 'до замовлення',
 	},
 	form: {
 		nothincart: 'У кошику нічого немає',
@@ -51,5 +61,7 @@ export default {
 		sortWS: 'Сортувати без sort',
 		nic: 'В кошику нічого немає',
 		ordbtn: 'Замовити',
+		labSt: 'прибрати',
+		labEnd: 'з замовлення',
 	},
 };

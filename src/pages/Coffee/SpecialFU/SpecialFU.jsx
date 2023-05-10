@@ -7,12 +7,17 @@ import style from './SpecialFU.module.sass';
 import PropTypes from 'prop-types';
 import {Context, themeConst} from '../../../App';
 import {useTranslation} from 'react-i18next';
+import classNames from 'classnames';
 
 const SpecialFU = ({specialRef}) => {
 	const {t} = useTranslation();
 	const {theme} = useContext(Context);
+	const classSect = classNames(
+		style.Foryou,
+		theme === themeConst.light ? '' : style.Dark,
+	);
 	return (
-		<section className={theme === themeConst.light ? `${style.Foryou}` : `${style.Foryou} ${style.Dark}`} ref={specialRef}>
+		<section className={classSect} ref={specialRef}>
 			<Container>
 				<SectionHeading>{t('specialH')}</SectionHeading>
 				<SpList/>

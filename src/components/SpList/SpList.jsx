@@ -10,6 +10,7 @@ import Notiflix from 'notiflix';
 import {selectDataFU} from '../../redux/selectors';
 import {Context, themeConst} from '../../App';
 import {useTranslation} from 'react-i18next';
+import classNames from 'classnames';
 
 const SpList = () => {
 	const dispatch = useDispatch();
@@ -17,6 +18,14 @@ const SpList = () => {
 	const {theme} = useContext(Context);
 	const {t} = useTranslation();
 
+	const classItem = classNames(
+		style.Item,
+		theme === themeConst.light ? '' : style.Dark,
+	);
+	const classRate = classNames(
+		style.RateCont,
+		theme === themeConst.light ? style.RateLight : style.Dark,
+	);
 	const onAdd = (name, price) => {
 		dispatch(addCoffeToOrder(name, price));
 		Notiflix.Notify.success(`${t('onAdd')}: ${name}`);
@@ -25,17 +34,21 @@ const SpList = () => {
 	return (
 		<ul className={style.List}>
 			{data.map(({name, desc, price, rate, link}) => (
-				<li className={theme === themeConst.light ? `${style.Item}` : `${style.Item} ${style.Dark}`} key={name}>
+				<li className={classItem} key={name}>
 					<Img src={link} alt={name}/>
 					<NamePrice name={name} price={price}/>
 					<div className={style.DescCont}>
 						<p className={style.Desc}>{desc}</p>
-						<div className={theme === themeConst.light ? `${style.RateCont} ${style.RateLight}` : `${style.RateCont} ${style.Dark}`}>
+						<div className={classRate}>
 							<Rate rate={rate} />
 						</div>
-						<button className={style.BtnAdd}
+						<button
+							className={style.BtnAdd}
+							aria-label={`${t('menu.labSt')} ${name} ${t('menu.labEnd')}`}
 							onClick={() => onAdd(name, price)}
-							type='button' id={name}>
+							type='button'
+							id={name}
+						>
 							<ShoppingCartTwoToneIcon
 								sx={{
 									color: 'white',

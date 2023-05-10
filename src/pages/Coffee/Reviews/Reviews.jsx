@@ -10,6 +10,7 @@ const Reviews = () => {
 	const [pagePag, setPagePag] = useState(1);
 	const {t} = useTranslation();
 	const data = useSelector(selectReviewsData);
+
 	return (
 		<section className={style.Section}>
 			<div className={style.Container}>
@@ -20,7 +21,10 @@ const Reviews = () => {
 				<div className={style.ListBtnsCont}>
 					<ReviewsList pagePag={pagePag}/>
 					<div className={style.BtnCont}>
-						{data.map(({page}) => <button type='button' onClick={() => setPagePag(page)}
+						{data.map(({page}) => <button
+							aria-label={`${t('reviewsLabStart')} ${page} ${t('reviewsLabEnd')}`}
+							type='button'
+							onClick={() => setPagePag(page)}
 							className={page === pagePag ? `${style.Btn} ${style.BtnActive}`
 								: `${style.Btn}`} key={page}></button>)}
 					</div>

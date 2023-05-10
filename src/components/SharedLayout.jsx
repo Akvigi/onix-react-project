@@ -4,16 +4,23 @@ import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import PropTypes from 'prop-types';
 import {Context, themeConst} from '../App';
+import classNames from 'classnames';
 
 const SharedLayout = ({aboutUsRef, specialRef}) => {
 	const {theme} = useContext(Context);
 	const onScroll = section => window.scrollTo({top: section.current.offsetTop - 100, behavior: 'smooth'});
+
+	const classSect = classNames(
+		theme === themeConst.light ? {background: 'white'} : {background: 'black'},
+	);
 	return (
-		<div style={theme === themeConst.light ? {background: 'white'} : {background: 'black'}}>
+		<div className={classSect}>
 			<Header goToAbout={() => onScroll(aboutUsRef)}
 				goToSpecial={() => onScroll(specialRef)}
 			/>
-			<Outlet />
+			<main>
+				<Outlet />
+			</main>
 			<Footer />
 		</div>
 	);

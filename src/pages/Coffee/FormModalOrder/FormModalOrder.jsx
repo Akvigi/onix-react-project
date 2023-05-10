@@ -177,9 +177,13 @@ const FormModal = () => {
 				</div>
 				<ul className={style.List}>
 					{order?.length ? order.map(item =>
-						(<FormLItem item={item} key={item.id}
-							onDE={onDragEnd} onDS={onDragStart} onDrop={handleDrop}
-							onAdd={() => dispatch(deleteCoffeeFromOrder(item.id))} />)) : (<p>{t('form.nic')}</p>)
+						(<FormLItem item={item}
+							key={item.id}
+							onDE={onDragEnd}
+							onDS={onDragStart}
+							onDrop={handleDrop}
+							onAdd={() => dispatch(deleteCoffeeFromOrder(item.id))} />))
+						: (<p>{t('form.nic')}</p>)
 					}
 				</ul>
 				<button className={style.OrderBtn} type='submit'>{t('form.ordbtn')}</button>

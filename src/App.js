@@ -24,7 +24,6 @@ function App() {
 		}
 
 		setTheme(themeConst.light);
-		console.log(theme);
 	};
 
 	const themeValue = {theme, changeTheme};

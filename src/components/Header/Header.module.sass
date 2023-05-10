@@ -18,7 +18,7 @@
     align-items: center
     padding: 0 5px
 .Logo 
-    font-size: 18px
+    font-size: 16px
     @media screen and (min-width: 480px) 
         font-size: 22px
     @media screen and (min-width: 768px) 
@@ -32,7 +32,7 @@
 
 .Link
     color: rgb(0, 0, 0)
-    font-size: 14px
+    font-size: 12px
     @media screen and (min-width: 480px) 
         font-size: 16px
     @media screen and (min-width: 768px) 
@@ -44,6 +44,13 @@
     cursor: pointer
     position: relative
     margin-left: 5px 
+    &>svg 
+        width: 25px
+        height: 25px
+    @media screen and (min-width: 768px) 
+        &>svg 
+            width: 32px
+            height: 32px
     &:hover
         & .BtnIndicator
             background: #FF902A    
@@ -75,7 +82,7 @@
         font-size: 16px
     @media screen and (min-width: 768px) 
         font-size: 20px
-    margin-left: 10px
+    margin-left: 5px
     background: transparent
     cursor: pointer
     align-self: center

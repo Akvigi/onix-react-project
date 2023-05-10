@@ -4,6 +4,11 @@ export default {
 		b2: 'Special for you',
 		b3: 'Pokemons',
 		b4: 'Coffee',
+		blabopencart: 'button that opens the cart',
+		bldark: 'button that changes theme to dark',
+		blua: 'Кнопка що змінює мову на українську. Button that changes language to Ukrainian',
+		blen: 'Button that changes language to English. Кнопка що змінює мову на англійську. ',
+		bllight: 'button that changes theme to light',
 	},
 	hero: {
 		mainC: 'Enjoy your coffee before your activity',
@@ -11,6 +16,7 @@ export default {
 		secP: 'Welcome to our online store for buying Pokemon! We offer a wide variety of Pokemon species, each with their own unique abilities and strengths.',
 		secC: 'Boost your productivity and build your mood with a glass of coffee in the morning',
 		orderbtn: 'Order now',
+		altHero: 'cup of Cappucino and statistics',
 		menubtn: 'More menu',
 	},
 	popularH: 'Popular Now',
@@ -23,6 +29,8 @@ export default {
 	specialH: 'Special menu for You',
 	reviewsMain: 'What they say about us',
 	reviewsSec: 'We always provide the best service and always maintain the quality of coffee',
+	reviewsLabStart: 'switch to',
+	reviewsLabEnd: 'page of reviews',
 	footer: {
 		name: 'Panasevich Nikita',
 		des: 'Design',
@@ -36,6 +44,8 @@ export default {
 		headP: 'Catalog',
 		menuloading: 'Loading...',
 		headC: 'Menu',
+		labSt: 'add',
+		labEnd: 'to order',
 	},
 	form: {
 		nothincart: 'Nothing in cart',
