@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 import style from './MenuWrapper.module.sass';
 
-import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
+import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/common/modalsSlice';
 import Overlay from '../../../components/Overlay/Overlay';
 import {useTranslation} from 'react-i18next';
-import {pokemonConst} from '../../../redux/constants';
+import {pokemonConst} from '../../../constants';
 
 const MenuWrapper = ({children, menuListFor}) => {
 	const dispatch = useDispatch();

@@ -1,13 +1,21 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {nanoid} from 'nanoid';
+import {filterStatus} from '../../../constants';
 
 const orderSlice = createSlice({
 	name: 'order',
 	initialState: {
+		filter: filterStatus.basic,
 		pokemon: [],
 		coffee: [],
 	},
 	reducers: {
+		changeFilter(state, actions) {
+			return {
+				...state,
+				filter: actions.payload,
+			};
+		},
 		addCoffeToOrder: {
 			reducer(state, action) {
 				return {
@@ -78,6 +86,7 @@ const orderSlice = createSlice({
 });
 
 export const {
+	changeFilter,
 	addCoffeToOrder,
 	addPokemonToOrder,
 	deleteCoffeeFromOrder,

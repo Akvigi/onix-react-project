@@ -5,13 +5,14 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 import {useDispatch, useSelector} from 'react-redux';
-import {toggleOrderModal} from '../../redux/slices/modalsSlice';
+import {toggleOrderModal} from '../../redux/slices/common/modalsSlice';
 import PropTypes from 'prop-types';
 import {NavLink} from 'react-router-dom';
-import {selectCoffePage, selectOrderCoffee} from '../../redux/selectors';
-import {toggleCoffeePage} from '../../redux/slices/pageSlice';
+import {toggleCoffeePage} from '../../redux/slices/common/pageSlice';
 import {Context, themeConst} from '../../App';
 import {useTranslation} from 'react-i18next';
+import {selectOrderCoffee} from '../../redux/slices/coffee/selectors';
+import {selectCoffePage} from '../../redux/slices/common/pageselectors';
 
 const Header = ({goToAbout, goToSpecial}) => {
 	const dispatch = useDispatch();

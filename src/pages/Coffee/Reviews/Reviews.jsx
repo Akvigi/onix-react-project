@@ -1,18 +1,20 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import style from './Reviews.module.sass';
 
 import {useSelector} from 'react-redux';
-import {selectReviewsData} from '../../../redux/selectors';
 import ReviewsList from '../../../components/ReviewsList/ReviewsList';
 import {useTranslation} from 'react-i18next';
+import cn from 'classnames';
+import {Context, themeConst} from '../../../App';
+import {selectReviewsData} from '../../../redux/slices/coffee/dataselectors';
 
 const Reviews = () => {
 	const [pagePag, setPagePag] = useState(1);
 	const {t} = useTranslation();
 	const data = useSelector(selectReviewsData);
-
+	const {theme} = useContext(Context);
 	return (
-		<section className={style.Section}>
+		<section className={cn(style.Section, {[style.Dark]: theme === themeConst.dark})}>
 			<div className={style.Container}>
 				<div className={style.TextCont}>
 					<h3 className={style.Heading}>{t('reviewsMain')}</h3>

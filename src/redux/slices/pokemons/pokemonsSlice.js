@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getPokemonsForMenu, getHeroImg} from '../../requests';
+import {getPokemonsForMenu, getHeroImg} from './requests';
 
 const pokemonsSlice = createSlice({
 	name: 'pokemons',

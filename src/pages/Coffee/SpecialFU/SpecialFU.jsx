@@ -12,12 +12,9 @@ import classNames from 'classnames';
 const SpecialFU = ({specialRef}) => {
 	const {t} = useTranslation();
 	const {theme} = useContext(Context);
-	const classSect = classNames(
-		style.Foryou,
-		theme === themeConst.light ? '' : style.Dark,
-	);
+
 	return (
-		<section className={classSect} ref={specialRef}>
+		<section className={classNames(style.Foryou, {[style.Dark]: theme === themeConst.dark})} ref={specialRef}>
 			<Container>
 				<SectionHeading>{t('specialH')}</SectionHeading>
 				<SpList/>

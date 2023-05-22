@@ -4,13 +4,13 @@ import {useDispatch} from 'react-redux';
 import PropTypes from 'prop-types';
 import style from './SortBtn.module.sass';
 
-import {changeFilter} from '../../redux/slices/coffee/filterSlice';
-import {filterStatus} from '../../redux/constants';
+import {changeFilter} from '../../redux/slices/common/orderSlice';
+import {filterStatus, nameConst, priceConst} from '../../constants';
 
 const SortBtn = ({children, toggle, setToggle, by, onSort}) => {
 	const dispatch = useDispatch();
 	const sortOrder = (prevState, by, setToggle) => {
-		if (by === 'price') {
+		if (by === priceConst) {
 			if (prevState === false) {
 				dispatch(changeFilter(filterStatus.price.f1t9));
 			} else if (prevState === true) {
@@ -20,7 +20,7 @@ const SortBtn = ({children, toggle, setToggle, by, onSort}) => {
 			setToggle(!prevState);
 		}
 
-		if (by === 'name') {
+		if (by === nameConst) {
 			if (prevState === false) {
 				dispatch(changeFilter(filterStatus.name.fAtZ));
 			} else if (prevState === true) {

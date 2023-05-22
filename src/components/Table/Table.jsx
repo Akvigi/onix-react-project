@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {useDispatch} from 'react-redux';
-import {toggleTableModal} from '../../redux/slices/modalsSlice';
+import {toggleTableModal} from '../../redux/slices/common/modalsSlice';
 
 import data from '../../biographydata';
 import Overlay from '../Overlay/Overlay';

@@ -9,14 +9,14 @@ import InputDataOrder from '../../../components/InputDataOrder.js/InputDataOrder
 import SortBtn from '../../../components/SortBtn/SortBtn';
 import FormLItem from '../../../components/FormLItem/FormLItem';
 
-import {changeFilter} from '../../../redux/slices/coffee/filterSlice';
-import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
-import {deleteCoffeeFromOrder, replaceCOWithSorted} from '../../../redux/slices/orderSlice';
-import {filterStatus, nameConst, priceConst} from '../../../redux/constants';
+import {changeFilter} from '../../../redux/slices/common/orderSlice';
+import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/common/modalsSlice';
+import {deleteCoffeeFromOrder, replaceCOWithSorted} from '../../../redux/slices/common/orderSlice';
+import {filterStatus, nameConst, priceConst} from '../../../constants';
 
-import {selectSortedOrder} from '../../../redux/selectors';
 import Overlay from '../../../components/Overlay/Overlay';
 import {useTranslation} from 'react-i18next';
+import {selectSortedOrder} from '../../../redux/slices/coffee/selectors';
 
 const portal = document.querySelector('#portal');
 

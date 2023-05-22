@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
-import {selectMenuModal} from '../../redux/selectors';
+import {selectMenuModal} from '../../redux/slices/common/modalSelectors';
 import Hero from './Hero/Hero';
 import Menu from './Menu/Menu';
 

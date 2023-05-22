@@ -8,15 +8,11 @@ const Footer = () => {
 	const {t} = useTranslation();
 	const {theme} = useContext(Context);
 
-	const classFooter = classNames(
-		style.Footer,
-		theme === themeConst.dark ? style.Dark : '',
-	);
 	const classA = classNames(
 		style.Link,
 		theme === themeConst.dark ? style.LinkDark : style.LinkLight,
 	);
-	return (<footer className={classFooter}>
+	return (<footer className={classNames(style.Footer, {[style.Dark]: theme === themeConst.dark})}>
 		<div className={style.Container}>
 			<div className={style.Contacts}>
 				<span>{t('footer.name')}</span>

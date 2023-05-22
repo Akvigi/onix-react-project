@@ -3,16 +3,16 @@ import dataFU from '../../../fudata';
 import popData from '../../../popdata';
 import reviewsData from '../../../reviewsdata';
 
-const initialDataState = {
+const initialCDataState = {
 	dataFU,
 	allData: [...dataFU, ...popData],
 	popData,
 	reviewsData,
 };
 
-const dataSlice = createSlice({
+const coffeeDataSlice = createSlice({
 	name: 'data',
-	initialState: initialDataState,
+	initialState: initialCDataState,
 });
 
-export const dataReducer = dataSlice.reducer;
+export const dataReducer = coffeeDataSlice.reducer;

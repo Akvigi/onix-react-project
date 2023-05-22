@@ -2,7 +2,7 @@ import React from 'react';
 import Media from 'react-media';
 import {useDispatch} from 'react-redux';
 
-import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
+import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/common/modalsSlice';
 
 import coffee from '../../../images/img-hero.png';
 import ContainerHero from '../../../components/Hero/ContainerHero';

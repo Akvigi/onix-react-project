@@ -1,17 +1,20 @@
 import React, {useEffect} from 'react';
 import Notiflix from 'notiflix';
-
+import {useTranslation} from 'react-i18next';
 import style from './MenuList.module.sass';
 
 import {useDispatch, useSelector} from 'react-redux';
 
-import {addCoffeToOrder, addPokemonToOrder} from '../../../redux/slices/orderSlice';
-import {selectAllData, selectCoffePage, selectPokemonLoading, selectPokemonMenu, selectPokemonPagPage} from '../../../redux/selectors';
+import {addCoffeToOrder, addPokemonToOrder} from '../../../redux/slices/common/orderSlice';
+import {selectPokemonLoading, selectPokemonMenu, selectPokemonPagPage} from '../../../redux/slices/pokemons/selectors';
+import {selectAllData} from '../../../redux/slices/coffee/dataselectors';
+import {selectCoffePage} from '../../../redux/slices/common/pageselectors';
 
 import MenuItem from '../MenuItem/MenuItem';
-import {getPokemonsForMenu} from '../../../redux/requests';
+import {getPokemonsForMenu} from '../../../redux/slices/pokemons/requests';
 import {setMenuToStart, setPagPage} from '../../../redux/slices/pokemons/pokemonsSlice';
-import {useTranslation} from 'react-i18next';
+
+import LoadingT from '../LoadingText';
 
 const MenuList = () => {
 	const data = useSelector(selectAllData);
@@ -63,7 +66,7 @@ const MenuList = () => {
 					addItem={() => onAdd(name, price)}
 				/>),
 			)}
-			{loading && dataPok.length === 0 && <p style={{margin: '30px 0'}}>{t('menu.menuloading')}</p>}
+			{loading && dataPok.length === 0 && <LoadingT>{t('menu.menuloading')}</LoadingT>}
 			{!coffeePage && dataPok.map(({name, sprites, weight, stats}) => (
 				<MenuItem
 					key={name}

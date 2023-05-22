@@ -1,6 +1,9 @@
 import React, {useContext} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import Notiflix from 'notiflix';
 import style from './PopList.module.sass';
+import {useTranslation} from 'react-i18next';
+import classNames from 'classnames';
 
 import Img from '../List/ImgList/ImgList';
 import Rate from '../List/Rate/Rate';
@@ -8,12 +11,9 @@ import NamePrice from '../List/NamePrice/NamePrice';
 
 import ShoppingCartTwoToneIcon from '@mui/icons-material/ShoppingCartTwoTone';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {selectPopData} from '../../redux/selectors';
-import {addCoffeToOrder} from '../../redux/slices/orderSlice';
+import {addCoffeToOrder} from '../../redux/slices/common/orderSlice';
 import {Context, themeConst} from '../../App';
-import {useTranslation} from 'react-i18next';
-import classNames from 'classnames';
+import {selectPopData} from '../../redux/slices/coffee/dataselectors';
 
 const PopList = () => {
 	const dispatch = useDispatch();

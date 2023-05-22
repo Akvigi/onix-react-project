@@ -6,8 +6,8 @@ import SectionHeading from '../../../components/SectionHeading';
 import PopList from '../../../components/PopList/PopList';
 
 import {useSelector} from 'react-redux';
-import {selectPopData} from '../../../redux/selectors';
 import {useTranslation} from 'react-i18next';
+import {selectPopData} from '../../../redux/slices/coffee/dataselectors';
 
 const Popular = () => {
 	const data = useSelector(selectPopData);

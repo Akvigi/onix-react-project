@@ -2,9 +2,9 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {selectReviewsData} from '../../redux/selectors';
-
 import style from './ReviewsList.module.sass';
+
+import {selectReviewsData} from '../../redux/slices/coffee/dataselectors';
 
 const ReviewsList = ({pagePag}) => {
 	const data = useSelector(selectReviewsData);

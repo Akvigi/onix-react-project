@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import Media from 'react-media';
+import {useTranslation} from 'react-i18next';
 import {useDispatch, useSelector} from 'react-redux';
 
 import ContainerHero from '../../../components/Hero/ContainerHero';
@@ -12,11 +13,11 @@ import HeroMenuBtn from '../../../components/Hero/HeroMenuBtn';
 import HeroBtnCont from '../../../components/Hero/HeroBtnCont';
 import HeroImg from '../../../components/Hero/HeroImg';
 
-import {getHeroImg} from '../../../redux/requests';
+import {getHeroImg} from '../../../redux/slices/pokemons/requests';
 
-import {selectHeroPokemon} from '../../../redux/selectors';
-import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/modalsSlice';
-import {useTranslation} from 'react-i18next';
+import {selectHeroPokemon} from '../../../redux/slices/pokemons/selectors';
+import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/common/modalsSlice';
+
 const Hero = () => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();

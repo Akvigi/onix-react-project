@@ -10,11 +10,11 @@ import Table from '../../components/Table/Table';
 import Reviews from './Reviews/Reviews';
 import AboutUs from './AboutUs/AboutUs';
 
-import {selectMenuModal, selectOrderModal, selectTable} from '../../redux/selectors';
-import {toggleTableModal} from '../../redux/slices/modalsSlice';
+import {selectMenuModal, selectOrderModal, selectTable} from '../../redux/slices/common/modalSelectors';
+import {toggleTableModal} from '../../redux/slices/common/modalsSlice';
 import PropTypes from 'prop-types';
 import {useLocation} from 'react-router-dom';
-import {setCoffeePageTrue} from '../../redux/slices/pageSlice';
+import {setCoffeePageTrue} from '../../redux/slices/common/pageSlice';
 
 const Coffee = ({aboutUsRef, specialRef}) => {
 	const dispatch = useDispatch();
