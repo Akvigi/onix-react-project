@@ -1,5 +1,23 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getPokemonsForMenu, getHeroImg} from './requests';
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+
+import {getPokemonsForMenu} from './requests';
+
+const pokemonApi = createApi({
+	reducerPath: 'pokemonApi',
+	baseQuery: fetchBaseQuery({baseUrl: 'https://pokeapi.co/api/v2'}),
+	endpoints: builder => ({
+		getPokemonsForMenu: builder.query({
+			query: qty => ({
+				url: '/pokemon',
+				params: {limit: 10, offset: qty},
+			}),
+		}),
+		getPokemon: builder.query({
+			query: name => `/pokemon/${name}`,
+		}),
+	}),
+});
 
 const pokemonsSlice = createSlice({
 	name: 'pokemons',
@@ -55,21 +73,13 @@ const pokemonsSlice = createSlice({
 			store.loading = false;
 			store.error = payload;
 		},
-		[getHeroImg.pending](store) {
-			store.loadingHero = true;
-			store.error = null;
-		},
-		[getHeroImg.fulfilled](store, {payload}) {
-			store.loadingHero = false;
-			store.heroPokemon = payload.hits[0].largeImageURL;
-		},
-		[getHeroImg.rejected](store, {payload}) {
-			store.loadingHero = false;
-			store.error = payload;
-		},
 	},
 });
 
 export const {setPagPage, setMenuToStart} = pokemonsSlice.actions;
 
 export const pokemonsReducer = pokemonsSlice.reducer;
+
+export const {useGetPokemonsForMenuQuery, useGetPokemonQuery} = pokemonApi;
+
+export default pokemonApi;

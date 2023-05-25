@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
 import {useDispatch} from 'react-redux';
 import {toggleTableModal} from '../../redux/slices/common/modalsSlice';
@@ -14,11 +14,11 @@ const Table = () => {
 	const dispatch = useDispatch();
 	const [activeB, setActiveB] = useState(false);
 
-	const changeBorder = e => {
+	const changeBorder = useCallback(e => {
 		if (e.code === 'KeyA') {
 			setActiveB(prevActiveB => !prevActiveB);
 		}
-	};
+	}, []);
 
 	useEffect(() => {
 		const esc = e => {
@@ -35,7 +35,7 @@ const Table = () => {
 			window.removeEventListener('keydown', esc);
 			window.removeEventListener('keydown', changeBorder);
 		};
-	}, []);
+	}, [changeBorder]);
 
 	return createPortal(
 		<Overlay stateModal={modalSt}>

@@ -1,4 +1,4 @@
-import {getDefaultMiddleware, configureStore} from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 
 import {
 	persistStore,
@@ -11,8 +11,8 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
+import imgApi from './slices/pokemons/imgApi';
 
 const persistConfig = {
 	key: 'root',
@@ -23,11 +23,11 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
 	reducer: persistedReducer,
-	middleware: [thunk, ...getDefaultMiddleware({
+	middleware: getDefaultMiddleware => getDefaultMiddleware({
 		serializableCheck: {
 			ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
 		},
-	})],
+	}).concat(imgApi.middleware),
 });
 
 export const persistor = persistStore(store);

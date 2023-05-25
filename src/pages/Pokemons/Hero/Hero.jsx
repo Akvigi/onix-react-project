@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Media from 'react-media';
 import {useTranslation} from 'react-i18next';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import ContainerHero from '../../../components/Hero/ContainerHero';
 import HeroSection from '../../../components/Hero/HeroSection';
@@ -13,19 +13,16 @@ import HeroMenuBtn from '../../../components/Hero/HeroMenuBtn';
 import HeroBtnCont from '../../../components/Hero/HeroBtnCont';
 import HeroImg from '../../../components/Hero/HeroImg';
 
-import {getHeroImg} from '../../../redux/slices/pokemons/requests';
-
-import {selectHeroPokemon} from '../../../redux/slices/pokemons/selectors';
 import {toggleMenuModal, toggleOrderModal} from '../../../redux/slices/common/modalsSlice';
+import {useGetHeroImgQuery} from '../../../redux/slices/pokemons/imgApi';
 
 const Hero = () => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
-	useEffect(() => {
-		dispatch(getHeroImg());
-	}, [dispatch]);
 
-	const pokemon = useSelector(selectHeroPokemon);
+	const {data, isFetching} = useGetHeroImgQuery(1574648);
+	useEffect(() => {
+	}, [data]);
 
 	return (
 		<HeroSection>
@@ -35,7 +32,7 @@ const Hero = () => {
 					<Media queries={{small: '(max-width: 767px)'}}>
 						{matches =>
 							matches.small && (
-								<HeroImg src={pokemon} alt='pokemon'/>
+								!isFetching && <HeroImg src={data.hits[0].largeImageURL} alt='pokemon' />
 							)
 						}
 					</Media>
@@ -48,7 +45,7 @@ const Hero = () => {
 				<Media queries={{small: '(max-width: 767px)'}}>
 					{matches =>
 						!matches.small && (
-							<HeroImg src={pokemon} alt='pokemon'/>
+							!isFetching && <HeroImg src={data.hits[0].largeImageURL} alt='pokemon' />
 						)
 					}
 				</Media>
