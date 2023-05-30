@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Media from 'react-media';
 import {useTranslation} from 'react-i18next';
 import {useDispatch} from 'react-redux';
@@ -21,8 +21,6 @@ const Hero = () => {
 	const {t} = useTranslation();
 
 	const {data, isFetching} = useGetHeroImgQuery(1574648);
-	useEffect(() => {
-	}, [data]);
 
 	return (
 		<HeroSection>
