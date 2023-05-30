@@ -27,26 +27,26 @@ const Hero = () => {
 			<ContainerHero>
 				<HeroDesc>
 					<HeroHeader>{t('hero.mainP')}</HeroHeader>
-					<Media queries={{small: '(max-width: 767px)'}}>
+					{!isFetching && <Media queries={{small: '(max-width: 767px)'}}>
 						{matches =>
 							matches.small && (
-								!isFetching && <HeroImg src={data.hits[0].largeImageURL} alt='pokemon' />
+								<HeroImg src={data.hits[0].largeImageURL} alt='pokemon' />
 							)
 						}
-					</Media>
+					</Media>}
 					<HeroText>{t('hero.secP')}</HeroText>
 					<HeroBtnCont>
 						<HeroOrderBtn onClick={() => dispatch(toggleOrderModal())}>{t('hero.orderbtn')}</HeroOrderBtn>
 						<HeroMenuBtn onClick={() => dispatch(toggleMenuModal())} >{t('hero.menubtn')}</HeroMenuBtn>
 					</HeroBtnCont>
 				</HeroDesc>
-				<Media queries={{small: '(max-width: 767px)'}}>
+				{!isFetching && <Media queries={{small: '(max-width: 767px)'}}>
 					{matches =>
 						!matches.small && (
-							!isFetching && <HeroImg src={data.hits[0].largeImageURL} alt='pokemon' />
+							<HeroImg src={data.hits[0].largeImageURL} alt='pokemon' />
 						)
 					}
-				</Media>
+				</Media>}
 			</ContainerHero>
 		</HeroSection>);
 };
