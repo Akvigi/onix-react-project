@@ -20,14 +20,14 @@ const Hero = () => {
 	const dispatch = useDispatch();
 	const {t} = useTranslation();
 
-	const {data, isFetching} = useGetHeroImgQuery(1574648);
+	const {data, error, isFetching} = useGetHeroImgQuery(1574648);
 
 	return (
 		<HeroSection>
 			<ContainerHero>
 				<HeroDesc>
 					<HeroHeader>{t('hero.mainP')}</HeroHeader>
-					{!isFetching && <Media queries={{small: '(max-width: 767px)'}}>
+					{!error && !isFetching && <Media queries={{small: '(max-width: 767px)'}}>
 						{matches =>
 							matches.small && (
 								<HeroImg src={data.hits[0].largeImageURL} alt='pokemon' />
@@ -40,7 +40,7 @@ const Hero = () => {
 						<HeroMenuBtn onClick={() => dispatch(toggleMenuModal())} >{t('hero.menubtn')}</HeroMenuBtn>
 					</HeroBtnCont>
 				</HeroDesc>
-				{!isFetching && <Media queries={{small: '(max-width: 767px)'}}>
+				{!error && !isFetching && <Media queries={{small: '(max-width: 767px)'}}>
 					{matches =>
 						!matches.small && (
 							<HeroImg src={data.hits[0].largeImageURL} alt='pokemon' />
